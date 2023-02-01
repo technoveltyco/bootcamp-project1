@@ -1,40 +1,35 @@
-const ctn1 = document.querySelector("#api1");
-const ctn2 = document.querySelector("#api2");
-const ctn3 = document.querySelector("#api3");
+const ctn1 = document.querySelector("#store");
+const ctn2 = document.querySelector("#fake");
+const ctn3 = document.querySelector("#currency");
 
-const url1 = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY";
-fetch(url1)
-.then(response => response.json())
-.then(json => {
-    ctn1.textContent = JSON.stringify(json);
-    console.log(json)
-});
+let options = {
+	method: 'GET',
+	headers: { }
+};
 
-const url2 = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY";
-fetch(url2)
-.then(response => response.json())
-.then(json => {
-    console.log(json.photos);
+// Platzi Fake Store API
+fetch('https://api.escuelajs.co/api/v1/products/?price_min=100&price_max=1000&offset=10&limit=1', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response);
+        ctn1.textContent = JSON.stringify(response);
+    })
+	.catch(err => console.error(err));
 
-    for (let i = 0; i < json.photos.length; i++) {
-        const photo = json.photos[i];
+// Faker API
+fetch('https://fakerapi.it/api/v1/credit_cards?_quantity=1', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response);
+        ctn2.textContent = JSON.stringify(response);
+    })
+	.catch(err => console.error(err));
 
-        const ctn = document.createElement("div");
-        const img = document.createElement("img");
-        img.setAttribute("src", photo.img_src);
-        img.setAttribute("alt", photo.camera.full_name);
-
-        ctn.appendChild(img);
-
-        ctn2.appendChild(ctn);
-        
-    }
-});
-
-const url3 = "https://api.nasa.gov/DONKI/CME?startDate=2022-01-01&endDate=2022-01-31&api_key=DEMO_KEY";
-fetch(url3)
-.then(response => response.json())
-.then(json => {
-    ctn3.textContent = JSON.stringify(json);
-    console.log(json)
-});
+// ExchangeRate API
+fetch('https://v6.exchangerate-api.com/v6/ae007f997716ef4e399f00af/latest/GBP', options)
+	.then(response => response.json())
+	.then(response => {
+        console.log(response);
+        ctn3.textContent = JSON.stringify(response);
+    })
+	.catch(err => console.error(err));
