@@ -42,7 +42,7 @@
 
   const endpoints = {
     platzi: {
-      products: "https://api.escuelajs.co/api/v1/products/?price_min=100&price_max=1000&offset=10&limit=1"
+      products: "https://api.escuelajs.co/api/v1/products/"
     },
     faker: {
       credit_cards: "https://fakerapi.it/api/v1/credit_cards?_quantity=1"
