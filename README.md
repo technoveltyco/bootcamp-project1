@@ -25,14 +25,14 @@
     - [The MVP (minimal viable product) concept](#the-mvp-minimal-viable-product-concept)
     - [Screenshot](#screenshot)
     - [Links](#links)
-  - [My process](#my-process)
-    - [APIs](#apis)
-    - [Tasks Done](#tasks-done)
-    - [Pending tasks](#pending-tasks)
+  - [Specifications](#specifications)
+    - [Project requirements](#project-requirements)
+    - [RESTful APIs](#restful-apis)
+    - [UX/UI Design](#uxui-design)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
+  - [Useful resources](#useful-resources)
   - [Authors](#authors)
   - [Acknowledgments](#acknowledgments)
 
@@ -64,10 +64,23 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Live Site URL: [https://technoveltyco.github.io/bootcamp-project1/](https://technoveltyco.github.io/bootcamp-project1/)
 - KANBAN Dashboard: [https://github.com/users/technoveltyco/projects/4](https://github.com/users/technoveltyco/projects/4)
 
-## My process
+## Specifications
 
-Here we will explain the details of the design and implementation of the project.
-### APIs 
+
+### Project requirements
+
+1. Must use at least two server-side APIs.
+2. Must use a CSS framework other than Bootstrap.
+3. Must use client-side storage to store persistent data.
+4. Must have a polished UI.
+5. Must meet good quality coding standards (indentation, scoping, naming, etc.).
+6. Must NOT use alerts, confirms, or prompts (look into modals). 
+7. Must be deployed to GitHub Pages.
+8. Must be interactive (i.e: accept and respond to user input).
+9. Create UX/UI with Figma.
+10. Create a project Kanban dashboard with agile user stories.
+
+### RESTful APIs 
 
 The website will use Mock-Up APIs for the back-end:
 
@@ -75,14 +88,22 @@ The website will use Mock-Up APIs for the back-end:
 - [Faker API](https://fakerapi.it/en) : For general fake data like companies, credit cards, addresses, etc.
 - [ExchangeRate API](https://www.exchangerate-api.com/docs/standard-requests) : for currency exchange.
 
-### Tasks Done
+### UX/UI Design
 
-- [Proof of concept demo using 3 different APIs]() 
+The UX/UI design will follow the specifications of the [High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) which defines a retail e-commerce website. The full theme is freely available in the Figma Community. 
 
-### Pending tasks
+Here there are the links to the Figma resources that are being considered in the implementation of the Fakee-Shop:
 
-- [Define the concept for an application that uses these APIs]()
-- Define the functional and technical requirements for implementing the application concept.
+- Full theme Figma copy: [The High-converting e-commerce UI kit](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=1410%3A5648&t=IS3Y0sgcVNyf7aZK-1)
+  - [Homepage & category page](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2502%3A4038&t=IS3Y0sgcVNyf7aZK-1)
+  - [Product list page](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2587%3A6638&t=IS3Y0sgcVNyf7aZK-1)
+  - [Product details page](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2628%3A18776&t=IS3Y0sgcVNyf7aZK-1)
+  - [Product card](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2543%3A4678&t=IS3Y0sgcVNyf7aZK-1)
+  - [Search](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2502%3A4043&t=IS3Y0sgcVNyf7aZK-1)
+  - [Navigation](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=2502%3A4044&t=IS3Y0sgcVNyf7aZK-1)
+  - [DESIGN SYSTEM](https://www.figma.com/file/FnvubxQA5jPzUX9Do2tr1a/High-converting-e-commerce-UI-kit-(Community)?node-id=1410%3A5648&t=IS3Y0sgcVNyf7aZK-1)
+
+![UX/UI Design example](./docs/assets/img/ux-ui-design.png)
 
 ### Built with
 
@@ -90,7 +111,10 @@ The website will use Mock-Up APIs for the back-end:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind UI](https://tailwindui.com/)
 - Mobile-first workflow
+- Vanilla JavaScript
 
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
@@ -127,8 +151,13 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 **Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
-### Useful resources
+## Useful resources
 
+- Figma
+  - [High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392)
+- Tailwind
+  - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation)
+  - [Tailwind UI Docs](https://tailwindui.com/documentation)
 - Public APIs
   - [Public API Lists - GitHub](https://github.com/public-api-lists/public-api-lists) - Useful resource to choose free public APIs that can be used for Proof of Concept projects.
 - CSS Reset
@@ -146,20 +175,15 @@ Use this section to outline areas that you want to continue focusing on in futur
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Authors
-  Your Name
-- Website - [your name or website url](https://www.your-site.com)
-- GitHub - [your GitHub username](https://github.com/yourusername)
 
 **Group 7**
 
-  Elias, Jozef
-- GitHub - [https://github.com/ElanekJ](https://github.com/ElanekJ)
-
-  Tyler, Warren
-- GitHub - [https://github.com/WarrenTyler](https://github.com/WarrenTyler)
-
-  Rodriguez, Daniel
-- GitHub - [https://github.com/technoveltyco](https://github.com/technoveltyco) 
+- Elias, Jozef
+  - GitHub - [https://github.com/ElanekJ](https://github.com/ElanekJ)
+- Tyler, Warren
+  - GitHub - [https://github.com/WarrenTyler](https://github.com/WarrenTyler)
+- Rodriguez, Daniel
+  - GitHub - [https://github.com/technoveltyco](https://github.com/technoveltyco) 
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
