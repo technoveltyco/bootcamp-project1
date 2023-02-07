@@ -1,23 +1,38 @@
+---
+title: "Boot camp project 1: Fakee-Shop"
+author: "Technoveltyco"
+date: "14th March 2023"
+---
+
+<link href="./docs/assets/css/markdown.css" rel="stylesheet"></link>
+
+<!-- back to top -->
+<a class="top-link hide" href="#top">↑</a>
+<a name="top"></a>
+<!-- end back to top -->
+
 # Project 1: Fakee-Shop
 
 *Fakee-Shop* is the leading website offering the best fake shopping experience online.
 
 ![Fakee Shop logo](./docs/assets/logos/Fakee-Shop-logo.jpeg)
 
+<!-- project repository shields -->
 <p align="center">
-    <img src="https://img.shields.io/github/repo-size/technoveltyco/README-generator" />
-    <img src="https://img.shields.io/github/languages/top/technoveltyco/README-generator"  />
-    <img src="https://img.shields.io/github/issues/technoveltyco/README-generator" />
-    <img src="https://img.shields.io/github/last-commit/technoveltyco/README-generator" >
+  <img src="https://img.shields.io/github/repo-size/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/languages/top/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/issues/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/last-commit/technoveltyco/bootcamp-project1" />
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Javascript-yellow" />
-    <img src="https://img.shields.io/badge/jQuery-blue"  />
-    <img src="https://img.shields.io/badge/HTML5-orange" />
-    <img src="https://img.shields.io/badge/Bootstrap-purple" >
-    <img src="https://img.shields.io/badge/Moment.js-green" />
+  <img src="https://img.shields.io/badge/HTML5-orange" />
+  <img src="https://img.shields.io/badge/CSS3-blue" />
+  <img src="https://img.shields.io/badge/TailwindCSS-purple" />
+  <img src="https://img.shields.io/badge/Javascript-yellow" />
+  <img src="https://img.shields.io/badge/Moment.js-green" />
 </p>
+<!-- end project repository shields -->
 
 ## Table of contents
 
