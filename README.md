@@ -1,6 +1,8 @@
-# Project 1: Fakee-Commerce
+# Project 1: Fakee-Shop
 
-*Fakee-Commerce* is the leading website offering the best fake shopping experience online.
+*Fakee-Shop* is the leading website offering the best fake shopping experience online.
+
+![Fakee Shop logo](./docs/assets/logos/Fakee-Shop-logo.jpeg)
 
 <p align="center">
     <img src="https://img.shields.io/github/repo-size/technoveltyco/README-generator" />
@@ -19,11 +21,13 @@
 
 ## Table of contents
 
-- [Project 1: Fakee-Commerce](#project-1-fakee-commerce)
+- [Project 1: Fakee-Shop](#project-1-fakee-shop)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
-    - [The MVP (minimal viable product) concept](#the-mvp-minimal-viable-product-concept)
-    - [Screenshot](#screenshot)
+    - [Mininal Viable Product concept (MVP)](#mininal-viable-product-concept-mvp)
+    - [Slogan](#slogan)
+    - [Logos](#logos)
+    - [Screenshots](#screenshots)
     - [Links](#links)
   - [Specifications](#specifications)
     - [Project requirements](#project-requirements)
@@ -42,11 +46,39 @@
 
 *Fakee-Commerce* is the leading website offering the best fake shopping experience online.
 
-### The MVP (minimal viable product) concept
+### Mininal Viable Product concept (MVP)
 
-Describe the MVP here
+*Fakee-Shop* is the leading website offering the best fake shopping experience online.
 
-### Screenshot
+### Slogan
+
+` the best fake shopping experience online`
+
+### Logos
+
+1. *Logo standard (jpeg)*
+
+![Fakee Shop standard logo](./docs/assets/logos/Fakee-Shop-logo.jpeg)
+
+2. *Logo white transparent (png)*
+
+<p style="background-color: black;">
+  <img src="./docs/assets/logos/Fakee-Shop-logo_white.png" alt="Fakee Shop white logo with transparent background">
+</p>
+
+3. *Logo black transparent (png)*
+
+<p style="background-color: white;">
+  <img src="./docs/assets/logos/Fakee-Shop-logo_black.png" alt="Fakee Shop black logo with transparent background">
+</p>
+
+4. *Logo transparent (png)*
+
+<p style="background-color: #c48538;">
+  <img src="./docs/assets/logos/Fakee-Shop-logo_transparent.png" alt="Fakee Shop standard logo with transparent background">
+</p>
+
+### Screenshots
 
 ![](./screenshot.jpg)
 
@@ -107,14 +139,21 @@ Here there are the links to the Figma resources that are being considered in the
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- [Semantic HTML5 markup](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox)
+- [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+- [Mobile-first workflow](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
+- [Figma](https://www.figma.com/)
+- [Adobe Express](https://express.adobe.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind UI](https://tailwindui.com/)
-- Mobile-first workflow
-- Vanilla JavaScript
+- [Tailwind Elements](https://tailwind-elements.com/quick-start/)
+- [Font Awesome 6](https://fontawesome.com/v6/docs)
+- [Google Fonts](https://fonts.google.com/)
+- [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript)
+- [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
+- [Node.js](https://nodejs.org/en/)
+- [Prettier](https://prettier.io/)
 
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
@@ -153,13 +192,25 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Useful resources
 
-- Figma
-  - [High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392)
-- Tailwind
-  - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation)
-  - [Tailwind UI Docs](https://tailwindui.com/documentation)
-- Public APIs
+- Agile
+  - [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
+  - [How to Write Acceptance Criteria: Examples and Best Practices](https://www.mobindustry.net/blog/how-to-write-acceptance-criteria-examples-and-best-practices/)
+  - [What is the Definition of Done (DOD) in Agile?](https://www.agile-academy.com/en/scrum-master/what-is-the-definition-of-done-dod-in-agile/)
+- Public HTTP APIs
   - [Public API Lists - GitHub](https://github.com/public-api-lists/public-api-lists) - Useful resource to choose free public APIs that can be used for Proof of Concept projects.
+- UX/UI Web Design
+  - [Figma - High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) - The free design from Figma Community which is based Fakee-Shop project.
+  - [Adobe Express - Logo Maker](https://express.adobe.com/express-apps/logo-maker/)
+  - [20 Elements of Modern Web Design That You Need to Know](https://www.lambdatest.com/blog/20-elements-of-modern-web-design/)
+  - [Parts Of A Website: A Cheat Sheet For Non-Techies](https://www.markbrinker.com/parts-of-a-website)
+  - [CMS Web Design: A Guide to Dynamic Content Applications](https://www.toptal.com/designers/ui/cms-web-design)
+- Tailwind
+  - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation) - The main reference for Tailwind CSS Framework.
+  - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
+  - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
+  - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
+- Flexbox
+  - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
 - CSS Reset
   - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
   - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
@@ -169,8 +220,18 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
   - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
   - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
-- Code Snippet Style
-  - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/)
+- Code Snippet Styling
+  - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+- Web image formats
+  - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
+  - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
+  - [How to Use SVG Images in CSS and HTML – A Tutorial for Beginners](https://www.freecodecamp.org/news/use-svg-images-in-css-html/)
+- IDE/Dev tools
+  - [Prettier - Code formatter](https://prettier.io/)
+  - [Prettier VSCode plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+  - [Tailwind Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+  - [Font Awesome 6 Icons](https://fontawesome.com/v6/icons) - Only the free icons were used in this project.
+  - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) - Free open source catalog of images.
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
@@ -189,6 +250,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+The teacher and TAs that help us with resources and support to my questions during the development of this challenge.
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
