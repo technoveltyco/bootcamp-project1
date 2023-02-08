@@ -7,6 +7,14 @@
 
     <title>Fakee-Shop | Homepage</title>
 
+    <!-- jQuery Typeahead CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.2/jquery.typeahead.min.css"
+      integrity="sha512-UKvJ8GWN7HSI41K3GUfcJInghVOhKi/w0pLNV/5lYluLW1IZPuXu0ANCFibdfp5SAY2CL0cZt6uYos8YqvV1/w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Tailwind Elements -->
     <link
       rel="stylesheet"
@@ -230,12 +238,13 @@
             <!-- navigation search -->
             <div
               class="navigation-search hidden w-1/5 items-center justify-center lg:flex lg:w-4/6"
+              id="navigation-search"
             >
               <form id="search-form" class="flex items-center lg:w-full">
                 <label for="simple-search" class="sr-only">Search</label>
                 <div class="relative w-full">
                   <div
-                    class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
                     id="button-addon"
                   >
                     <svg
@@ -255,7 +264,7 @@
                   <input
                     id="simple-search"
                     type="search"
-                    class="form-control relative m-0 hidden w-full min-w-0 flex-auto rounded-full border border-l-0 border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none lg:block"
+                    class="form-control relative m-0 hidden w-full min-w-0 flex-auto rounded-full border border-l-0 border-solid border-gray-300 bg-white bg-clip-padding px-10 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none lg:block"
                     placeholder="Search"
                     aria-label="Search"
                     aria-describedby="button-addon"
@@ -462,6 +471,7 @@
               <!-- navbar navigation primary items -->
               <ul
                 class="navigation-items navbar-nav mr-auto flex flex-col items-center justify-center lg:flex-row lg:justify-start"
+                id="nav-primary-items"
               >
                 <li class="product-category nav-item">
                   <a
@@ -1082,9 +1092,24 @@
     </footer>
     <!-- end website footer -->
 
+    <!--jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- jQuery Typeahead -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.2/jquery.typeahead.min.js"
+      integrity="sha512-q3PJ6drJcqZ984tj8nt3P8vD30JsugpXEUj3zIDcWywsI/zxRNRBOXdJlzbd/2Oqiso0NrttHFpEQhrCw+E+jw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <!-- Tailwind Elements -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <!-- Fakee-Shop JavaScript -->
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/products.js"></script>
   </body>
 </html>

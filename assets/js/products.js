@@ -7,7 +7,7 @@ const navPrimaryItemsEl = document.querySelector('#nav-primary-items')
 const endpoints = {
   platzi: {
     products: 'https://api.escuelajs.co/api/v1/products/',
-    categories: 'https://api.escuelajs.co/api/v1/categories',
+    categories: 'https://api.escuelajs.co/api/v1/categories?limit=5',
   },
   faker: {
     credit_cards: 'https://fakerapi.it/api/v1/credit_cards?_quantity=1',
