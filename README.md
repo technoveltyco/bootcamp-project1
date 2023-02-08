@@ -1,7 +1,10 @@
 ---
-title: "Boot camp project 1: Fakee-Shop"
-author: "Technoveltyco"
-date: "14th March 2023"
+Title: "Fakee-Shop"
+Description: "Boot camp project 1"
+Authors: "[ElanekJ](https://github.com/ElanekJ), [technoveltyco](https://github.com/technoveltyco), [WarrenTyler](https://github.com/WarrenTyler)"
+Release date: "14th March 2023"
+Output:
+  -
 ---
 
 <link href="./docs/assets/css/markdown.css" rel="stylesheet"></link>
@@ -207,18 +210,25 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Useful resources
 
-- Agile
+- Software/Web Standards
+  - [UML 2]()
+  - [Drawing UML with PlantUML](https://plantuml.com/guide)
+  - [PlantUML - Live editor ](https://plantuml.com/)
+- Agile/Scrum
   - [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
   - [How to Write Acceptance Criteria: Examples and Best Practices](https://www.mobindustry.net/blog/how-to-write-acceptance-criteria-examples-and-best-practices/)
   - [What is the Definition of Done (DOD) in Agile?](https://www.agile-academy.com/en/scrum-master/what-is-the-definition-of-done-dod-in-agile/)
 - Public HTTP APIs
   - [Public API Lists - GitHub](https://github.com/public-api-lists/public-api-lists) - Useful resource to choose free public APIs that can be used for Proof of Concept projects.
 - UX/UI Web Design
-  - [Figma - High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) - The free design from Figma Community which is based Fakee-Shop project.
+  - [Figma - High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) - The free design from Figma Community which Fakee-Shop project is based on.
   - [Adobe Express - Logo Maker](https://express.adobe.com/express-apps/logo-maker/)
   - [20 Elements of Modern Web Design That You Need to Know](https://www.lambdatest.com/blog/20-elements-of-modern-web-design/)
   - [Parts Of A Website: A Cheat Sheet For Non-Techies](https://www.markbrinker.com/parts-of-a-website)
   - [CMS Web Design: A Guide to Dynamic Content Applications](https://www.toptal.com/designers/ui/cms-web-design)
+- Fonts/Images
+  - [Font Awesome 6 Icons](https://fontawesome.com/v6/icons) - Only the free icons were used in this project.
+  - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) - Free open source catalog of images.
 - Tailwind
   - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation) - The main reference for Tailwind CSS Framework.
   - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
@@ -241,12 +251,22 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
   - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
   - [How to Use SVG Images in CSS and HTML – A Tutorial for Beginners](https://www.freecodecamp.org/news/use-svg-images-in-css-html/)
+- Git/Github
+  - [5.2 Distributed Git - Contributing to a Project](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
+  - [How to Write Better Git Commit Messages – A Step-By-Step Guide](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
+  - [Github - Introducing draft pull requests](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
+  - [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- Markdown
+  - [The Markdown Guide](https://www.markdownguide.org/)
+  - [Mermaid - Diagramming and charting tool](https://mermaid.js.org/)
+  - [Include diagrams in your Markdown files with Mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+  - [Mermaid - Live Editor](https://mermaid.live/)
+
 - IDE/Dev tools
   - [Prettier - Code formatter](https://prettier.io/)
   - [Prettier VSCode plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
   - [Tailwind Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
-  - [Font Awesome 6 Icons](https://fontawesome.com/v6/icons) - Only the free icons were used in this project.
-  - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) - Free open source catalog of images.
+  - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
@@ -265,6 +285,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-The teacher and TAs that help us with resources and support to my questions during the development of this challenge.
+The teacher and TAs that help us with resources and support to my questions during the development of this project.
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
