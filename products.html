@@ -7,6 +7,14 @@
 
     <title>Fakee-Shop | Homepage</title>
 
+    <!-- jQuery Typeahead CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.2/jquery.typeahead.min.css"
+      integrity="sha512-UKvJ8GWN7HSI41K3GUfcJInghVOhKi/w0pLNV/5lYluLW1IZPuXu0ANCFibdfp5SAY2CL0cZt6uYos8YqvV1/w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Tailwind Elements -->
     <link
       rel="stylesheet"
@@ -179,14 +187,16 @@
           class="navbar-container flex w-full flex-wrap items-center justify-between px-12"
         >
           <!-- navbar primary navigation  -->
-          <div class="navbar-navigation-primary flex items-center">
+          <div
+            class="navbar-navigation-primary flex w-full items-center justify-between"
+          >
             <!-- hamburger menu -->
             <button
               class="navigation-hamburger-toggler navbar-toggler mr-2 border-0 bg-transparent py-3 text-xl leading-none text-gray-600 transition-shadow duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:hidden"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarPrimaryNavigation"
-              aria-controls="navbarPrimaryNavigation"
+              data-bs-target="#navbarHamburgerMenuNavigation"
+              aria-controls="navbarHamburgerMenuNavigation"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
@@ -208,12 +218,14 @@
             <!-- end hamburger menu -->
 
             <!-- navigation logo -->
-            <div class="navigation-logo">
+            <div
+              class="navigation-logo flex w-1/5 items-center justify-center lg:w-1/6"
+            >
               <a class="mx-2" href="./index.html">
                 <img
                   id="logo"
-                  src="./assets/img/Fakee-Shop-logo_transparent.png"
-                  style="height: 85px"
+                  src="./assets/img/Fakee-Shop-logo_transparent_cropped.png"
+                  style="width: 135px"
                   alt="Fakee Shop logo"
                   loading="lazy"
                 />
@@ -224,62 +236,84 @@
             <!-- end navigation logo -->
 
             <!-- navigation search -->
-            <div class="navigation-search flex justify-center">
-              <div class="mb-3 xl:w-96">
-                <div
-                  class="input-group relative mb-4 flex w-full flex-wrap items-stretch rounded"
-                >
-                  <input
-                    id="search-box"
-                    type="search"
-                    class="form-control relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="button-addon2"
-                  />
-                  <span
-                    class="input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-gray-700"
-                    id="search-button"
+            <div
+              class="navigation-search hidden w-1/5 items-center justify-center lg:flex lg:w-4/6"
+              id="navigation-search"
+            >
+              <form id="search-form" class="flex items-center lg:w-full">
+                <label for="nav-search-input" class="sr-only">Search</label>
+                <div class="relative w-full">
+                  <div
+                    class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
+                    id="button-addon"
                   >
                     <svg
                       aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fas"
-                      data-icon="search"
-                      class="w-4"
-                      role="img"
+                      class="h-5 w-5 text-gray-500 dark:text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
                     >
                       <path
-                        fill="currentColor"
-                        d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                        fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"
                       ></path>
                     </svg>
-                  </span>
+                  </div>
+                  <input
+                    id="nav-search-input"
+                    type="search"
+                    class="form-control relative m-0 hidden w-full min-w-0 flex-auto rounded-full border border-l-0 border-solid border-gray-300 bg-white bg-clip-padding px-10 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none lg:block"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="button-addon"
+                    required
+                  />
                 </div>
-              </div>
+              </form>
             </div>
             <!-- end navigation search -->
 
             <!-- navigation user tools -->
             <nav
-              class="navigation-user-tools relative flex items-center"
+              class="navigation-user-tools justify-content-evenly relative flex w-3/5 items-center lg:w-1/6"
               id="navbarUserToolsNavigation"
             >
+              <!-- search toggle / sm screens -->
+              <a id="nav-search-button" class="block">
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+                <span class="sr-only">Search</span>
+              </a>
+              <!-- end search toggle / sm screens-->
+
               <!-- log in / user profile -->
 
               <!-- log in -->
               <a
-                class="mr-4 text-gray-500 hover:text-gray-700 focus:text-gray-700"
+                class="text-gray-500 hover:text-gray-700 focus:text-gray-700"
                 href="#!"
               >
-                <i class="fa-regular fa-user"></i>&nbsp; Log in
+                <i class="fa-regular fa-user"></i
+                ><span class="hidden lg:inline">&nbsp; Log in</span>
               </a>
               <!-- end log in -->
 
               <!-- user profile -->
-              <div class="dropdown relative">
+              <!-- <div class="dropdown relative">
                 <a
                   class="dropdown-toggle hidden-arrow flex items-center"
                   href="#"
@@ -322,7 +356,7 @@
                     >
                   </li>
                 </ul>
-              </div>
+              </div> -->
               <!-- end user profile -->
 
               <!-- end log in / user profile -->
@@ -338,7 +372,7 @@
                 >
                   <i class="fa-regular fa-heart"></i>
                   <span
-                    class="absolute -mt-2.5 ml-2 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
+                    class="absolute -mt-2.5 ml-2.5 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
                     >3</span
                   ><span class="hidden">Favorites</span>
                 </a>
@@ -382,7 +416,7 @@
                 >
                   <i class="fa-solid fa-bag-shopping"></i>
                   <span
-                    class="absolute -mt-0.5 -ml-3 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
+                    class="absolute -mt-0.5 -ml-1.5 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
                     >2</span
                   ><span class="hidden">&nbsp; Shopping cart</span>
                 </a>
@@ -412,116 +446,149 @@
           </div>
           <!-- end navbar primary navigation -->
 
-          <div class="break"></div>
-          <!-- break -->
-
-          <!-- navbar primary navigation collapsible -->
-          <nav
-            class="navigation-primary navigation-hamburger-menu navbar-collapse collapse grow items-center"
-            id="navbarPrimaryNavigation"
+          <!-- navigation hamburger menu collapsible -->
+          <div
+            class="navigation-hamburger-menu navbar-collapse collapse mt-5 grow items-center lg:justify-between"
+            id="navbarHamburgerMenuNavigation"
           >
-            <!-- navbar navigation primary items -->
-            <ul id="nav-primary-items" class="navigation-items navbar-nav mr-auto lg:flex lg:flex-row">
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Inspiration</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Clothing</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Shoes</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Sport</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Accesories</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Jewellery</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Bestsellers</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Promo</a
-                >
-              </li>
-            </ul>
-            <!-- end navigation primary items -->
-          </nav>
-          <!-- end navbar primary navigation collapsible -->
+            <!-- divider with label -->
+            <div
+              class="product-categories-divider relative flex items-center py-5 lg:hidden"
+            >
+              <div class="flex-grow border-t border-gray-400"></div>
+              <span class="mx-4 flex-shrink font-bold text-gray-400"
+                >Products by Category</span
+              >
+              <div class="flex-grow border-t border-gray-400"></div>
+            </div>
+            <!-- end divider with label -->
 
-          <!-- navbar secondary navigation -->
-          <nav
-            class="navigation-secondary items-center"
-            id="navbarSecondaryNavigation"
-          >
-            <!-- navbar navigation secondary items -->
-            <ul class="navigation-items navbar-nav mr-auto lg:flex lg:flex-row">
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >All adults</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Women</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Men</a
-                >
-              </li>
-              <li class="nav-item mb-2 lg:mb-0">
-                <a
-                  class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
-                  href="#!"
-                  >Kids</a
-                >
-              </li>
-            </ul>
-            <!-- end navigation secondary items -->
-          </nav>
-          <!-- end navbar secondary navigation -->
+            <!-- navbar primary navigation -->
+            <nav
+              class="products-by-categories navigation-primary my-5 lg:my-0"
+              id="navbarPrimaryNavigation"
+            >
+              <!-- navbar navigation primary items -->
+              <ul
+                class="navigation-items navbar-nav mr-auto flex flex-col items-center justify-center lg:flex-row lg:justify-start"
+                id="nav-primary-items"
+              >
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Inspiration</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Clothing</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Shoes</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Sport</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Accesories</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Jewellery</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Bestsellers</a
+                  >
+                </li>
+                <li class="product-category highlighted nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 font-semibold text-gray-600 text-red-500 transition duration-150 ease-in-out hover:text-gray-700 hover:text-red-700 focus:text-gray-700 focus:text-red-700 lg:px-2"
+                    href="#!"
+                    >Promo</a
+                  >
+                </li>
+              </ul>
+              <!-- end navigation primary items -->
+            </nav>
+            <!-- end navbar primary navigation -->
+
+            <!-- divider with label -->
+            <div
+              class="product-categories-divider relative flex items-center py-5 lg:hidden"
+            >
+              <div class="flex-grow border-t border-gray-400"></div>
+              <span class="mx-4 flex-shrink font-bold text-gray-400"
+                >Products by Genre</span
+              >
+              <div class="flex-grow border-t border-gray-400"></div>
+            </div>
+            <!-- end divider with label -->
+
+            <!-- navbar secondary navigation -->
+            <nav
+              class="products-by-genre navigation-secondary my-5 items-center lg:my-0"
+              id="navbarSecondaryNavigation"
+            >
+              <!-- navbar navigation secondary items -->
+              <ul
+                class="navigation-items navbar-nav mr-auto flex flex-col items-center justify-center lg:flex-row lg:justify-end"
+              >
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >All adults</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Women</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Men</a
+                  >
+                </li>
+                <li class="product-category nav-item">
+                  <a
+                    class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
+                    href="#!"
+                    >Kids</a
+                  >
+                </li>
+              </ul>
+              <!-- end navigation secondary items -->
+            </nav>
+            <!-- end navbar secondary navigation -->
+          </div>
+          <!-- end navigation hamburger menu collapsible-->
         </div>
         <!-- end navbar container -->
       </section>
@@ -545,7 +612,25 @@
       </button>
       <!-- end back to the top button -->
 
-      
+      <!-- hero banner / jumbotron -->
+      <section
+        class="hero-banner jumbotron bg-gray-50 py-20 px-12 text-center text-gray-800"
+      >
+        <h1 class="mt-0 mb-6 text-5xl font-bold">Find your style</h1>
+        <h3 class="mb-8 text-3xl font-bold">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi,
+          debitis.
+        </h3>
+        <a
+          class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="light"
+          href="#!"
+          role="button"
+          >Shop now</a
+        >
+      </section>
+      <!-- end hero banner / jumbotron -->
 
       <!-- page content -->
       <section class="page-content py-6 px-12">
@@ -557,13 +642,184 @@
         </nav>
         <!-- end breadcrumb -->
 
+        <!-- main page content -->
+        <div id="main-page-content">
+
 <!-- product listings content -->
-      <div id="cat-buttons"></div>
       <div id="product-list" class="container mx-auto flex flex-wrap"></div>
 <!-- end product listings content -->
+
+          <br />
+
+          <h1 class="text-center text-4xl">Fakee-Shop homepage</h1>
+
+          <br />
+          <p class="py-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Malesuada scelerisque fermentum donec pretium fermentum. Iaculis
+            quisque fringilla mi praesent sed pulvinar bibendum. Ac dui faucibus
+            vivamus curae ut inceptos conubia condimentum ultricies mattis
+            nullam etiam finibus eros.
+          </p>
+          <p class="py-2">
+            Lectus eleifend luctus tincidunt laoreet erat curabitur augue massa
+            quisque tempor. Convallis massa turpis convallis quam a euismod
+            auctor dignissim fusce aenean dolor nullam vivamus nec maecenas.
+            Lorem maecenas facilisis donec porttitor pharetra hendrerit magna
+            est commodo. Nisi hac senectus ligula a blandit.
+          </p>
+          <p class="py-2">
+            Velit sodales accumsan a massa tortor tristique dapibus auctor
+            sociosqu metus quisque mauris suspendisse sagittis. Ac nibh ex
+            phasellus eros etiam pharetra.
+          </p>
+          <p class="py-2">
+            Quam imperdiet nullam hac semper nisl. Vivamus netus fermentum morbi
+            neque fringilla ante hendrerit sociosqu taciti vivamus senectus orci
+            interdum. Non a himenaeos ut magna sollicitudin dapibus et id.
+          </p>
+          <p class="py-2">
+            Turpis aptent tincidunt rutrum feugiat ac gravida dictum malesuada
+            amet. Habitasse ullamcorper tellus sed praesent arcu accumsan
+            conubia pretium hac habitant risus feugiat. Mollis rutrum inceptos
+            aenean eleifend ullamcorper in erat ipsum ut leo rhoncus enim.
+            Maecenas duis praesent aliquam elit in iaculis convallis consectetur
+            consectetur sociosqu eget.
+          </p>
+          <p class="py-2">
+            Nunc morbi posuere consectetur hendrerit lacinia tempus. Nulla
+            iaculis pellentesque platea tristique malesuada urna donec
+            vestibulum auctor proin cubilia senectus nisl.
+          </p>
+          <p class="py-2">
+            Habitant litora nisi arcu suscipit torquent mi. Purus pellentesque
+            varius justo rutrum vitae dolor nulla quam inceptos semper lobortis
+            cras nunc iaculis. Curae quis vehicula rhoncus senectus cursus.
+            Aptent ad habitasse ligula nec cubilia vivamus pulvinar maximus
+            integer etiam ac gravida eros arcu pretium.
+          </p>
+          <p class="py-2">
+            Dui rhoncus accumsan nec nec sapien elementum faucibus erat
+            adipiscing. Nam feugiat leo massa lectus placerat pharetra mi dolor.
+            Aliquam quisque ipsum at quis turpis id inceptos fermentum nam
+            vulputate auctor ante mi tellus mattis. Odio accumsan molestie
+            vivamus ultricies consectetur at sociosqu arcu pretium placerat
+            condimentum.
+          </p>
+          <p class="py-2">
+            Etiam maximus himenaeos porta sed tristique dictum mattis tellus
+            nostra integer rhoncus morbi. Dui laoreet hendrerit libero sociosqu
+            metus lectus metus dignissim interdum accumsan. Quis gravida justo
+            cursus donec at ultrices conubia egestas dapibus blandit nostra in.
+          </p>
+          <p class="py-2">
+            Facilisis facilisis ipsum dolor faucibus ut vitae scelerisque luctus
+            erat sit at placerat sit. Ac hendrerit diam integer cursus massa
+            porta inceptos ut feugiat fringilla lacus turpis urna vel proin.
+          </p>
+          <p class="py-2">
+            Porttitor facilisis dolor suspendisse vulputate enim venenatis
+            neque. Turpis dictum tortor tristique in cras. Mattis fermentum
+            etiam torquent nisi hac libero praesent accumsan finibus suscipit
+            dapibus sollicitudin.
+          </p>
+          <p class="py-2">
+            Semper rutrum amet libero malesuada ligula. Ante mauris donec lacus
+            malesuada a tincidunt per litora primis habitasse mattis ligula
+            convallis. Turpis suspendisse tempus metus quis arcu ultrices
+            sodales quis et. Tellus felis lorem aptent ante dui maecenas class
+            euismod risus cursus.
+          </p>
+          <p class="py-2">
+            Adipiscing ac hendrerit varius semper per egestas lobortis elementum
+            eros tortor quam. Massa laoreet dictum imperdiet consectetur
+            ultricies etiam finibus suspendisse nibh dui tristique pretium
+            ultricies aliquam id.
+          </p>
+          <p class="py-2">
+            Vitae sit sem gravida quisque enim vel venenatis convallis at
+            feugiat quis aliquam imperdiet molestie cras. Laoreet maecenas nec
+            finibus ultricies dignissim feugiat.
+          </p>
+          <p class="py-2">
+            Dictum ultricies ultrices volutpat eu scelerisque nisi. Posuere
+            turpis odio phasellus tellus sollicitudin at nam facilisis. Nullam
+            sodales justo egestas rhoncus himenaeos malesuada congue himenaeos
+            urna leo nam dictum. Dictum litora porttitor platea bibendum
+            facilisis ornare habitasse. Proin sapien egestas himenaeos metus
+            habitasse curabitur.
+          </p>
+          <p class="py-2">
+            Curabitur pulvinar pellentesque placerat dictumst mi. Sapien sit
+            conubia id lobortis sollicitudin. Eleifend cras aliquet integer
+            ultricies posuere hac turpis commodo scelerisque fusce vehicula
+            hendrerit tempor non senectus. Habitant faucibus commodo eros
+            gravida metus lacinia pharetra torquent maecenas molestie laoreet
+            lorem. Nam ac curabitur semper habitasse euismod porta rhoncus eu
+            dui.
+          </p>
+          <p class="py-2">
+            Fringilla fringilla nam porttitor class sem taciti morbi integer
+            semper. Nam donec suscipit suscipit vitae lobortis blandit rhoncus
+            id.
+          </p>
+          <p class="py-2">
+            Etiam imperdiet primis quisque curae nostra faucibus bibendum. Id
+            inceptos elementum leo aenean velit semper primis diam ornare sem
+            rhoncus accumsan mollis. Per senectus taciti viverra urna blandit
+            massa lobortis class fringilla consequat aliquet adipiscing
+            dignissim. Habitasse curae netus lacus amet elementum euismod diam a
+            cubilia mattis.
+          </p>
+          <p class="py-2">
+            Ultricies nulla erat taciti eget habitant dictumst magna lectus
+            convallis. Posuere ullamcorper interdum per suscipit lobortis
+            nostra. Commodo quis vitae per consequat aenean in. Consequat platea
+            ante fermentum ultrices lorem dictumst ac nisi consectetur erat
+            mattis nec ante dignissim dui.
+          </p>
+          <p class="py-2">
+            Litora non lectus ad vehicula orci turpis mi mollis luctus fusce nec
+            sagittis. Mattis torquent hac in curabitur eu molestie in aliquam.
+          </p>
+          <p class="py-2">
+            Tempus rutrum ornare hendrerit turpis cursus luctus a arcu quis
+            sapien a bibendum ad luctus laoreet. Aliquam quam etiam eleifend
+            ullamcorper primis gravida tellus orci suscipit velit sociosqu
+            integer. Sed hendrerit purus netus conubia venenatis non fringilla
+            commodo. Imperdiet et velit tellus vestibulum sit scelerisque ligula
+            cubilia mollis vehicula. Bibendum facilisis ullamcorper quisque urna
+            ultrices.
+          </p>
+          <p class="py-2">
+            Sollicitudin vestibulum ante venenatis rutrum mi cras nostra arcu
+            sociosqu malesuada in. Conubia ex turpis praesent vivamus commodo in
+            pharetra.
+          </p>
+          <p class="py-2">
+            Ex mattis nibh orci aliquam amet maecenas massa feugiat erat
+            convallis justo habitant. Maximus platea sed interdum diam habitasse
+            phasellus. Senectus enim placerat viverra tempus sollicitudin
+            commodo aliquet nec sagittis.
+          </p>
+          <p class="py-2">
+            Platea varius senectus platea class hac cras placerat enim cras. Vel
+            dictumst nec vehicula enim cursus mauris taciti fringilla arcu ut
+            eleifend adipiscing quis. Netus erat magna nullam rhoncus sed nostra
+            pellentesque ligula metus consectetur. Pretium bibendum nullam
+            aliquam vulputate libero.
+          </p>
+          <p class="py-2">
+            Ut platea pellentesque id eget volutpat conubia nullam senectus
+            venenatis tellus faucibus. Sodales vel aenean mattis egestas neque
+            cras suspendisse leo vivamus aliquam inceptos integer. Ipsum vitae
+            egestas nisl metus morbi metus arcu dictum duis.
+          </p>
+        </div>
+        <!-- end main page content -->
       </section>
       <!-- end page content -->
-
     </main>
     <!-- end website content -->
 
@@ -850,6 +1106,20 @@
     </footer>
     <!-- end website footer -->
 
+    <!--jQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- jQuery Typeahead -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.2/jquery.typeahead.min.js"
+      integrity="sha512-q3PJ6drJcqZ984tj8nt3P8vD30JsugpXEUj3zIDcWywsI/zxRNRBOXdJlzbd/2Oqiso0NrttHFpEQhrCw+E+jw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <!-- Tailwind Elements -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <!-- Fakee-Shop JavaScript -->

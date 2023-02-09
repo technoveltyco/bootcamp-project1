@@ -1,7 +1,8 @@
 // JavaScript of Product listing page.
+const mainPageContentEl = document.querySelector('#main-page-content')
 const productListEl = document.querySelector('#product-list')
-const searchBoxEl = document.querySelector('#search-box')
-const searchButtonEl = document.querySelector('#search-button')
+const navSearchInputEl = document.querySelector('#nav-search-input')
+const navSearchButtonEl = document.querySelector('#nav-search-button')
 const navPrimaryItemsEl = document.querySelector('#nav-primary-items')
 
 const endpoints = {
@@ -31,8 +32,8 @@ populateNavPrimaryItems()
 
 // FUNCTIONS ------------------------------------------------------- //
 
-function searchProductsEndpoint(query) {
-  fetch(endpoints['platzi']['products'] + query, options)
+function fetchProductsEndpoint(queryString) {
+  fetch(endpoints['platzi']['products'] + queryString, options)
     .then((response) => response.json())
     .then((response) => {
       console.log(response)
@@ -76,6 +77,7 @@ function createCard(item) {
   const newCardDiv = document.createElement('div')
 
   newCardDiv.classList.add(
+    'w-full',
     'm-1',
     'max-w-sm',
     'bg-white',
@@ -110,15 +112,15 @@ navPrimaryItemsEl.addEventListener('click', (event) => {
   
   if (event.target.matches('a')) {
     const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`
-    searchProductsEndpoint(categoryQuery)
+    fetchProductsEndpoint(categoryQuery)
   }
 })
 
-searchButtonEl.addEventListener('click', (event) => {
-  const searchText = searchBoxEl.value.trim()
+navSearchButtonEl.addEventListener('click', (event) => {
+  const searchText = navSearchInputEl.value.trim()
 
   if (searchText) {
     const titleQuery = `?title=${searchText}`
-    searchProductsEndpoint(titleQuery)
+    fetchProductsEndpoint(titleQuery)
   }
 })
