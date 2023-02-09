@@ -4,6 +4,7 @@ const productListEl = document.querySelector('#product-list')
 const navSearchInputEl = document.querySelector('#nav-search-input')
 const navSearchButtonEl = document.querySelector('#nav-search-button')
 const navPrimaryItemsEl = document.querySelector('#nav-primary-items')
+const currencyDropdownEl = document.querySelector('#currency-dropdown')
 
 const endpoints = {
   platzi: {
@@ -15,7 +16,7 @@ const endpoints = {
   },
   exchange_rate: {
     currency:
-      'https://v6.exchangerate-api.com/v6/ae007f997716ef4e399f00af/latest/GBP',
+      'https://v6.exchangerate-api.com/v6/dc9edcf7a653563d44d04acc/latest/GBP',
   },
 }
 
@@ -27,10 +28,35 @@ let options = {
   },
 }
 
+let exchangeRates
+storeGBPExchangeRates()
+
+// DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
+document.querySelector('#hero-banner').classList.add('hidden')
+
 // add categories dynamically to main nav, from api
 populateNavPrimaryItems()
 
 // FUNCTIONS ------------------------------------------------------- //
+
+function storeGBPExchangeRates() {
+  // only fetch from api if it doesn't exsist - to save limited api calls while testing
+  if (!localStorage.getItem('GBPExchangeRates')) {
+    alert('ExchangeRate API Call')
+    // ExchangeRate API
+    fetch(endpoints['exchange_rate']['currency'], options)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+
+        exchangeRates = JSON.stringify(response)
+        localStorage.setItem('GBPExchangeRates', exchangeRates)
+      })
+      .catch((err) => console.error(err))
+  } else {
+    exchangeRates = JSON.parse(localStorage.getItem('GBPExchangeRates'))
+  }
+}
 
 function fetchProductsEndpoint(queryString) {
   fetch(endpoints['platzi']['products'] + queryString, options)
@@ -109,7 +135,7 @@ function createCard(item) {
 
 navPrimaryItemsEl.addEventListener('click', (event) => {
   event.preventDefault()
-  
+
   if (event.target.matches('a')) {
     const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`
     fetchProductsEndpoint(categoryQuery)
@@ -124,3 +150,17 @@ navSearchButtonEl.addEventListener('click', (event) => {
     fetchProductsEndpoint(titleQuery)
   }
 })
+
+currencyDropdownEl.addEventListener('click', (event) => {
+  // const desiredCurrency = currencyDropdownEl.querySelector(':scope > li')
+  const desiredCurrency = event.target.parentNode.querySelector(':scope > a')
+
+  // // DEV: test exchangeRates
+  // console.log(exchangeRates)
+
+  if (event.target.parentNode.closest('ul')) {
+    alert(desiredCurrency.dataset.countryName)
+    console.log(event.target.parentNode)
+  }
+})
+
