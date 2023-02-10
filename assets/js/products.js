@@ -9,6 +9,7 @@ const currencyDropdownButtonEl = document.querySelector(
   "#currencyDropdownButton"
 );
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
+const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
 
 const endpoints = {
   platzi: {
@@ -70,7 +71,66 @@ let selectedCurrencyCode =
 renderSelectedCurrency(selectedCurrencyCode);
 renderCurrencies();
 
+let currentPageName = "index";
+switchPageTo(currentPageName);
+// switchPageTo("products");
+
 // FUNCTIONS ------------------------------------------------------- //
+
+function displayProductDetails(productID) {
+  // TODO: implement product details here
+  document.querySelector("#temp-product-id").textContent = productID;
+}
+
+function switchPageTo(pageName) {
+  // get all the breadcrumbs and turn nodeList into an array
+  const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
+
+  currentPageName = pageName;
+
+  if (pageName === "index") {
+    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+    productListEl.classList.add("hidden");
+    document.querySelector("#product-details").classList.add("hidden");
+
+    const linksToHide = breadcrumbEls.filter(
+      (link) => link.dataset.pageName !== pageName
+    );
+    linksToHide.forEach((link) => link.classList.add("hidden"));
+
+    // show content by removing the tailwind 'hidden' class ('display: none')
+    document.querySelector("#hero-banner").classList.remove("hidden");
+    document.querySelector("#homepage-content").classList.remove("hidden");
+  }
+
+  if (pageName === "products") {
+    // show content by removing the tailwind 'hidden' class ('display: none')
+    productListEl.classList.remove("hidden");
+    // show all breadcrumbs (before hiding unwanted links)
+    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+
+    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+    document.querySelector("#hero-banner").classList.add("hidden");
+    document.querySelector("#homepage-content").classList.add("hidden");
+    document.querySelector("#product-details").classList.add("hidden");
+
+    // just hide last in breadcrumb in array
+    breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
+  }
+
+  if (pageName === "details") {
+    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+    productListEl.classList.add("hidden");
+    document.querySelector("#hero-banner").classList.add("hidden");
+    document.querySelector("#homepage-content").classList.add("hidden");
+
+    // show all breadcrumbs
+    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+
+    // show content by removing the tailwind 'hidden' class ('display: none')
+    document.querySelector("#product-details").classList.remove("hidden");
+  }
+}
 
 function renderSelectedCurrency(currencyCode) {
   const html = `
@@ -191,15 +251,20 @@ function populateNavPrimaryItems() {
 }
 
 function convertPrice(price) {
-  const currencyExchangeRate = Number.parseFloat(exchangeRates.conversion_rates[selectedCurrencyCode]);
+  const currencyExchangeRate = Number.parseFloat(
+    exchangeRates.conversion_rates[selectedCurrencyCode]
+  );
   return (price * currencyExchangeRate).toFixed(2);
 }
-
 
 function createCard(item) {
   const newCardDiv = document.createElement("div");
 
+  // add the product id to the card
+  newCardDiv.dataset.productID = item.id;
+
   newCardDiv.classList.add(
+    "product-card",
     "w-full",
     "m-1",
     "max-w-sm",
@@ -218,10 +283,18 @@ function createCard(item) {
     </a>
     <div class="p-5">
     <a href="#">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${item.title}</h5>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
+      item.title
+    }</h5>
     </a>
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${item.description}</p>
-    <p class="mb-3 font-bold text-gray-900"><span class="currency">${currencies[selectedCurrencyCode].currencySign}</span><span class="price" data-original-price="${item.price}">${convertPrice(item.price)}</span></p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${
+      item.description
+    }</p>
+    <p class="mb-3 font-bold text-gray-900"><span class="currency">${
+      currencies[selectedCurrencyCode].currencySign
+    }</span><span class="price" data-original-price="${
+    item.price
+  }">${convertPrice(item.price)}</span></p>
     </div>
   `;
 
@@ -237,6 +310,8 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
     const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
     fetchProductsEndpoint(categoryQuery);
   }
+
+  switchPageTo("products");
 });
 
 navSearchButtonEl.addEventListener("click", (event) => {
@@ -248,6 +323,8 @@ navSearchButtonEl.addEventListener("click", (event) => {
     const titleQuery = `?title=${searchText}`;
     fetchProductsEndpoint(titleQuery);
   }
+
+  switchPageTo("products");
 });
 
 currencyDropdownEl.addEventListener("click", (event) => {
@@ -274,3 +351,22 @@ currencyDropdownEl.addEventListener("click", (event) => {
     }
   }
 });
+
+navBreadcrumbEl.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.matches("li")) {
+    switchPageTo(event.target.dataset.pageName);
+  }
+});
+
+productListEl.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const productCard = event.target.closest(".product-card");
+  if (productCard) {
+    displayProductDetails(productCard.dataset.productID);
+    switchPageTo("details");
+  }
+});
+
