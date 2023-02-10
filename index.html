@@ -34,11 +34,11 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ["Inter", "sans-serif"],
             },
           },
         },
-      }
+      };
     </script>
     <!-- Fakee-Shop styles -->
     <link rel="stylesheet" href="./assets/css/reset.css" />
@@ -78,14 +78,10 @@
             <!--help -->
             <a href="#!">Help and FAQs</a>
             <!-- currency dropdown -->
-            <div class="dropdown relative">
+            <div id="currency-dropdown" class="dropdown relative">
               <a
                 class="dropdown-toggle hidden-arrow flex items-center"
                 href="#"
-                data-country-name="United Kingdom"
-                data-country-code="UK"
-                data-langcode="en"
-                data-currency-sign="£"
                 id="currencyDropdownButton"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -104,8 +100,9 @@
               <ul
                 class="dropdown-menu absolute left-auto right-0 z-50 float-left m-0 mt-1 hidden hidden min-w-max list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg"
                 aria-labelledby="currencyDropdownButton"
+                id="currency-menu-items"
               >
-                <li
+                <!-- <li
                   role="menuitem"
                   class="hover:bg-blue-gray-50 focus:bg-blue-gray-50 active:bg-blue-gray-50 hover:text-blue-gray-900 focus:text-blue-gray-900 active:text-blue-gray-900 bg-blue-gray-50/80 text-blue-gray-900 block w-full cursor-pointer select-none rounded-md py-1.5 px-2.5 text-start text-xs font-medium transition-all hover:bg-opacity-80 focus:bg-opacity-80 active:bg-opacity-80"
                 >
@@ -167,7 +164,7 @@
                       loading="lazy"
                     />&nbsp; EN, $
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
             <!-- end currency dropdown -->
@@ -241,7 +238,7 @@
               id="navigation-search"
             >
               <form id="search-form" class="flex items-center lg:w-full">
-                <label for="simple-search" class="sr-only">Search</label>
+                <label for="nav-search-input" class="sr-only">Search</label>
                 <div class="relative w-full">
                   <div
                     class="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3"
@@ -262,7 +259,7 @@
                     </svg>
                   </div>
                   <input
-                    id="simple-search"
+                    id="nav-search-input"
                     type="search"
                     class="form-control relative m-0 hidden w-full min-w-0 flex-auto rounded-full border border-l-0 border-solid border-gray-300 bg-white bg-clip-padding px-10 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none lg:block"
                     placeholder="Search"
@@ -281,7 +278,7 @@
               id="navbarUserToolsNavigation"
             >
               <!-- search toggle / sm screens -->
-              <a class="block lg:hidden">
+              <a id="nav-search-button" class="block">
                 <svg
                   class="h-5 w-5"
                   fill="none"
@@ -614,21 +611,35 @@
 
       <!-- hero banner / jumbotron -->
       <section
-        class="hero-banner jumbotron bg-gray-50 py-20 px-12 text-center text-gray-800"
+        id="hero-banner"
+        class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center"
+        style="
+          background-image: url('./assets/img/Oxford_Street_Selfridges_Christmas_Decorations_2017_3.jpg');
+          height: 400px;
+        "
       >
-        <h1 class="mt-0 mb-6 text-5xl font-bold">Find your style</h1>
-        <h3 class="mb-8 text-3xl font-bold">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi,
-          debitis.
-        </h3>
-        <a
-          class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-          data-mdb-ripple="true"
-          data-mdb-ripple-color="light"
-          href="#!"
-          role="button"
-          >Shop now</a
+        <div
+          class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+          style="background-color: rgba(0, 0, 0, 0.6)"
         >
+          <div class="flex h-full items-center justify-center">
+            <div class="text-white">
+              <h2 class="mb-4 text-4xl font-semibold">Fakee-Shop Celebrate Valentine's Day</h2>
+              <h4 class="mb-6 text-xl font-semibold">
+                From the romantic to the platonic, Valentine's Day is about sharing something special with the ones we love.
+                Discover unique gifts and unforgettable experiences as we celebrate love in all its forms.
+              </h4>
+              <a
+                class="mb-1 inline-block rounded border-2 border-gray-200 px-7 py-3 text-sm font-medium uppercase leading-snug text-gray-200 transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                href="#!"
+                role="button"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Shop now</a
+              >
+            </div>
+          </div>
+        </div>
       </section>
       <!-- end hero banner / jumbotron -->
 
@@ -637,173 +648,28 @@
         <!-- breadcrumb -->
         <nav class="breadcrumd w-full rounded-md py-4">
           <ol class="list-reset flex">
-            <li class="text-gray-500">Home</li>
+            <li class="text-gray-500">
+              <a href="./">Home</a>
+            </li>
           </ol>
         </nav>
         <!-- end breadcrumb -->
 
-        <br />
+        <!-- main page content -->
+        <div id="main-page-content">
+          <!-- product listings content -->
+          <div id="product-list" class="container mx-auto flex flex-wrap"></div>
+          <!-- end product listings content -->
 
-        <h1 class="text-center text-4xl">Fakee-Shop homepage</h1>
+          <div id="homepage" class="container mx-auto flex flex-wrap">
+            <br />
 
-        <br />
-        <p class="py-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada
-          scelerisque fermentum donec pretium fermentum. Iaculis quisque
-          fringilla mi praesent sed pulvinar bibendum. Ac dui faucibus vivamus
-          curae ut inceptos conubia condimentum ultricies mattis nullam etiam
-          finibus eros.
-        </p>
-        <p class="py-2">
-          Lectus eleifend luctus tincidunt laoreet erat curabitur augue massa
-          quisque tempor. Convallis massa turpis convallis quam a euismod auctor
-          dignissim fusce aenean dolor nullam vivamus nec maecenas. Lorem
-          maecenas facilisis donec porttitor pharetra hendrerit magna est
-          commodo. Nisi hac senectus ligula a blandit.
-        </p>
-        <p class="py-2">
-          Velit sodales accumsan a massa tortor tristique dapibus auctor
-          sociosqu metus quisque mauris suspendisse sagittis. Ac nibh ex
-          phasellus eros etiam pharetra.
-        </p>
-        <p class="py-2">
-          Quam imperdiet nullam hac semper nisl. Vivamus netus fermentum morbi
-          neque fringilla ante hendrerit sociosqu taciti vivamus senectus orci
-          interdum. Non a himenaeos ut magna sollicitudin dapibus et id.
-        </p>
-        <p class="py-2">
-          Turpis aptent tincidunt rutrum feugiat ac gravida dictum malesuada
-          amet. Habitasse ullamcorper tellus sed praesent arcu accumsan conubia
-          pretium hac habitant risus feugiat. Mollis rutrum inceptos aenean
-          eleifend ullamcorper in erat ipsum ut leo rhoncus enim. Maecenas duis
-          praesent aliquam elit in iaculis convallis consectetur consectetur
-          sociosqu eget.
-        </p>
-        <p class="py-2">
-          Nunc morbi posuere consectetur hendrerit lacinia tempus. Nulla iaculis
-          pellentesque platea tristique malesuada urna donec vestibulum auctor
-          proin cubilia senectus nisl.
-        </p>
-        <p class="py-2">
-          Habitant litora nisi arcu suscipit torquent mi. Purus pellentesque
-          varius justo rutrum vitae dolor nulla quam inceptos semper lobortis
-          cras nunc iaculis. Curae quis vehicula rhoncus senectus cursus. Aptent
-          ad habitasse ligula nec cubilia vivamus pulvinar maximus integer etiam
-          ac gravida eros arcu pretium.
-        </p>
-        <p class="py-2">
-          Dui rhoncus accumsan nec nec sapien elementum faucibus erat
-          adipiscing. Nam feugiat leo massa lectus placerat pharetra mi dolor.
-          Aliquam quisque ipsum at quis turpis id inceptos fermentum nam
-          vulputate auctor ante mi tellus mattis. Odio accumsan molestie vivamus
-          ultricies consectetur at sociosqu arcu pretium placerat condimentum.
-        </p>
-        <p class="py-2">
-          Etiam maximus himenaeos porta sed tristique dictum mattis tellus
-          nostra integer rhoncus morbi. Dui laoreet hendrerit libero sociosqu
-          metus lectus metus dignissim interdum accumsan. Quis gravida justo
-          cursus donec at ultrices conubia egestas dapibus blandit nostra in.
-        </p>
-        <p class="py-2">
-          Facilisis facilisis ipsum dolor faucibus ut vitae scelerisque luctus
-          erat sit at placerat sit. Ac hendrerit diam integer cursus massa porta
-          inceptos ut feugiat fringilla lacus turpis urna vel proin.
-        </p>
-        <p class="py-2">
-          Porttitor facilisis dolor suspendisse vulputate enim venenatis neque.
-          Turpis dictum tortor tristique in cras. Mattis fermentum etiam
-          torquent nisi hac libero praesent accumsan finibus suscipit dapibus
-          sollicitudin.
-        </p>
-        <p class="py-2">
-          Semper rutrum amet libero malesuada ligula. Ante mauris donec lacus
-          malesuada a tincidunt per litora primis habitasse mattis ligula
-          convallis. Turpis suspendisse tempus metus quis arcu ultrices sodales
-          quis et. Tellus felis lorem aptent ante dui maecenas class euismod
-          risus cursus.
-        </p>
-        <p class="py-2">
-          Adipiscing ac hendrerit varius semper per egestas lobortis elementum
-          eros tortor quam. Massa laoreet dictum imperdiet consectetur ultricies
-          etiam finibus suspendisse nibh dui tristique pretium ultricies aliquam
-          id.
-        </p>
-        <p class="py-2">
-          Vitae sit sem gravida quisque enim vel venenatis convallis at feugiat
-          quis aliquam imperdiet molestie cras. Laoreet maecenas nec finibus
-          ultricies dignissim feugiat.
-        </p>
-        <p class="py-2">
-          Dictum ultricies ultrices volutpat eu scelerisque nisi. Posuere turpis
-          odio phasellus tellus sollicitudin at nam facilisis. Nullam sodales
-          justo egestas rhoncus himenaeos malesuada congue himenaeos urna leo
-          nam dictum. Dictum litora porttitor platea bibendum facilisis ornare
-          habitasse. Proin sapien egestas himenaeos metus habitasse curabitur.
-        </p>
-        <p class="py-2">
-          Curabitur pulvinar pellentesque placerat dictumst mi. Sapien sit
-          conubia id lobortis sollicitudin. Eleifend cras aliquet integer
-          ultricies posuere hac turpis commodo scelerisque fusce vehicula
-          hendrerit tempor non senectus. Habitant faucibus commodo eros gravida
-          metus lacinia pharetra torquent maecenas molestie laoreet lorem. Nam
-          ac curabitur semper habitasse euismod porta rhoncus eu dui.
-        </p>
-        <p class="py-2">
-          Fringilla fringilla nam porttitor class sem taciti morbi integer
-          semper. Nam donec suscipit suscipit vitae lobortis blandit rhoncus id.
-        </p>
-        <p class="py-2">
-          Etiam imperdiet primis quisque curae nostra faucibus bibendum. Id
-          inceptos elementum leo aenean velit semper primis diam ornare sem
-          rhoncus accumsan mollis. Per senectus taciti viverra urna blandit
-          massa lobortis class fringilla consequat aliquet adipiscing dignissim.
-          Habitasse curae netus lacus amet elementum euismod diam a cubilia
-          mattis.
-        </p>
-        <p class="py-2">
-          Ultricies nulla erat taciti eget habitant dictumst magna lectus
-          convallis. Posuere ullamcorper interdum per suscipit lobortis nostra.
-          Commodo quis vitae per consequat aenean in. Consequat platea ante
-          fermentum ultrices lorem dictumst ac nisi consectetur erat mattis nec
-          ante dignissim dui.
-        </p>
-        <p class="py-2">
-          Litora non lectus ad vehicula orci turpis mi mollis luctus fusce nec
-          sagittis. Mattis torquent hac in curabitur eu molestie in aliquam.
-        </p>
-        <p class="py-2">
-          Tempus rutrum ornare hendrerit turpis cursus luctus a arcu quis sapien
-          a bibendum ad luctus laoreet. Aliquam quam etiam eleifend ullamcorper
-          primis gravida tellus orci suscipit velit sociosqu integer. Sed
-          hendrerit purus netus conubia venenatis non fringilla commodo.
-          Imperdiet et velit tellus vestibulum sit scelerisque ligula cubilia
-          mollis vehicula. Bibendum facilisis ullamcorper quisque urna ultrices.
-        </p>
-        <p class="py-2">
-          Sollicitudin vestibulum ante venenatis rutrum mi cras nostra arcu
-          sociosqu malesuada in. Conubia ex turpis praesent vivamus commodo in
-          pharetra.
-        </p>
-        <p class="py-2">
-          Ex mattis nibh orci aliquam amet maecenas massa feugiat erat convallis
-          justo habitant. Maximus platea sed interdum diam habitasse phasellus.
-          Senectus enim placerat viverra tempus sollicitudin commodo aliquet nec
-          sagittis.
-        </p>
-        <p class="py-2">
-          Platea varius senectus platea class hac cras placerat enim cras. Vel
-          dictumst nec vehicula enim cursus mauris taciti fringilla arcu ut
-          eleifend adipiscing quis. Netus erat magna nullam rhoncus sed nostra
-          pellentesque ligula metus consectetur. Pretium bibendum nullam aliquam
-          vulputate libero.
-        </p>
-        <p class="py-2">
-          Ut platea pellentesque id eget volutpat conubia nullam senectus
-          venenatis tellus faucibus. Sodales vel aenean mattis egestas neque
-          cras suspendisse leo vivamus aliquam inceptos integer. Ipsum vitae
-          egestas nisl metus morbi metus arcu dictum duis.
-        </p>
+            <h1 class="text-center text-4xl">Fakee-Shop homepage</h1>
+
+            <br />
+          </div>
+        </div>
+        <!-- end main page content -->
       </section>
       <!-- end page content -->
     </main>

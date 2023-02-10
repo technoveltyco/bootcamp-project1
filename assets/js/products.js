@@ -62,9 +62,6 @@ let options = {
 let exchangeRates;
 storeGBPExchangeRates();
 
-// DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
-document.querySelector("#hero-banner").classList.add("hidden");
-
 // add categories dynamically to main nav, from api
 populateNavPrimaryItems();
 
@@ -160,6 +157,11 @@ function fetchProductsEndpoint(queryString) {
         createCard(item);
       });
     })
+    // DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
+    // TODO: Hides Hero banner - Refactor later
+    .then(() => {
+      document.querySelector("#hero-banner").classList.add("hidden");
+    })
     .catch((err) => console.error(err));
 }
 
@@ -226,7 +228,7 @@ function createCard(item) {
   productListEl.appendChild(newCardDiv);
 }
 
-// EVENT LISTNERS ------------------------------------------------------------ //
+// EVENT LISTENERS ------------------------------------------------------------ //
 
 navPrimaryItemsEl.addEventListener("click", (event) => {
   event.preventDefault();
@@ -238,6 +240,8 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
 });
 
 navSearchButtonEl.addEventListener("click", (event) => {
+  event.preventDefault();
+
   const searchText = navSearchInputEl.value.trim();
 
   if (searchText) {
