@@ -11,6 +11,7 @@ const currencyDropdownButtonEl = document.querySelector(
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
 
+// OBJECTS --------------------------------------------------------- //
 const endpoints = {
   platzi: {
     products: "https://api.escuelajs.co/api/v1/products/",
@@ -60,6 +61,29 @@ let options = {
   },
 };
 
+const nav = {
+  home: {
+    show: `[data-page-name="index"], #hero-banner, #homepage-content`,
+    hide: `[data-page-name="products"], [data-page-name="details"], #product-list, #product-details`,
+  },
+  products: {
+    show: `[data-page-name="index"], [data-page-name="products"], #product-list`,
+    hide: `[data-page-name="details"], #product-details, #hero-banner, #homepage-content`,
+  },
+  details: {
+    show: `[data-page-name="index"], [data-page-name="products"], [data-page-name="details"], #product-details`,
+    hide: `#product-list, #hero-banner, #homepage-content`,
+  },
+  goto(name) {
+    document
+      .querySelectorAll(this[name].show)
+      .forEach((element) => element.classList.remove("hidden"));
+    document
+      .querySelectorAll(this[name].hide)
+      .forEach((element) => element.classList.add("hidden"));
+  },
+};
+
 let exchangeRates;
 storeGBPExchangeRates();
 
@@ -71,9 +95,8 @@ let selectedCurrencyCode =
 renderSelectedCurrency(selectedCurrencyCode);
 renderCurrencies();
 
-let currentPageName = "index";
-switchPageTo(currentPageName);
-// switchPageTo("products");
+// let currentPageName = "index";
+nav.goto("home");
 
 // FUNCTIONS ------------------------------------------------------- //
 
@@ -82,55 +105,55 @@ function displayProductDetails(productID) {
   document.querySelector("#temp-product-id").textContent = productID;
 }
 
-function switchPageTo(pageName) {
-  // get all the breadcrumbs and turn nodeList into an array
-  const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
+// function switchPageTo(pageName) {
+//   // get all the breadcrumbs and turn nodeList into an array
+//   const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
 
-  currentPageName = pageName;
+//   currentPageName = pageName;
 
-  if (pageName === "index") {
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    productListEl.classList.add("hidden");
-    document.querySelector("#product-details").classList.add("hidden");
+//   if (pageName === "index") {
+//     // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+//     productListEl.classList.add("hidden");
+//     document.querySelector("#product-details").classList.add("hidden");
 
-    const linksToHide = breadcrumbEls.filter(
-      (link) => link.dataset.pageName !== pageName
-    );
-    linksToHide.forEach((link) => link.classList.add("hidden"));
+//     const linksToHide = breadcrumbEls.filter(
+//       (link) => link.dataset.pageName !== pageName
+//     );
+//     linksToHide.forEach((link) => link.classList.add("hidden"));
 
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    document.querySelector("#hero-banner").classList.remove("hidden");
-    document.querySelector("#homepage-content").classList.remove("hidden");
-  }
+//     // show content by removing the tailwind 'hidden' class ('display: none')
+//     document.querySelector("#hero-banner").classList.remove("hidden");
+//     document.querySelector("#homepage-content").classList.remove("hidden");
+//   }
 
-  if (pageName === "products") {
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    productListEl.classList.remove("hidden");
-    // show all breadcrumbs (before hiding unwanted links)
-    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+//   if (pageName === "products") {
+//     // show content by removing the tailwind 'hidden' class ('display: none')
+//     productListEl.classList.remove("hidden");
+//     // show all breadcrumbs (before hiding unwanted links)
+//     breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
 
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    document.querySelector("#hero-banner").classList.add("hidden");
-    document.querySelector("#homepage-content").classList.add("hidden");
-    document.querySelector("#product-details").classList.add("hidden");
+//     // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+//     document.querySelector("#hero-banner").classList.add("hidden");
+//     document.querySelector("#homepage-content").classList.add("hidden");
+//     document.querySelector("#product-details").classList.add("hidden");
 
-    // just hide last in breadcrumb in array
-    breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
-  }
+//     // just hide last in breadcrumb in array
+//     breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
+//   }
 
-  if (pageName === "details") {
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    productListEl.classList.add("hidden");
-    document.querySelector("#hero-banner").classList.add("hidden");
-    document.querySelector("#homepage-content").classList.add("hidden");
+//   if (pageName === "details") {
+//     // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+//     productListEl.classList.add("hidden");
+//     document.querySelector("#hero-banner").classList.add("hidden");
+//     document.querySelector("#homepage-content").classList.add("hidden");
 
-    // show all breadcrumbs
-    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+//     // show all breadcrumbs
+//     breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
 
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    document.querySelector("#product-details").classList.remove("hidden");
-  }
-}
+//     // show content by removing the tailwind 'hidden' class ('display: none')
+//     document.querySelector("#product-details").classList.remove("hidden");
+//   }
+// }
 
 function renderSelectedCurrency(currencyCode) {
   const html = `
@@ -311,7 +334,7 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
     fetchProductsEndpoint(categoryQuery);
   }
 
-  switchPageTo("products");
+  nav.goto("products");
 });
 
 navSearchButtonEl.addEventListener("click", (event) => {
@@ -324,7 +347,7 @@ navSearchButtonEl.addEventListener("click", (event) => {
     fetchProductsEndpoint(titleQuery);
   }
 
-  switchPageTo("products");
+  nav.goto("products");
 });
 
 currencyDropdownEl.addEventListener("click", (event) => {
@@ -356,7 +379,7 @@ navBreadcrumbEl.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (event.target.matches("li")) {
-    switchPageTo(event.target.dataset.pageName);
+    nav.goto(event.target.dataset.pageName);
   }
 });
 
@@ -366,7 +389,7 @@ productListEl.addEventListener("click", (event) => {
   const productCard = event.target.closest(".product-card");
   if (productCard) {
     displayProductDetails(productCard.dataset.productID);
-    switchPageTo("details");
+    nav.goto("details");
   }
 });
 
