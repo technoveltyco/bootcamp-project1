@@ -26,6 +26,16 @@ const back2TopBtn = document.querySelector("#btn-back-to-top");
 ///
 
 /**
+ * Global configuration settings
+ * 
+ * @type {show_nav_promo: boolean}
+ */
+let settings = {
+  show_nav_promo: false,
+  promo: {}
+};
+
+/**
  * Available endpoints.
  *
  * @type {{ platzi: Object{ products: String, categories: String}, faker: Object{credit_cards: String}, exchange_rate: Object{currency: String}}}
@@ -330,8 +340,34 @@ function populateNavPrimaryItems() {
         `;
         navPrimaryItemsEl.appendChild(newListItemEl);
       });
+
+      // Add highlighted promo.
+      if (settings.show_nav_promo) {
+        const {label = "Promo", href = "#!"} = settings.promo;
+        addNavPrimaryPromo(label, href); 
+      }
     })
     .catch((err) => console.error(err));
+}
+
+/**
+ * Adds the highlighted promo in the nav primary links.
+ * 
+ * @param {label: String, href: String} promo
+ *    The promo settings with label and href.
+ */
+function addNavPrimaryPromo(label = "Promo", href = "#!") {
+  const html = `
+<li class="product-category highlighted nav-item">
+  <a
+    class="promo-link nav-link block py-2 pr-2 font-semibold text-gray-600 text-red-500 transition duration-150 ease-in-out hover:text-gray-700 hover:text-red-700 focus:text-gray-700 focus:text-red-700 lg:px-2"
+    href="${href}"
+    >${label}</a
+  >
+</li>
+  `;
+
+  navPrimaryItemsEl.innerHTML += html;
 }
 
 /**
@@ -400,6 +436,27 @@ function createCard(item) {
 
 // -------------------- PUBLIC API --------------------------
 
+/**
+ * Initialise the configuration settings.
+ * 
+ * @param {show_nav_promo: boolean} settings 
+ */
+function init({show_nav_promo, promo}) {
+
+  settings.show_nav_promo = show_nav_promo || false;
+  settings.promo = promo || {};
+  
+}
+
+/**
+ * Gets the website settings.
+ * 
+ * @returns {Object}
+ *    The website settings.
+ */
+function getSettings() {
+  return settings;
+}
 
 /**
  * Executes the main
@@ -428,14 +485,18 @@ function run() {
 
   // Product categories links.
   navPrimaryItemsEl.addEventListener("click", (event) => {
-    event.preventDefault();
 
-    if (event.target.matches("a")) {
+    if (event.target.matches("a:not(.promo-link)")) {
+      event.preventDefault();
+
       const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
       fetchProductsEndpoint(categoryQuery);
-    }
 
-    switchPageTo("products");
+      switchPageTo("products");
+    }
+    else if (event.target.matches("a.promo-link")) {
+      switchPageTo("index");
+    }
   });
 
   // Search box button.
@@ -520,4 +581,4 @@ function run() {
   });
 }
 
-export { run };
+export { init, getSettings, run };

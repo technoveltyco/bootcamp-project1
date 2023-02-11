@@ -221,6 +221,7 @@
                 <!-- Add this hidden text below for accessibility of the link's logo. -->
                 <span class="hidden">Go to Fakee Shop homepage</span>
               </a>
+              <span class="heart"></span>
             </div>
             <!-- end navigation logo -->
 
@@ -462,7 +463,7 @@
                 class="navigation-items navbar-nav mr-auto flex flex-col items-center justify-center lg:flex-row lg:justify-start"
                 id="nav-primary-items"
               >
-                <li class="product-category nav-item">
+                <!-- <li class="product-category nav-item">
                   <a
                     class="nav-link block py-2 pr-2 text-gray-600 transition duration-150 ease-in-out hover:text-gray-700 focus:text-gray-700 lg:px-2"
                     href="#!"
@@ -517,7 +518,7 @@
                     href="#!"
                     >Promo</a
                   >
-                </li>
+                </li> -->
               </ul>
               <!-- end navigation primary items -->
             </nav>
@@ -602,22 +603,32 @@
       <!-- end back to the top button -->
 
       <!-- hero banner / jumbotron -->
-      <section
-        id="hero-banner"
-        class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 text-center"
-        style="
-          background-image: url('./assets/img/Oxford_Street_Selfridges_Christmas_Decorations_2017_3.jpg');
-          height: 400px;
-        "
-      >
+      <section id="hero-banner" class="mb-32">
         <div
-          class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
-          style="background-color: rgba(0, 0, 0, 0.6)"
-        >
-          <div class="flex h-full items-center justify-center">
-            <div class="text-white">
-              <h2 class="mb-4 text-4xl font-semibold">
-                Fakee-Shop Celebrate Valentine's Day
+          class="relative overflow-hidden bg-cover bg-no-repeat"
+          style="
+            background-position: 50%;
+            background-image: url('https://mdbootstrap.com/img/new/textures/full/154.jpg');
+            height: 500px;
+          "
+        ></div>
+
+        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+          <div class="text-center text-gray-800">
+            <div
+              class="block rounded-lg px-6 py-12 shadow-lg md:py-16 md:px-12"
+              style="
+                margin-top: -170px;
+                background: hsla(0, 0%, 100%, 0.7);
+                backdrop-filter: blur(30px);
+              "
+            >
+              <h2
+                class="mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl"
+              >
+                Fakee-Shop Celebrate <br /><span class="text-red-600"
+                  >Valentine's Day</span
+                >
               </h2>
               <h4 class="mb-6 text-xl font-semibold">
                 From the romantic to the platonic, Valentine's Day is about
@@ -626,11 +637,11 @@
                 its forms.
               </h4>
               <a
-                class="mb-1 inline-block rounded border-2 border-gray-200 px-7 py-3 text-sm font-medium uppercase leading-snug text-gray-200 transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
-                href="#!"
-                role="button"
+                class="mb-2 mr-0 inline-block rounded bg-red-600 px-7 py-3 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg md:mb-0 md:mr-2"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
+                href="#!"
+                role="button"
                 >Shop now</a
               >
             </div>
@@ -659,7 +670,7 @@
         <div id="main-page-content">
           <!-- homepage content -->
           <div id="homepage-content"></div>
-          
+
           <!-- end homepage content -->
 
           <!-- product listings content -->
@@ -667,7 +678,10 @@
           <!-- end product listings content -->
 
           <!-- product details content -->
-          <div id="product-details" class="text-4xl">TODO: Product Details for ID: <span id="temp-product-id">temp product id</span></div>
+          <div id="product-details" class="text-4xl">
+            TODO: Product Details for ID:
+            <span id="temp-product-id">temp product id</span>
+          </div>
           <!-- end product details content -->
         </div>
         <!-- end main page content -->
