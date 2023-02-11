@@ -8,7 +8,7 @@
 // DOM elements.
 ///
 
-const mainPageContentEl = document.querySelector("#main-page-content");
+const docMainEl = document.querySelector("main");
 const productListEl = document.querySelector("#product-list");
 const navSearchInputEl = document.querySelector("#nav-search-input");
 const navSearchButtonEl = document.querySelector("#nav-search-button");
@@ -571,6 +571,12 @@ function run() {
       back2TopBtn.style.display = "block";
     } else {
       back2TopBtn.style.display = "none";
+    }
+
+    if (window.scrollY > docMainEl.scrollHeight) {
+      back2TopBtn.classList.add("bottom-20");
+    } else {
+      back2TopBtn.classList.remove("bottom-20");
     }
   };
 
