@@ -166,6 +166,7 @@ Here there are the links to the Figma resources that are being considered in the
 - [Adobe Express](https://express.adobe.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind Elements](https://tailwind-elements.com/quick-start/)
+- [MDBootstrap](https://mdbootstrap.com/docs/standard/)
 - [Font Awesome 6](https://fontawesome.com/v6/docs)
 - [Google Fonts](https://fonts.google.com/)
 - [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript)
@@ -211,7 +212,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 ## Useful resources
 
 - Software/Web Standards
-  - [UML 2]()
+  - [UML 2](https://www.uml.org/what-is-uml.htm)
   - [Drawing UML with PlantUML](https://plantuml.com/guide)
   - [PlantUML - Live editor ](https://plantuml.com/)
 - Agile/Scrum
@@ -234,19 +235,28 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
   - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
   - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
-- Flexbox
-  - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
-- CSS Reset
-  - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
-  - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
-- Dark Mode
-  - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
-  - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
-  - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
-  - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
-  - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
-- Code Snippet Styling
-  - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+  - [MD Bootstrap - Top quality
+open-source UI Kits](https://mdbootstrap.com/)
+- HTML
+  - [<template>: The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+- CSS
+  - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
+  - Flexbox
+    - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
+  - CSS Reset
+    - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
+    - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
+  - Dark Mode
+    - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
+    - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
+    - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+    - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
+    - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
+  - Code Snippet Styling
+    - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+- Vanilla JavaScript
+  - [Setting Default Values with JavaScript’s Destructuring](https://wesbos.com/destructuring-default-values)
+  - [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 - Web image formats
   - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
   - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
