@@ -1,4 +1,11 @@
-// JavaScript of Product listing page.
+/// ---------------------------
+//  Fakee-shop backend logic.
+/// ---------------------------
+
+///
+// DOM elements.
+///
+
 const mainPageContentEl = document.querySelector("#main-page-content");
 const productListEl = document.querySelector("#product-list");
 const navSearchInputEl = document.querySelector("#nav-search-input");
@@ -11,6 +18,15 @@ const currencyDropdownButtonEl = document.querySelector(
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
 
+///
+// Global states.
+///
+
+/**
+ * Available endpoints.
+ *
+ * @type {{ platzi: Object{ products: String, categories: String}, faker: Object{credit_cards: String}, exchange_rate: Object{currency: String}}}
+ */
 const endpoints = {
   platzi: {
     products: "https://api.escuelajs.co/api/v1/products/",
@@ -25,6 +41,11 @@ const endpoints = {
   },
 };
 
+/**
+ * Available currencies.
+ *
+ * @type {{CAD: Object{countryName: String, countryCode: String, currencySign: string, icon:String} ... }}
+ */
 const currencies = {
   CAD: {
     countryName: "Canada",
@@ -52,7 +73,11 @@ const currencies = {
   },
 };
 
-// Request HTTP Method and Headers
+/**
+ * The HTTP request settings.
+ *
+ * @type {method: String, headers: Object{Content-Type: String}}
+ */
 let options = {
   method: "GET",
   headers: {
@@ -60,78 +85,133 @@ let options = {
   },
 };
 
+///
+// Header stuff.
+///
+
+/**
+ * The HTTP JSON response from the currency exchange API.
+ *
+ * @type {Object}
+ */
 let exchangeRates;
+
+// Cache the API exchange rates.
 storeGBPExchangeRates();
 
-// add categories dynamically to main nav, from api
-populateNavPrimaryItems();
-
+/**
+ * The current currency state in the window where the web executes.
+ *
+ * The currency is saved in ISO 4217 three letter code,
+ * and it's default value is "GBP", and it also may come from the local storage.
+ *
+ * @type {String}
+ */
 let selectedCurrencyCode =
   localStorage.getItem("selectedCurrencyCode") || "GBP";
+
+// Currency switcher stuff.
 renderSelectedCurrency(selectedCurrencyCode);
 renderCurrencies();
 
-let currentPageName = "index";
+// Primary navigation links.
+// add categories dynamically to main nav, from api
+populateNavPrimaryItems();
+
+/**
+ * The current page state for this window.
+ */
+let currentPageName = sessionStorage.getItem("currentPageName") || "index";
+
+// Routing to the page content.
 switchPageTo(currentPageName);
-// switchPageTo("products");
 
 // FUNCTIONS ------------------------------------------------------- //
 
+/**
+ * Renders the HTML of the product details card.
+ *
+ * @param {String|Number} productID
+ *    The product id.
+ */
 function displayProductDetails(productID) {
   // TODO: implement product details here
   document.querySelector("#temp-product-id").textContent = productID;
 }
 
-function switchPageTo(pageName) {
+/**
+ * Routes the given action to display the HTML elements
+ * for the correspondent page name content.
+ *
+ * @param {String} pageName
+ *    The action to route.
+ */
+function switchPageTo(pageName = "index") {
   // get all the breadcrumbs and turn nodeList into an array
   const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
 
-  currentPageName = pageName;
+  switch (pageName) {
+    case "products":
+      // load product listing
 
-  if (pageName === "index") {
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    productListEl.classList.add("hidden");
-    document.querySelector("#product-details").classList.add("hidden");
+      // show content by removing the tailwind 'hidden' class ('display: none')
+      productListEl.classList.remove("hidden");
+      // show all breadcrumbs (before hiding unwanted links)
+      breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
 
-    const linksToHide = breadcrumbEls.filter(
-      (link) => link.dataset.pageName !== pageName
-    );
-    linksToHide.forEach((link) => link.classList.add("hidden"));
+      // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+      document.querySelector("#hero-banner").classList.add("hidden");
+      document.querySelector("#homepage-content").classList.add("hidden");
+      document.querySelector("#product-details").classList.add("hidden");
 
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    document.querySelector("#hero-banner").classList.remove("hidden");
-    document.querySelector("#homepage-content").classList.remove("hidden");
+      // just hide last in breadcrumb in array
+      breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
+      break;
+
+    case "details":
+      // load product details
+      //displayProductDetails(productCard.dataset.productID);
+
+      // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+      productListEl.classList.add("hidden");
+      document.querySelector("#hero-banner").classList.add("hidden");
+      document.querySelector("#homepage-content").classList.add("hidden");
+
+      // show all breadcrumbs
+      breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+
+      // show content by removing the tailwind 'hidden' class ('display: none')
+      document.querySelector("#product-details").classList.remove("hidden");
+      break;
+
+    case "index":
+    default:
+      // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+      productListEl.classList.add("hidden");
+      document.querySelector("#product-details").classList.add("hidden");
+
+      const linksToHide = breadcrumbEls.filter(
+        (link) => link.dataset.pageName !== pageName
+      );
+      linksToHide.forEach((link) => link.classList.add("hidden"));
+
+      // show content by removing the tailwind 'hidden' class ('display: none')
+      document.querySelector("#hero-banner").classList.remove("hidden");
+      document.querySelector("#homepage-content").classList.remove("hidden");
+      break;
   }
 
-  if (pageName === "products") {
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    productListEl.classList.remove("hidden");
-    // show all breadcrumbs (before hiding unwanted links)
-    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
-
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    document.querySelector("#hero-banner").classList.add("hidden");
-    document.querySelector("#homepage-content").classList.add("hidden");
-    document.querySelector("#product-details").classList.add("hidden");
-
-    // just hide last in breadcrumb in array
-    breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
-  }
-
-  if (pageName === "details") {
-    // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-    productListEl.classList.add("hidden");
-    document.querySelector("#hero-banner").classList.add("hidden");
-    document.querySelector("#homepage-content").classList.add("hidden");
-
-    // show all breadcrumbs
-    breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
-
-    // show content by removing the tailwind 'hidden' class ('display: none')
-    document.querySelector("#product-details").classList.remove("hidden");
-  }
+  // Save the current page into the session storage,
+  // so it keeps memory of the route state while the browser's open.
+  sessionStorage.setItem("currentPageName", pageName);
 }
 
+/**
+ * Renders the HTML of the selected currency.
+ *
+ * @param {String} currencyCode
+ *    The ISO 4217 three letter currency code.
+ */
 function renderSelectedCurrency(currencyCode) {
   const html = `
   <img
@@ -148,18 +228,27 @@ function renderSelectedCurrency(currencyCode) {
   currencyDropdownButtonEl.innerHTML = html;
 }
 
+/**
+ * Renders the HTML of the dropdown list of currencies.
+ */
 function renderCurrencies() {
-  let html = "";
+  currencyMenuItemsEl.innerHTML = "";
 
   Object.keys(currencies).forEach((currency) => {
     if (currency !== selectedCurrencyCode) {
-      html += renderCurrencyItem(currency);
+      currencyMenuItemsEl.innerHTML += renderCurrencyItem(currency);
     }
   });
-
-  currencyMenuItemsEl.innerHTML = html;
 }
 
+/**
+ * Renders the HTML of a currency dropdown item.
+ *
+ * @param {String} currencyCode
+ *    The ISO 4217 three letter currency code.
+ * @returns {String}
+ *    The HTML output.
+ */
 function renderCurrencyItem(currencyCode) {
   return `
 <li
@@ -185,6 +274,9 @@ function renderCurrencyItem(currencyCode) {
   `;
 }
 
+/**
+ * Caches the Currency Exchange Rate API response.
+ */
 function storeGBPExchangeRates() {
   // only fetch from api if it doesn't exsist - to save limited api calls while testing
   if (!localStorage.getItem("GBPExchangeRates")) {
@@ -204,11 +296,21 @@ function storeGBPExchangeRates() {
   }
 }
 
+/**
+ * Fetches the Products API endpoint and renders the HTML of the list of products.
+ *
+ * @param {String} queryString
+ *    The query string of the request.
+ */
 function fetchProductsEndpoint(queryString) {
   fetch(endpoints["platzi"]["products"] + queryString, options)
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
+
+      // DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
+      // TODO: Hides Hero banner - Refactor later
+      document.querySelector("#hero-banner").classList.add("hidden");
 
       // clear contents before populating
       productListEl.innerHTML = "";
@@ -217,14 +319,12 @@ function fetchProductsEndpoint(queryString) {
         createCard(item);
       });
     })
-    // DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
-    // TODO: Hides Hero banner - Refactor later
-    .then(() => {
-      document.querySelector("#hero-banner").classList.add("hidden");
-    })
     .catch((err) => console.error(err));
 }
 
+/**
+ * Fetches the categories API endpoint and renders the HTML for the primary navigation.
+ */
 function populateNavPrimaryItems() {
   // clear existing list items
   navPrimaryItemsEl.innerHTML = "";
@@ -250,6 +350,13 @@ function populateNavPrimaryItems() {
     .catch((err) => console.error(err));
 }
 
+/**
+ * Coverts the given price into the current currency from local storage.
+ * @param {Number} price
+ *    The product original price in pounds (£).
+ * @returns {Number}
+ *    The exchanged price.
+ */
 function convertPrice(price) {
   const currencyExchangeRate = Number.parseFloat(
     exchangeRates.conversion_rates[selectedCurrencyCode]
@@ -257,6 +364,12 @@ function convertPrice(price) {
   return (price * currencyExchangeRate).toFixed(2);
 }
 
+/**
+ * Renders the HTML of a product listing card.
+ *
+ * @param {Object} item
+ *    The product JSON object from the API.
+ */
 function createCard(item) {
   const newCardDiv = document.createElement("div");
 
@@ -303,6 +416,7 @@ function createCard(item) {
 
 // EVENT LISTENERS ------------------------------------------------------------ //
 
+// Product categories links.
 navPrimaryItemsEl.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -314,6 +428,7 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
   switchPageTo("products");
 });
 
+// Search box button.
 navSearchButtonEl.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -327,6 +442,7 @@ navSearchButtonEl.addEventListener("click", (event) => {
   switchPageTo("products");
 });
 
+// Currency dropdown button.
 currencyDropdownEl.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -352,6 +468,7 @@ currencyDropdownEl.addEventListener("click", (event) => {
   }
 });
 
+// Breadcrumbs trails.
 navBreadcrumbEl.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -360,6 +477,7 @@ navBreadcrumbEl.addEventListener("click", (event) => {
   }
 });
 
+// Product card of the listing page.
 productListEl.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -369,4 +487,3 @@ productListEl.addEventListener("click", (event) => {
     switchPageTo("details");
   }
 });
-
