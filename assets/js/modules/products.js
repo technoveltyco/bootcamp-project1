@@ -1,6 +1,8 @@
 /// ---------------------------
-//  Fakee-shop backend logic.
+//  Fakee-shop backend module.
 /// ---------------------------
+
+// -------------------- PRIVATE API --------------------------
 
 ///
 // DOM elements.
@@ -17,6 +19,7 @@ const currencyDropdownButtonEl = document.querySelector(
 );
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
+const back2TopBtn = document.querySelector("#btn-back-to-top");
 
 ///
 // Global states.
@@ -74,6 +77,28 @@ const currencies = {
 };
 
 /**
+ * The HTTP JSON response from the currency exchange API.
+ *
+ * @type {Object}
+ */
+let exchangeRates = (localStorage.getItem("GBPExchangeRates")) ? JSON.parse(localStorage.getItem("GBPExchangeRates")) : null;
+
+/**
+ * The current currency state in the window where the web executes.
+ *
+ * The currency is saved in ISO 4217 three letter code,
+ * and it's default value is "GBP", and it also may come from the local storage.
+ *
+ * @type {String}
+ */
+let selectedCurrencyCode = localStorage.getItem("selectedCurrencyCode") || "GBP";
+
+/**
+ * The current page state for this window.
+ */
+let currentPageName = sessionStorage.getItem("currentPageName") || "index";
+
+/**
  * The HTTP request settings.
  *
  * @type {method: String, headers: Object{Content-Type: String}}
@@ -84,47 +109,6 @@ let options = {
     "Content-Type": "application/json",
   },
 };
-
-///
-// Header stuff.
-///
-
-/**
- * The HTTP JSON response from the currency exchange API.
- *
- * @type {Object}
- */
-let exchangeRates;
-
-// Cache the API exchange rates.
-storeGBPExchangeRates();
-
-/**
- * The current currency state in the window where the web executes.
- *
- * The currency is saved in ISO 4217 three letter code,
- * and it's default value is "GBP", and it also may come from the local storage.
- *
- * @type {String}
- */
-let selectedCurrencyCode =
-  localStorage.getItem("selectedCurrencyCode") || "GBP";
-
-// Currency switcher stuff.
-renderSelectedCurrency(selectedCurrencyCode);
-renderCurrencies();
-
-// Primary navigation links.
-// add categories dynamically to main nav, from api
-populateNavPrimaryItems();
-
-/**
- * The current page state for this window.
- */
-let currentPageName = sessionStorage.getItem("currentPageName") || "index";
-
-// Routing to the page content.
-switchPageTo(currentPageName);
 
 // FUNCTIONS ------------------------------------------------------- //
 
@@ -351,7 +335,7 @@ function populateNavPrimaryItems() {
 }
 
 /**
- * Coverts the given price into the current currency from local storage.
+ * Converts the given price into the current currency from local storage.
  * @param {Number} price
  *    The product original price in pounds (£).
  * @returns {Number}
@@ -414,76 +398,126 @@ function createCard(item) {
   productListEl.appendChild(newCardDiv);
 }
 
-// EVENT LISTENERS ------------------------------------------------------------ //
+// -------------------- PUBLIC API --------------------------
 
-// Product categories links.
-navPrimaryItemsEl.addEventListener("click", (event) => {
-  event.preventDefault();
 
-  if (event.target.matches("a")) {
-    const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
-    fetchProductsEndpoint(categoryQuery);
-  }
+/**
+ * Executes the main
+ */
+function run() {
 
-  switchPageTo("products");
-});
+  ///
+  // Header stuff.
+  ///
 
-// Search box button.
-navSearchButtonEl.addEventListener("click", (event) => {
-  event.preventDefault();
+  // Cache the API exchange rates.
+  storeGBPExchangeRates();
 
-  const searchText = navSearchInputEl.value.trim();
+  // Currency switcher stuff.
+  renderSelectedCurrency(selectedCurrencyCode);
+  renderCurrencies();
 
-  if (searchText) {
-    const titleQuery = `?title=${searchText}`;
-    fetchProductsEndpoint(titleQuery);
-  }
+  // Primary navigation links.
+  // add categories dynamically to main nav, from api
+  populateNavPrimaryItems();
 
-  switchPageTo("products");
-});
+  // Routing to the page content.
+  switchPageTo(currentPageName);
 
-// Currency dropdown button.
-currencyDropdownEl.addEventListener("click", (event) => {
-  event.preventDefault();
+  // EVENT LISTENERS ------------------------------------------------------------ //
 
-  if (event.target.parentNode.closest("ul")) {
-    let selectedEl = event.target.closest("li > a");
-    if (selectedEl) {
-      selectedCurrencyCode = selectedEl.dataset.currencyCode;
-      localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
+  // Product categories links.
+  navPrimaryItemsEl.addEventListener("click", (event) => {
+    event.preventDefault();
 
-      renderSelectedCurrency(selectedCurrencyCode);
-      renderCurrencies();
-
-      // Update product prices, if there is any.
-      document.querySelectorAll(".currency").forEach((currencyEl) => {
-        currencyEl.textContent = currencies[selectedCurrencyCode].currencySign;
-      });
-
-      document.querySelectorAll(".price").forEach((priceEl) => {
-        const productPrice = Number.parseFloat(priceEl.dataset.originalPrice);
-        priceEl.textContent = convertPrice(productPrice);
-      });
+    if (event.target.matches("a")) {
+      const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
+      fetchProductsEndpoint(categoryQuery);
     }
-  }
-});
 
-// Breadcrumbs trails.
-navBreadcrumbEl.addEventListener("click", (event) => {
-  event.preventDefault();
+    switchPageTo("products");
+  });
 
-  if (event.target.matches("li")) {
-    switchPageTo(event.target.dataset.pageName);
-  }
-});
+  // Search box button.
+  navSearchButtonEl.addEventListener("click", (event) => {
+    event.preventDefault();
 
-// Product card of the listing page.
-productListEl.addEventListener("click", (event) => {
-  event.preventDefault();
+    const searchText = navSearchInputEl.value.trim();
 
-  const productCard = event.target.closest(".product-card");
-  if (productCard) {
-    displayProductDetails(productCard.dataset.productID);
-    switchPageTo("details");
-  }
-});
+    if (searchText) {
+      const titleQuery = `?title=${searchText}`;
+      fetchProductsEndpoint(titleQuery);
+    }
+
+    switchPageTo("products");
+  });
+
+  // Currency dropdown button.
+  currencyDropdownEl.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (event.target.parentNode.closest("ul")) {
+      let selectedEl = event.target.closest("li > a");
+      if (selectedEl) {
+        selectedCurrencyCode = selectedEl.dataset.currencyCode;
+        localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
+
+        renderSelectedCurrency(selectedCurrencyCode);
+        renderCurrencies();
+
+        // Update product prices, if there is any.
+        document.querySelectorAll(".currency").forEach((currencyEl) => {
+          currencyEl.textContent =
+            currencies[selectedCurrencyCode].currencySign;
+        });
+
+        document.querySelectorAll(".price").forEach((priceEl) => {
+          const productPrice = Number.parseFloat(priceEl.dataset.originalPrice);
+          priceEl.textContent = convertPrice(productPrice);
+        });
+      }
+    }
+  });
+
+  // Breadcrumbs trails.
+  navBreadcrumbEl.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (event.target.matches("li")) {
+      switchPageTo(event.target.dataset.pageName);
+    }
+  });
+
+  // Product card of the listing page.
+  productListEl.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const productCard = event.target.closest(".product-card");
+    if (productCard) {
+      displayProductDetails(productCard.dataset.productID);
+      switchPageTo("details");
+    }
+  });
+
+  // Back to top button.
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      back2TopBtn.style.display = "block";
+    } else {
+      back2TopBtn.style.display = "none";
+    }
+  };
+
+  // When the user clicks on the button, scroll to the top of the document
+  back2TopBtn.addEventListener("click", function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
+}
+
+export { run };
