@@ -98,7 +98,9 @@ Output:
 
 ### Screenshots
 
-![](./screenshot.jpg)
+**Fakee-Shop SiteStripe and header navigation**
+
+![Fakee-Shop SiteStripe and header navigation](./docs/assets/img/Screenshot%202023-02-11%20190532.png)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
@@ -174,9 +176,6 @@ Here there are the links to the Figma resources that are being considered in the
 - [Node.js](https://nodejs.org/en/)
 - [Prettier](https://prettier.io/)
 
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
 
 Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
@@ -238,7 +237,8 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [MD Bootstrap - Top quality
 open-source UI Kits](https://mdbootstrap.com/)
 - HTML
-  - [<template>: The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+
 - CSS
   - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
   - Flexbox
@@ -278,8 +278,6 @@ open-source UI Kits](https://mdbootstrap.com/)
   - [Tailwind Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
   - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Authors
 
 **Group 7**
@@ -291,10 +289,18 @@ open-source UI Kits](https://mdbootstrap.com/)
 - Rodriguez, Daniel
   - GitHub - [https://github.com/technoveltyco](https://github.com/technoveltyco) 
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
 ## Acknowledgments
 
 The teacher and TAs that help us with resources and support to my questions during the development of this project.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Special acknowledgements for the website of the following companies, which keep innovating and inspiring many web designers and maketing teams: 
+
+- [Amazon SiteStripe](https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe) - Inpiration for defining the definition of the top toolbar on Fakee-Shop's header.
+
+![Amazon Sitestripe example](./docs/assets/img/SiteStripe1FebSettings._V299678229_.png)
+
+- [Selfridges](https://www.selfridges.com/GB/en/) - Valentine's hero banner inspiration.
+
+![The Valentine's hero banner of Selfridges in 2023](./docs/assets/img/Selfridges-Screenshot%202023-02-11%20185402.png)
+
+- [Marks & Spencer](https://www.marksandspencer.com/) - HTML layout and classnames.
