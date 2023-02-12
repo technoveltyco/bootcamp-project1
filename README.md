@@ -98,7 +98,9 @@ Output:
 
 ### Screenshots
 
-![](./screenshot.jpg)
+**Fakee-Shop SiteStripe and header navigation**
+
+![Fakee-Shop SiteStripe and header navigation](./docs/assets/img/Screenshot%202023-02-11%20190532.png)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
@@ -166,15 +168,13 @@ Here there are the links to the Figma resources that are being considered in the
 - [Adobe Express](https://express.adobe.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind Elements](https://tailwind-elements.com/quick-start/)
+- [MDBootstrap](https://mdbootstrap.com/docs/standard/)
 - [Font Awesome 6](https://fontawesome.com/v6/docs)
 - [Google Fonts](https://fonts.google.com/)
 - [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript)
 - [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
 - [Node.js](https://nodejs.org/en/)
 - [Prettier](https://prettier.io/)
-
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -211,7 +211,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 ## Useful resources
 
 - Software/Web Standards
-  - [UML 2]()
+  - [UML 2](https://www.uml.org/what-is-uml.htm)
   - [Drawing UML with PlantUML](https://plantuml.com/guide)
   - [PlantUML - Live editor ](https://plantuml.com/)
 - Agile/Scrum
@@ -234,19 +234,30 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
   - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
   - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
-- Flexbox
-  - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
-- CSS Reset
-  - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
-  - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
-- Dark Mode
-  - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
-  - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
-  - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
-  - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
-  - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
-- Code Snippet Styling
-  - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+  - [MD Bootstrap - Top quality
+open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI open source components and with tons of good examples.
+- HTML
+  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) - we never implemented it, but it is a good solution when you want to reuse HTML and you do not have a rendering template library.
+
+- CSS
+  - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
+  - Flexbox
+    - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
+  - CSS Reset
+    - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
+    - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
+  - Dark Mode
+    - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
+    - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
+    - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+    - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
+    - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
+  - Code Snippet Styling
+    - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+- Vanilla JavaScript
+  - [Setting Default Values with JavaScript’s Destructuring](https://wesbos.com/destructuring-default-values)
+  - [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+  - [Getting the Width and Height of an Element](https://www.javascripttutorial.net/javascript-dom/javascript-width-height/)
 - Web image formats
   - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
   - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
@@ -268,8 +279,6 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Tailwind Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
   - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Authors
 
 **Group 7**
@@ -281,10 +290,18 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Rodriguez, Daniel
   - GitHub - [https://github.com/technoveltyco](https://github.com/technoveltyco) 
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
 ## Acknowledgments
 
 The teacher and TAs that help us with resources and support to my questions during the development of this project.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+Special acknowledgements for the website of the following companies, which keep innovating and inspiring many web designers and maketing teams: 
+
+- [Amazon SiteStripe](https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe) - Inpiration for defining the definition of the top toolbar on Fakee-Shop's header.
+
+![Amazon Sitestripe example](./docs/assets/img/SiteStripe1FebSettings._V299678229_.png)
+
+- [Selfridges](https://www.selfridges.com/GB/en/) - Valentine's hero banner inspiration.
+
+![The Valentine's hero banner of Selfridges in 2023](./docs/assets/img/Selfridges-Screenshot%202023-02-11%20185402.png)
+
+- [Marks & Spencer](https://www.marksandspencer.com/) - HTML layout and classnames.
