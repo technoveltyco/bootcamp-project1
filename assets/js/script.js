@@ -4,24 +4,26 @@
 
 import * as App from "./modules/products.js";
 
-(function (window, FakeeShop) {
+(function (global, FakeeShop) {
 
   const VERSION = "0.1.0";
 
   let settings = {
+    debug: true,
     show_nav_promo: true,
     promo: {
       label: "Valentine's Day",
-      href: "#hero-banner"
-    }
+      href: "#valentines-promo",
+    },
   };
 
   FakeeShop.init(settings);
   FakeeShop.run();
 
   // Make FakeeShop's public API available in the global scope.
-  window.FakeeShop = {
+  global.FakeeShop = {
     VERSION,
+    DEBUG: FakeeShop.DEBUG,
     init: FakeeShop.init,
     settings: FakeeShop.getSettings,
     run: FakeeShop.run

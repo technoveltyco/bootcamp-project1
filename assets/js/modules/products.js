@@ -14,12 +14,11 @@ const navSearchInputEl = document.querySelector("#nav-search-input");
 const navSearchButtonEl = document.querySelector("#nav-search-button");
 const navPrimaryItemsEl = document.querySelector("#nav-primary-items");
 const currencyDropdownEl = document.querySelector("#currency-dropdown");
-const currencyDropdownButtonEl = document.querySelector(
-  "#currencyDropdownButton"
-);
+const currencyDropdownButtonEl = document.querySelector("#currencyDropdownButton");
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
 const back2TopBtn = document.querySelector("#btn-back-to-top");
+const bestsellersGridEl = document.querySelector("#shop-bestsellers-grid");
 
 ///
 // Global states.
@@ -27,12 +26,38 @@ const back2TopBtn = document.querySelector("#btn-back-to-top");
 
 /**
  * Global configuration settings
- * 
- * @type {show_nav_promo: boolean}
+ *
+ * @type {{ debug: boolean, show_nav_promo: boolean, promo: Object }}
  */
 let settings = {
+  debug: false,
   show_nav_promo: false,
-  promo: {}
+  promo: {},
+};
+
+/**
+ * Debug flag.
+ * 
+ * @type {boolean}
+ */
+let DEBUG = settings.debug;
+
+/**
+ * The Fakee-Shop system messages.
+ * 
+ * @type {{ info: { message: String, api: Function }, error: { message: String, platzi: Function, faker: Function, exchange_rate: Function }}}
+ */
+const FS = {
+  info: {
+    message: "API Info: Request: %s Response: %o", 
+    api: function(request, response) { console.log(this.message, request, response) }
+  },
+  error: {
+    message: "API Error: %s could not be fetched.",
+    platzi: function(error) { if (DEBUG) console.error(error); throw Error(this.message, "Platzi"); },
+    faker: function(error) { if (DEBUG) console.error(error); throw Error(this.message, "Faker"); },
+    exchange_rate: function(error) { if (DEBUG) console.error(error); throw Error(this.message, "Currency Exchange Rate"); },
+  },
 };
 
 /**
@@ -91,7 +116,9 @@ const currencies = {
  *
  * @type {Object}
  */
-let exchangeRates = (localStorage.getItem("GBPExchangeRates")) ? JSON.parse(localStorage.getItem("GBPExchangeRates")) : null;
+let exchangeRates = localStorage.getItem("GBPExchangeRates")
+  ? JSON.parse(localStorage.getItem("GBPExchangeRates"))
+  : null;
 
 /**
  * The current currency state in the window where the web executes.
@@ -101,7 +128,8 @@ let exchangeRates = (localStorage.getItem("GBPExchangeRates")) ? JSON.parse(loca
  *
  * @type {String}
  */
-let selectedCurrencyCode = localStorage.getItem("selectedCurrencyCode") || "GBP";
+let selectedCurrencyCode =
+  localStorage.getItem("selectedCurrencyCode") || "GBP";
 
 /**
  * The current page state for this window.
@@ -138,33 +166,40 @@ function displayProductDetails(productID) {
  * for the correspondent page name content.
  *
  * @param {String} pageName
- *    The action to route.
+ *    The route name.
+ * @param {String|integer} action
+ *    The action for the route.
  */
-function switchPageTo(pageName = "index") {
+async function switchPageTo(pageName = "index", action = "") {
+  let queryString = "";
+  let response = null;
+
   // get all the breadcrumbs and turn nodeList into an array
   const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
 
   switch (pageName) {
     case "products":
+      queryString = action;
+      response = await fetchProductsEndpoint(queryString);
+      if (!response) {
+        return;
+      }
+
+      // clear contents before populating
+      productListEl.innerHTML = "";
+
       // load product listing
+      response.forEach((item) => {
+        createCard(item);
+      });
 
-      // show content by removing the tailwind 'hidden' class ('display: none')
-      productListEl.classList.remove("hidden");
-      // show all breadcrumbs (before hiding unwanted links)
-      breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
-
-      // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
-      document.querySelector("#hero-banner").classList.add("hidden");
-      document.querySelector("#homepage-content").classList.add("hidden");
-      document.querySelector("#product-details").classList.add("hidden");
-
-      // just hide last in breadcrumb in array
-      breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
+      displayProductsSections();
       break;
 
     case "details":
       // load product details
-      //displayProductDetails(productCard.dataset.productID);
+      const productID = action;
+      displayProductDetails(productID);
 
       // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
       productListEl.classList.add("hidden");
@@ -172,6 +207,7 @@ function switchPageTo(pageName = "index") {
       document.querySelector("#homepage-content").classList.add("hidden");
 
       // show all breadcrumbs
+      navBreadcrumbEl.classList.remove("hidden");
       breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
 
       // show content by removing the tailwind 'hidden' class ('display: none')
@@ -180,14 +216,26 @@ function switchPageTo(pageName = "index") {
 
     case "index":
     default:
+      // load shop bestsellers
+      queryString = "?price_min=100&price_max=1000&offset=10&limit=4";
+      response = await fetchProductsEndpoint(queryString);
+      if (!response) {
+        return;
+      }
+
+      // clear contents before populating
+      bestsellersGridEl.innerHTML = "";
+
+      // load product listing
+      response.forEach((item) => {
+        const html = createCardLight(item);
+        bestsellersGridEl.innerHTML += html;
+      });
+
       // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+      navBreadcrumbEl.classList.add("hidden");
       productListEl.classList.add("hidden");
       document.querySelector("#product-details").classList.add("hidden");
-
-      const linksToHide = breadcrumbEls.filter(
-        (link) => link.dataset.pageName !== pageName
-      );
-      linksToHide.forEach((link) => link.classList.add("hidden"));
 
       // show content by removing the tailwind 'hidden' class ('display: none')
       document.querySelector("#hero-banner").classList.remove("hidden");
@@ -197,7 +245,30 @@ function switchPageTo(pageName = "index") {
 
   // Save the current page into the session storage,
   // so it keeps memory of the route state while the browser's open.
-  sessionStorage.setItem("currentPageName", pageName);
+  currentPageName = pageName;
+  sessionStorage.setItem("currentPageName", currentPageName);
+}
+
+/**
+ * Display products sections.
+ */
+function displayProductsSections() {
+  // get all the breadcrumbs and turn nodeList into an array
+  const breadcrumbEls = [...navBreadcrumbEl.querySelectorAll(":scope li")];
+
+  // show content by removing the tailwind 'hidden' class ('display: none')
+  productListEl.classList.remove("hidden");
+  // show all breadcrumbs (before hiding unwanted links)
+  navBreadcrumbEl.classList.remove("hidden");
+  breadcrumbEls.forEach((link) => link.classList.remove("hidden"));
+
+  // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
+  document.querySelector("#hero-banner").classList.add("hidden");
+  document.querySelector("#homepage-content").classList.add("hidden");
+  document.querySelector("#product-details").classList.add("hidden");
+
+  // just hide last in breadcrumb in array
+  breadcrumbEls[breadcrumbEls.length - 1].classList.add("hidden");
 }
 
 /**
@@ -274,17 +345,18 @@ function renderCurrencyItem(currencyCode) {
 function storeGBPExchangeRates() {
   // only fetch from api if it doesn't exsist - to save limited api calls while testing
   if (!localStorage.getItem("GBPExchangeRates")) {
-    alert("ExchangeRate API Call");
-    // ExchangeRate API
-    fetch(endpoints["exchange_rate"]["currency"], options)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
+    const httpRequest = endpoints["exchange_rate"]["currency"];
 
-        exchangeRates = JSON.stringify(response);
+    // ExchangeRate API
+    fetch(httpRequest, options)
+      .then((response) => response.json())
+      .then((json) => {
+        if (DEBUG) FS.info.api(httpRequest, json);
+
+        exchangeRates = JSON.stringify(json);
         localStorage.setItem("GBPExchangeRates", exchangeRates);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => FS.error.exchange_rate(err));
   } else {
     exchangeRates = JSON.parse(localStorage.getItem("GBPExchangeRates"));
   }
@@ -295,25 +367,20 @@ function storeGBPExchangeRates() {
  *
  * @param {String} queryString
  *    The query string of the request.
+ * @return {Object}
+ *    The parsed JSON object.
  */
 function fetchProductsEndpoint(queryString) {
-  fetch(endpoints["platzi"]["products"] + queryString, options)
+  const httpRequest = endpoints["platzi"]["products"] + queryString;
+
+  return fetch(httpRequest, options)
     .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
+    .then((json) => {
+      if (DEBUG) FS.info.api(httpRequest, json);
 
-      // DEV: for products page testing, add the tailwind 'hidden' class ('display: none')
-      // TODO: Hides Hero banner - Refactor later
-      document.querySelector("#hero-banner").classList.add("hidden");
-
-      // clear contents before populating
-      productListEl.innerHTML = "";
-
-      response.forEach((item) => {
-        createCard(item);
-      });
+      return json;
     })
-    .catch((err) => console.error(err));
+    .catch((err) => FS.error.platzi(err));
 }
 
 /**
@@ -343,8 +410,8 @@ function populateNavPrimaryItems() {
 
       // Add highlighted promo.
       if (settings.show_nav_promo) {
-        const {label = "Promo", href = "#!"} = settings.promo;
-        addNavPrimaryPromo(label, href); 
+        const { label = "Promo", href = "#!" } = settings.promo;
+        addNavPrimaryPromo(label, href);
       }
     })
     .catch((err) => console.error(err));
@@ -352,7 +419,7 @@ function populateNavPrimaryItems() {
 
 /**
  * Adds the highlighted promo in the nav primary links.
- * 
+ *
  * @param {label: String, href: String} promo
  *    The promo settings with label and href.
  */
@@ -434,23 +501,59 @@ function createCard(item) {
   productListEl.appendChild(newCardDiv);
 }
 
+/**
+ * Renders the HTML of a product listing card.
+ *
+ * @param {Object} item
+ *    The product JSON object from the API.
+ */
+function createCardLight(item) {
+  return `
+  <div class="group relative" data-productID="${item.id}">
+    <div
+      class="min-h-80 aspect-w-1 aspect-h-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
+    >
+      <img
+        src="${item.images[0]}"
+        alt="${item.title}"
+        class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+      />
+    </div>
+    <div class="mt-4 flex justify-between">
+      <div>
+        <h3 class="text-sm text-gray-700">
+          <a href="#">
+            <span
+              aria-hidden="true"
+              class="absolute inset-0"
+            ></span>
+            Basic Tee
+          </a>
+        </h3>
+        <p class="mt-1 text-sm text-gray-500">Black</p>
+      </div>
+      <p class="text-sm font-medium text-gray-900">$35</p>
+    </div>
+  </div>  
+  `;
+}
+
 // -------------------- PUBLIC API --------------------------
 
 /**
  * Initialise the configuration settings.
- * 
- * @param {show_nav_promo: boolean} settings 
+ *
+ * @param {debug: boolean, show_nav_promo: boolean, promo: Object} settings
  */
-function init({show_nav_promo, promo}) {
-
+function init({ debug, show_nav_promo, promo }) {
+  DEBUG = settings.debug = debug || false
   settings.show_nav_promo = show_nav_promo || false;
   settings.promo = promo || {};
-  
 }
 
 /**
  * Gets the website settings.
- * 
+ *
  * @returns {Object}
  *    The website settings.
  */
@@ -459,132 +562,143 @@ function getSettings() {
 }
 
 /**
- * Executes the main
+ * Executes the main.
  */
 function run() {
+  try {
+    ///
+    // Header stuff.
+    ///
 
-  ///
-  // Header stuff.
-  ///
+    // Cache the API exchange rates.
+    storeGBPExchangeRates();
 
-  // Cache the API exchange rates.
-  storeGBPExchangeRates();
+    // Currency switcher stuff.
+    renderSelectedCurrency(selectedCurrencyCode);
+    renderCurrencies();
 
-  // Currency switcher stuff.
-  renderSelectedCurrency(selectedCurrencyCode);
-  renderCurrencies();
+    // Primary navigation links.
+    // add categories dynamically to main nav, from api
+    populateNavPrimaryItems();
 
-  // Primary navigation links.
-  // add categories dynamically to main nav, from api
-  populateNavPrimaryItems();
+    // Routing to the current page content.
+    switchPageTo(currentPageName);
 
-  // Routing to the page content.
-  switchPageTo(currentPageName);
+    // EVENT LISTENERS ------------------------------------------------------------ //
 
-  // EVENT LISTENERS ------------------------------------------------------------ //
+    // Navigation logo.
+    document
+      .querySelector(".navigation-logo")
+      .addEventListener("click", (event) => {
+        event.preventDefault();
+        switchPageTo("index");
+      });
 
-  // Product categories links.
-  navPrimaryItemsEl.addEventListener("click", (event) => {
+    // Product categories links.
+    navPrimaryItemsEl.addEventListener("click", (event) => {
+      if (event.target.matches("a:not(.promo-link)")) {
+        event.preventDefault();
 
-    if (event.target.matches("a:not(.promo-link)")) {
+        const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
+        switchPageTo("products", categoryQuery);
+      } else if (event.target.matches("a.promo-link")) {
+        switchPageTo("index");
+      }
+    });
+
+    // Search box button.
+    navSearchButtonEl.addEventListener("click", (event) => {
       event.preventDefault();
 
-      const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
-      fetchProductsEndpoint(categoryQuery);
+      const searchText = navSearchInputEl.value.trim();
+      navSearchInputEl.value = "";
 
-      switchPageTo("products");
-    }
-    else if (event.target.matches("a.promo-link")) {
-      switchPageTo("index");
-    }
-  });
+      if (searchText) {
+        const titleQuery = `?title=${searchText}`;
+        const response = fetchProductsEndpoint(titleQuery);
 
-  // Search box button.
-  navSearchButtonEl.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const searchText = navSearchInputEl.value.trim();
-
-    if (searchText) {
-      const titleQuery = `?title=${searchText}`;
-      fetchProductsEndpoint(titleQuery);
-    }
-
-    switchPageTo("products");
-  });
-
-  // Currency dropdown button.
-  currencyDropdownEl.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    if (event.target.parentNode.closest("ul")) {
-      let selectedEl = event.target.closest("li > a");
-      if (selectedEl) {
-        selectedCurrencyCode = selectedEl.dataset.currencyCode;
-        localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
-
-        renderSelectedCurrency(selectedCurrencyCode);
-        renderCurrencies();
-
-        // Update product prices, if there is any.
-        document.querySelectorAll(".currency").forEach((currencyEl) => {
-          currencyEl.textContent =
-            currencies[selectedCurrencyCode].currencySign;
-        });
-
-        document.querySelectorAll(".price").forEach((priceEl) => {
-          const productPrice = Number.parseFloat(priceEl.dataset.originalPrice);
-          priceEl.textContent = convertPrice(productPrice);
-        });
+        switchPageTo("products", response);
       }
-    }
-  });
+    });
 
-  // Breadcrumbs trails.
-  navBreadcrumbEl.addEventListener("click", (event) => {
-    event.preventDefault();
+    // Currency dropdown button.
+    currencyDropdownEl.addEventListener("click", (event) => {
+      event.preventDefault();
 
-    if (event.target.matches("li")) {
-      switchPageTo(event.target.dataset.pageName);
-    }
-  });
+      if (event.target.parentNode.closest("ul")) {
+        let selectedEl = event.target.closest("li > a");
+        if (selectedEl) {
+          selectedCurrencyCode = selectedEl.dataset.currencyCode;
+          localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
 
-  // Product card of the listing page.
-  productListEl.addEventListener("click", (event) => {
-    event.preventDefault();
+          renderSelectedCurrency(selectedCurrencyCode);
+          renderCurrencies();
 
-    const productCard = event.target.closest(".product-card");
-    if (productCard) {
-      displayProductDetails(productCard.dataset.productID);
-      switchPageTo("details");
-    }
-  });
+          // Update product prices, if there is any.
+          document.querySelectorAll(".currency").forEach((currencyEl) => {
+            currencyEl.textContent =
+              currencies[selectedCurrencyCode].currencySign;
+          });
 
-  // Back to top button.
+          document.querySelectorAll(".price").forEach((priceEl) => {
+            const productPrice = Number.parseFloat(
+              priceEl.dataset.originalPrice
+            );
+            priceEl.textContent = convertPrice(productPrice);
+          });
+        }
+      }
+    });
 
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function () {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      back2TopBtn.style.display = "block";
-    } else {
-      back2TopBtn.style.display = "none";
-    }
+    // Breadcrumbs trails.
+    navBreadcrumbEl.addEventListener("click", (event) => {
+      event.preventDefault();
 
-    if (window.scrollY > docMainEl.scrollHeight) {
-      back2TopBtn.classList.add("bottom-20");
-    } else {
-      back2TopBtn.classList.remove("bottom-20");
-    }
-  };
+      if (event.target.matches("li")) {
+        switchPageTo(event.target.dataset.pageName);
+      }
+    });
 
-  // When the user clicks on the button, scroll to the top of the document
-  back2TopBtn.addEventListener("click", function () {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  });
+    // Product card of the listing page.
+    productListEl.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const productCard = event.target.closest(".product-card");
+      if (productCard) {
+        switchPageTo("details", productCard.dataset.productID);
+      }
+    });
+
+    // Back to top button.
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        back2TopBtn.style.display = "block";
+      } else {
+        back2TopBtn.style.display = "none";
+      }
+
+      if (window.scrollY > docMainEl.scrollHeight) {
+        back2TopBtn.classList.add("bottom-20");
+      } else {
+        back2TopBtn.classList.remove("bottom-20");
+      }
+    };
+
+    // When the user clicks on the button, scroll to the top of the document
+    back2TopBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export { init, getSettings, run };
+export { DEBUG, init, getSettings, run };

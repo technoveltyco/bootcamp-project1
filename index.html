@@ -8,7 +8,11 @@
     <title>Fakee-Shop | Homepage</title>
 
     <!-- Fakee-Shop favicon -->
-    <link rel="icon" type="image/x-icon" href="./assets/img/Fakee-Shop-logo_black.ico">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/img/Fakee-Shop-logo_black.ico"
+    />
     <!-- Tailwind Elements -->
     <link
       rel="stylesheet"
@@ -210,6 +214,7 @@
 
             <!-- navigation logo -->
             <div
+              id="navigation-logo"
               class="navigation-logo flex w-1/5 items-center justify-center lg:w-1/6"
             >
               <a class="mx-2" href="./index.html">
@@ -604,8 +609,20 @@
       </button>
       <!-- end back to the top button -->
 
+      <!-- breadcrumb -->
+      <nav id="nav-breadcrumb" class="breadcrumb w-full rounded-md py-4">
+        <ol class="list-reset flex">
+          <li class="pr-6 text-gray-500" data-page-name="index">Home</li>
+          <li class="pr-6 text-gray-500" data-page-name="products">Products</li>
+          <li class="pr-6 text-gray-500" data-page-name="details">
+            Product Details
+          </li>
+        </ol>
+      </nav>
+      <!-- end breadcrumb -->
+
       <!-- hero banner / jumbotron -->
-      <section id="hero-banner" class="mb-32">
+      <section id="hero-banner" class="mb-5">
         <div
           class="relative overflow-hidden bg-cover bg-no-repeat"
           style="
@@ -615,7 +632,10 @@
           "
         ></div>
 
-        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+        <div
+          id="valentines-promo"
+          class="container mx-auto px-6 md:px-12 xl:px-32"
+        >
           <div class="text-center text-gray-800">
             <div
               class="block rounded-lg px-6 py-12 shadow-lg md:py-16 md:px-12"
@@ -653,40 +673,41 @@
       <!-- end hero banner / jumbotron -->
 
       <!-- page content -->
-      <section class="page-content py-6 px-12">
-        <!-- breadcrumb -->
-        <nav id="nav-breadcrumb" class="breadcrumd w-full rounded-md py-4">
-          <ol class="list-reset flex">
-            <li class="pr-6 text-gray-500" data-page-name="index">Home</li>
-            <li class="pr-6 text-gray-500" data-page-name="products">
-              Products
-            </li>
-            <li class="pr-6 text-gray-500" data-page-name="details">
-              Product Details
-            </li>
-          </ol>
-        </nav>
-        <!-- end breadcrumb -->
+      <section class="page-content px-12">
+        <!-- homepage content -->
+        <div id="homepage-content">
+          <!-- shop bestsellers -->
+          <div class="bg-white">
+            <div
+              class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+            >
+              <h2
+                class="text-2xl font-bold uppercase tracking-tight text-gray-900"
+              >
+                Shop Bestsellers
+              </h2>
 
-        <!-- main page content -->
-        <div id="main-page-content">
-          <!-- homepage content -->
-          <div id="homepage-content"></div>
-
-          <!-- end homepage content -->
-
-          <!-- product listings content -->
-          <div id="product-list" class="container mx-auto flex flex-wrap"></div>
-          <!-- end product listings content -->
-
-          <!-- product details content -->
-          <div id="product-details" class="text-4xl">
-            TODO: Product Details for ID:
-            <span id="temp-product-id">temp product id</span>
+              <div id="shop-bestsellers-grid"
+                class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+              >
+                <!-- More products... -->
+              </div>
+            </div>
           </div>
-          <!-- end product details content -->
+          <!-- end shop bestsellers -->
         </div>
-        <!-- end main page content -->
+        <!-- end homepage content -->
+
+        <!-- product listings content -->
+        <div id="product-list" class="container mx-auto flex flex-wrap"></div>
+        <!-- end product listings content -->
+
+        <!-- product details content -->
+        <div id="product-details" class="text-4xl">
+          TODO: Product Details for ID:
+          <span id="temp-product-id">temp product id</span>
+        </div>
+        <!-- end product details content -->
       </section>
       <!-- end page content -->
     </main>
@@ -694,7 +715,9 @@
 
     <!-- website footer -->
     <footer>
+      <!-- Footer top -->
       <section
+        id="footer-top"
         class="flex items-center bg-gray-50 py-20 px-12 text-center text-gray-800"
       >
         <div class="container px-6 pt-6">
@@ -875,84 +898,52 @@
 
           <div class="grid md:grid-cols-2 lg:grid-cols-4">
             <div class="mb-6">
-              <h5 class="mb-2.5 font-bold uppercase">Links</h5>
+              <h5 class="mb-2.5 font-bold uppercase">Help</h5>
 
               <ul class="mb-0 list-none">
                 <li>
-                  <a href="#!" class="text-black">Link 1</a>
+                  <a href="#!" class="text-black">Track Order</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 2</a>
+                  <a href="#!" class="text-black">Shipping</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 3</a>
+                  <a href="#!" class="text-black">Returns</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 4</a>
+                  <a href="#!" class="text-black">FAQs</a>
+                </li>
+                <li>
+                  <a href="#!" class="text-black">Contact Us</a>
                 </li>
               </ul>
             </div>
 
             <div class="mb-6">
-              <h5 class="mb-2.5 font-bold uppercase">Links</h5>
+              <h5 class="mb-2.5 font-bold uppercase">About us</h5>
 
               <ul class="mb-0 list-none">
                 <li>
-                  <a href="#!" class="text-black">Link 1</a>
+                  <a href="#!" class="text-black">About Us</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 2</a>
+                  <a href="#!" class="text-black">Career</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 3</a>
+                  <a href="#!" class="text-black">Cyber Security</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-black">Link 4</a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="mb-6">
-              <h5 class="mb-2.5 font-bold uppercase">Links</h5>
-
-              <ul class="mb-0 list-none">
-                <li>
-                  <a href="#!" class="text-black">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 4</a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="mb-6">
-              <h5 class="mb-2.5 font-bold uppercase">Links</h5>
-
-              <ul class="mb-0 list-none">
-                <li>
-                  <a href="#!" class="text-black">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-black">Link 4</a>
+                  <a href="#!" class="text-black">Press</a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
+      <!-- end footer top -->
+      <!-- footer bottom -->
       <section
+        id="footer-bottom"
         class="flex flex-row items-center justify-between border-t-2 border-solid px-12"
       >
         <div class="copyright py-4 text-center">
@@ -972,6 +963,7 @@
           </ul>
         </nav>
       </section>
+      <!-- end footer bottom -->
     </footer>
     <!-- end website footer -->
 

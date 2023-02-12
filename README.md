@@ -235,9 +235,9 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
   - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
   - [MD Bootstrap - Top quality
-open-source UI Kits](https://mdbootstrap.com/)
+open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI open source components and with tons of good examples.
 - HTML
-  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) - we never implemented it, but it is a good solution when you want to reuse HTML and you do not have a rendering template library.
 
 - CSS
   - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
@@ -257,6 +257,7 @@ open-source UI Kits](https://mdbootstrap.com/)
 - Vanilla JavaScript
   - [Setting Default Values with JavaScript’s Destructuring](https://wesbos.com/destructuring-default-values)
   - [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+  - [Getting the Width and Height of an Element](https://www.javascripttutorial.net/javascript-dom/javascript-width-height/)
 - Web image formats
   - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
   - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
