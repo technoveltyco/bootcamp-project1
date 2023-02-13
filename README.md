@@ -1,23 +1,41 @@
+---
+Title: "Fakee-Shop"
+Description: "Boot camp project 1"
+Authors: "[ElanekJ](https://github.com/ElanekJ), [technoveltyco](https://github.com/technoveltyco), [WarrenTyler](https://github.com/WarrenTyler)"
+Release date: "14th March 2023"
+Output:
+  -
+---
+
+<link href="./docs/assets/css/markdown.css" rel="stylesheet"></link>
+
+<!-- back to top -->
+<a class="top-link hide" href="#top">↑</a>
+<a name="top"></a>
+<!-- end back to top -->
+
 # Project 1: Fakee-Shop
 
 *Fakee-Shop* is the leading website offering the best fake shopping experience online.
 
 ![Fakee Shop logo](./docs/assets/logos/Fakee-Shop-logo.jpeg)
 
+<!-- project repository shields -->
 <p align="center">
-    <img src="https://img.shields.io/github/repo-size/technoveltyco/README-generator" />
-    <img src="https://img.shields.io/github/languages/top/technoveltyco/README-generator"  />
-    <img src="https://img.shields.io/github/issues/technoveltyco/README-generator" />
-    <img src="https://img.shields.io/github/last-commit/technoveltyco/README-generator" >
+  <img src="https://img.shields.io/github/repo-size/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/languages/top/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/issues/technoveltyco/bootcamp-project1" />
+  <img src="https://img.shields.io/github/last-commit/technoveltyco/bootcamp-project1" />
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Javascript-yellow" />
-    <img src="https://img.shields.io/badge/jQuery-blue"  />
-    <img src="https://img.shields.io/badge/HTML5-orange" />
-    <img src="https://img.shields.io/badge/Bootstrap-purple" >
-    <img src="https://img.shields.io/badge/Moment.js-green" />
+  <img src="https://img.shields.io/badge/HTML5-orange" />
+  <img src="https://img.shields.io/badge/CSS3-blue" />
+  <img src="https://img.shields.io/badge/TailwindCSS-purple" />
+  <img src="https://img.shields.io/badge/Javascript-yellow" />
+  <img src="https://img.shields.io/badge/Moment.js-green" />
 </p>
+<!-- end project repository shields -->
 
 ## Table of contents
 
@@ -80,7 +98,9 @@
 
 ### Screenshots
 
-![](./screenshot.jpg)
+**Fakee-Shop SiteStripe and header navigation**
+
+![Fakee-Shop SiteStripe and header navigation](./docs/assets/img/Screenshot%202023-02-11%20190532.png)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
@@ -148,15 +168,13 @@ Here there are the links to the Figma resources that are being considered in the
 - [Adobe Express](https://express.adobe.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind Elements](https://tailwind-elements.com/quick-start/)
+- [MDBootstrap](https://mdbootstrap.com/docs/standard/)
 - [Font Awesome 6](https://fontawesome.com/v6/docs)
 - [Google Fonts](https://fonts.google.com/)
 - [Vanilla JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript)
 - [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
 - [Node.js](https://nodejs.org/en/)
 - [Prettier](https://prettier.io/)
-
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
@@ -192,48 +210,75 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Useful resources
 
-- Agile
+- Software/Web Standards
+  - [UML 2](https://www.uml.org/what-is-uml.htm)
+  - [Drawing UML with PlantUML](https://plantuml.com/guide)
+  - [PlantUML - Live editor ](https://plantuml.com/)
+- Agile/Scrum
   - [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
   - [How to Write Acceptance Criteria: Examples and Best Practices](https://www.mobindustry.net/blog/how-to-write-acceptance-criteria-examples-and-best-practices/)
   - [What is the Definition of Done (DOD) in Agile?](https://www.agile-academy.com/en/scrum-master/what-is-the-definition-of-done-dod-in-agile/)
 - Public HTTP APIs
   - [Public API Lists - GitHub](https://github.com/public-api-lists/public-api-lists) - Useful resource to choose free public APIs that can be used for Proof of Concept projects.
 - UX/UI Web Design
-  - [Figma - High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) - The free design from Figma Community which is based Fakee-Shop project.
+  - [Figma - High-converting e-commerce UI kit](https://www.figma.com/community/file/1192047659163071392) - The free design from Figma Community which Fakee-Shop project is based on.
   - [Adobe Express - Logo Maker](https://express.adobe.com/express-apps/logo-maker/)
   - [20 Elements of Modern Web Design That You Need to Know](https://www.lambdatest.com/blog/20-elements-of-modern-web-design/)
   - [Parts Of A Website: A Cheat Sheet For Non-Techies](https://www.markbrinker.com/parts-of-a-website)
   - [CMS Web Design: A Guide to Dynamic Content Applications](https://www.toptal.com/designers/ui/cms-web-design)
+- Fonts/Images
+  - [Font Awesome 6 Icons](https://fontawesome.com/v6/icons) - Only the free icons were used in this project.
+  - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) - Free open source catalog of images.
 - Tailwind
   - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation) - The main reference for Tailwind CSS Framework.
   - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
   - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
+  - [TUIk - Tailwind UI Kit - Components](https://tailwinduikit.com/components)
   - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
-- Flexbox
-  - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
-- CSS Reset
-  - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
-  - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
-- Dark Mode
-  - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
-  - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
-  - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
-  - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
-  - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
-- Code Snippet Styling
-  - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+  - [MD Bootstrap - Top quality
+open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI open source components and with tons of good examples.
+- HTML
+  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) - it is a good solution when you want to reuse HTML and you do not have a rendering template library.
+  - [HTML Template Tag Explained](https://dev.to/arafat4693/html-template-tag-explained-3859)
+
+- CSS
+  - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
+  - Flexbox
+    - [Breaking to a new row with flexbox](https://tobiasahlin.com/blog/flexbox-break-to-new-row/)
+  - CSS Reset
+    - [The New CSS Reset](https://elad.medium.com/the-new-css-reset-53f41f13282e) - Talking about the reset CSS approaches.
+    - [The New CSS Reset - GitHub](https://elad2412.github.io/the-new-css-reset/) - The most recent resets for the latest CSS implementations in modern browsers.
+  - Dark Mode
+    - [Create A Dark/Light Mode Switch with CSS Variables](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) 
+    - [How to get dark mode working with CSS](https://www.freecodecamp.org/news/how-to-get-dark-mode-working-with-css-740ad31e22e/)
+    - [MDN - prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme)
+    - [How “invert brightness” can improve accessibility and help us use our devices](https://www.tpgi.com/how-invert-brightness-can-improve-accessibility-and-help-us-use-our-devices/)
+    - [OS: High Contrast versus Inverted Colors](https://adrianroselli.com/2017/11/os-high-contrast-versus-inverted-colors.html)
+  - Code Snippet Styling
+    - [Styling Code In and Out of Blocks](https://css-tricks.com/styling-code-in-and-out-of-blocks/) - Good document explaining how to create code snippet block beatyfully.
+- Vanilla JavaScript
+  - [Setting Default Values with JavaScript’s Destructuring](https://wesbos.com/destructuring-default-values)
+  - [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+  - [Getting the Width and Height of an Element](https://www.javascripttutorial.net/javascript-dom/javascript-width-height/)
 - Web image formats
   - [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
   - [The Best Image Format for the Web: JPEG, WEBP, HEIC, or AVIF?](https://www.freecodecamp.org/news/best-image-format-for-web-in-2019-jpeg-webp-heic-avif-41ba0c1b2789/)
   - [How to Use SVG Images in CSS and HTML – A Tutorial for Beginners](https://www.freecodecamp.org/news/use-svg-images-in-css-html/)
+- Git/Github
+  - [5.2 Distributed Git - Contributing to a Project](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
+  - [How to Write Better Git Commit Messages – A Step-By-Step Guide](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/)
+  - [Github - Introducing draft pull requests](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
+  - [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- Markdown
+  - [The Markdown Guide](https://www.markdownguide.org/)
+  - [Mermaid - Diagramming and charting tool](https://mermaid.js.org/)
+  - [Include diagrams in your Markdown files with Mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+  - [Mermaid - Live Editor](https://mermaid.live/)
 - IDE/Dev tools
   - [Prettier - Code formatter](https://prettier.io/)
   - [Prettier VSCode plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
   - [Tailwind Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
-  - [Font Awesome 6 Icons](https://fontawesome.com/v6/icons) - Only the free icons were used in this project.
-  - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) - Free open source catalog of images.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+  - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
 ## Authors
 
@@ -246,10 +291,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Rodriguez, Daniel
   - GitHub - [https://github.com/technoveltyco](https://github.com/technoveltyco) 
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
 ## Acknowledgments
 
-The teacher and TAs that help us with resources and support to my questions during the development of this challenge.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+The teacher and TAs that help us with resources and support to my questions during the development of this project.

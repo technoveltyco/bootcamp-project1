@@ -70,7 +70,7 @@
       
       requestctn1.textContent = endpoints["platzi"]["products"];
       responsectn1.textContent = JSON.stringify(response, null, 5);
-      
+      localStorage.setItem("data",response[0].category.id)
     })
     .catch(err => console.error(err));
 

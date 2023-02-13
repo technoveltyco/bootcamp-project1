@@ -1,1 +1,0 @@
-// JavaScript of Product listing page.

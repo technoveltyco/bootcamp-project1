@@ -1,25 +1,32 @@
-// Get the button
-let mybutton = document.getElementById("btn-back-to-top");
+/// ---------------------------
+//  Fakee-shop backend logic.
+/// ---------------------------
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+import * as App from "./modules/products.js";
 
-function scrollFunction() {
-  if (
-    document.body.scrollTop > 20 ||
-    document.documentElement.scrollTop > 20
-  ) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-// When the user clicks on the button, scroll to the top of the document
-mybutton.addEventListener("click", backToTop);
+(function (global, FakeeShop) {
 
-function backToTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+  const VERSION = "0.1.0";
+
+  let settings = {
+    debug: true,
+    show_nav_promo: true,
+    promo: {
+      label: "Valentine's Day",
+      href: "#valentines-promo",
+    },
+  };
+
+  FakeeShop.init(settings);
+  FakeeShop.run();
+
+  // Make FakeeShop's public API available in the global scope.
+  global.FakeeShop = {
+    VERSION,
+    DEBUG: FakeeShop.DEBUG,
+    init: FakeeShop.init,
+    settings: FakeeShop.getSettings,
+    run: FakeeShop.run
+  };
+
+})(window, App);
