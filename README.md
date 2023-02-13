@@ -102,13 +102,13 @@ Output:
 
 ![Fakee-Shop SiteStripe and header navigation](./docs/assets/img/Screenshot%202023-02-11%20190532.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+**Homepage on large screens**
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+![An example of how the Fakee-Shop homepage looks on large screens](./docs/assets/img/Screenshot%202023-02-13%20at%2001-15-25%20Fakee-Shop%20Homepage.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+**Homepage on small screens**
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![An example of how the Fakee-Shop homepage looks on small screens](./docs/assets/img/Screenshot%202023-02-13%20at%2001-18-04%20Fakee-Shop%20Homepage.png)
 
 ### Links
 
@@ -178,35 +178,187 @@ Here there are the links to the Figma resources that are being considered in the
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+The use of the template tag to reuse HTML and add dynamic content using JavaScript.
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<template id="template-promo-category-card">
+  <div class="item-card category-card group relative" data-item-id="5" data-item-action="category">
+    <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+      <img src="./assets/img/category-saint-valentines.jpg" alt="Saint Valentines category image" class="h-full w-full object-cover object-center">
+    </div>
+    <h3 class="mt-6 text-sm text-gray-500">
+      <a href="#valentines-promo" data-cta-action="5">
+        <span class="absolute inset-0"></span>
+        <span class="title text-red-600"><i class="fa-solid fa-gift"></i> Saint Valentine</span>
+      </a>
+    </h3>
+    <p class="text-base font-semibold text-gray-900">Treat your favourite person to delicious food, fancy drinks, a thoughtful gift, or an unforgettable experience.</p>
+  </div>      
+</template>
 ```
+and in JavaScript you will use it as follows:
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
+```js
+// Test to see if the browser supports the HTML template element by checking
+// for the presence of the template element's content attribute.
+if ('content' in document.createElement('template')) {
+
+    const template = document.querySelector('#template-promo-category-card');
+
+    // Clone the template to create a new DOM element.
+    const clone = template.content.cloneNode(true);
+    clone.querySelector(".item-card").dataset.itemId = data.id;
+    clone.querySelector(".title").textContent = data.title;
+    clone.querySelector(".description").textContent = data.description;
+
+    // ...
+
+} else {
+  // Find another way to add the rows to the table because
+  // the HTML template element is not supported.
 }
 ```
 
+On the other hand, `export` and `import` keywords were used to create modules and separate the private and public APIs of the JavaScript code.
+
+`modules/products.js`
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+
+// Private API is here ...
+
+// -------------------- PUBLIC API --------------------------
+
+/**
+ * Initialise the configuration settings.
+ *
+ * @param {debug: boolean, show_nav_promo: boolean, promo: Object} settings
+ */
+function init({ debug, show_nav_promo, promo }) {
+  // ...
+}
+
+/**
+ * Gets the website settings.
+ *
+ * @returns {Object}
+ *    The website settings.
+ */
+function getSettings() {
+  // ...
+}
+
+/**
+ * Executes the main.
+ */
+function run() {
+  // ...
+}
+
+export { DEBUG, init, getSettings, run };
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+and in the JavaScript this public API is used in the following way: 
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+`script.js`
+```js
+import * as App from "./modules/products.js";
+
+(function (global, FakeeShop) {
+
+  const VERSION = "0.1.0";
+
+  let settings = {
+    debug: true,
+    show_nav_promo: true,
+    promo: {
+      label: "Valentine's Day",
+      href: "#valentines-promo",
+    },
+  };
+
+  FakeeShop.init(settings);
+  FakeeShop.run();
+
+  // Make FakeeShop's public API available in the global scope.
+  global.FakeeShop = {
+    VERSION,
+    DEBUG: FakeeShop.DEBUG,
+    init: FakeeShop.init,
+    settings: FakeeShop.getSettings,
+    run: FakeeShop.run
+  };
+
+})(window, App);
+```
+
+Finally, we learn CSS animation, implementing a heart beat for the Valentine's Day 💘 marketing campaign made on the website.
+
+```css
+/* Valentine's heart beat */
+@keyframes heartbeat {
+  0% {
+    transform: scale( 1 );    
+  }
+  20% {
+    transform: scale( 1.25 ) 
+      translateX(5%) 
+      translateY(5%);
+  } 
+  40% {
+    transform: scale( 1.5 ) 
+      translateX(9%) 
+      translateY(10%);
+  }
+}
+
+.heart {
+  background-color: var(--valetine-color);
+  display: inline-block;
+  height: 10px;
+  margin: 0 -30px;
+  position: relative;
+  top: -15px;
+  transform: rotate(-45deg);
+  width: 10px;
+  animation: heartbeat 1s infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: var(--valetine-color);
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.heart:before {
+  top: -5px;
+  left: 0;
+}
+
+.heart:after {
+  left: 5px;
+  top: 0;
+}
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+The following features were included in the backlog for possible future improvements:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Search suggestions
+- Listing filters and sorts
+- Shopping cart
+- CI/CD
+- Automated tests
+- Search history
+- Favorites
+- Signup/Login
+- Admnistration
+- User profile
+- Newsletter
 
 ## Useful resources
 
