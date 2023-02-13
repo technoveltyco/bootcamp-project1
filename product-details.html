@@ -1,75 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/product-details.css">
+</head>
+<body>
 
-    <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <!-- Tailwind CSS -->
-       <script src="https://cdn.tailwindcss.com"></script>
-       <!-- Your CSS styles in this file below -->
-       <title>Document</title>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <link rel="stylesheet" href="./assets/css/styleTest.css">
-       <title>Product details page</title>
-    </head>
 
-    <body>
-        <header>
-            <div class="topnav">
-            <a class="left" href="#home"></a>
-            <a class="right" href="#helpQ">Help & FAQs</a>
-            <div class="dropdown">
-                <button class="dropbtn">$ 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                </div>
-            </div>
-        
-            </div>
-            <div class="nav">
-                <a class="left" href="#home">Fakee-Commerce</a>
-                <a class="search">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                    <input type="text" placeholder="Search.." contenteditable="true">
-                </a>
-                <a class="right" href="#login">LogIn</a>
-                <a class="right"href="#shopping">Basket</a>
-        
-            </div>
-            <div class="bottomnav">
-                <a class="col-md-3  btmnv" href="#home">Clothes</a>
-                <a class="col-md-3  btmnv" href="#home">Electronics</a>
-                <a class="col-md-3  btmnv" href="#home">Furniture</a>
-                <a class="col-md-3  btmnv" href="#home">Shoes</a>
-                <a class="col-md-3  btmnv" href="#home">Others</a>
+    <div class="itemDetails" id="itemDetails"  style="display: grid;  grid-template-columns: 10% 40% 35%; justify-content: space-around;">
 
-            </div>
-        </header>
-        <main>
-            <hr class="solid">
 
-            <ul class="breadcrumb">
-                <li><a href="./index.html">Home</a></li>
-            </ul>
+        <div class="thumbImg" id="thumbImg">  </div>
 
-            <div class="page ">
-                <div class="thumb"></div>
+        <div class="mainImg" id="mainImg"> </div>
 
-                <div class="img"></div>
+        <div class="specProd" id="specProd"> </div>
 
-                <div class="item"></div>
-            </div>
-        </main>
+
+      </div>
     
-        <footer>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-            <script src="./assets/js/scriptProduct.js"></script>
-        </footer>
-    </body>
-
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+    <script src="./assets/js/product-details.js"></script> 
+</body>
 </html>
