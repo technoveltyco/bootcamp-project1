@@ -10,6 +10,7 @@ const currencyDropdownButtonEl = document.querySelector(
 );
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
+const sortSelectorEl = document.querySelector("#sortSelector");
 
 // OBJECTS --------------------------------------------------------- //
 const endpoints = {
@@ -64,15 +65,15 @@ let options = {
 const nav = {
   home: {
     show: `[data-page-name="index"], #hero-banner, #homepage-content`,
-    hide: `[data-page-name="products"], [data-page-name="details"], #product-list, #product-details`,
+    hide: `[data-page-name="products"], [data-page-name="details"], #product-list, #product-details, #searchRefiner`,
   },
   products: {
-    show: `[data-page-name="index"], [data-page-name="products"], #product-list`,
+    show: `[data-page-name="index"], [data-page-name="products"], #product-list, #searchRefiner`,
     hide: `[data-page-name="details"], #product-details, #hero-banner, #homepage-content`,
   },
   details: {
     show: `[data-page-name="index"], [data-page-name="products"], [data-page-name="details"], #product-details`,
-    hide: `#product-list, #hero-banner, #homepage-content`,
+    hide: `#product-list, #hero-banner, #homepage-content, #searchRefiner`,
   },
   goto(name) {
     document
@@ -93,7 +94,8 @@ const filters = {
     return (product) => product.category.id === id;
   },
   title: (searchText) => {
-    return (product) => product.title.toLowerCase().includes(searchText.toLowerCase());
+    return (product) =>
+      product.title.toLowerCase().includes(searchText.toLowerCase());
   },
 };
 
@@ -124,7 +126,6 @@ const products = {
 };
 
 products.load(endpoints["platzi"]["products"]);
-
 
 let exchangeRates;
 storeGBPExchangeRates();
@@ -376,6 +377,20 @@ function renderProducts(productResults) {
   });
 }
 
+// function createSortSelector() {
+//   return `
+//     <select id="sortSelector"
+//       class="mb-3 xl:w-96 form-select form-select-lg m-0 mb-3 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-xl font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+//       aria-label=".form-select-lg example"
+//     >
+//       <option value="none" selected>None</option>
+//       <option value="priceAsc">Price Ascending</option>
+//       <option value="priceDesc">Price Descending</option>
+//     </select>
+//   `;
+// }
+
+// document.querySelector("#searchRefiner").innerHTML = createSortSelector();
 // EVENT LISTENERS ------------------------------------------------------------ //
 
 navPrimaryItemsEl.addEventListener("click", (event) => {
@@ -473,5 +488,16 @@ productListEl.addEventListener("click", (event) => {
     displayProductDetails(productCard.dataset.productID);
     nav.goto("details");
   }
+});
+
+sortSelectorEl.addEventListener("change", (event) => {
+  event.preventDefault();
+
+  const comparatorName = event.target.value;
+  const productResults = products.get(
+    filters.none,
+    comparators[comparatorName]
+  );
+  renderProducts(productResults);
 });
 

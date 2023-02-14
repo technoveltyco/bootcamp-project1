@@ -841,12 +841,29 @@
           </div>
           <!-- end homepage content -->
 
+          <!-- search refiner -->
+          <div id="searchRefiner" class="flex justify-end">
+            <select
+              id="sortSelector"
+              class="form-select form-select-lg m-0 mb-3 mb-3 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-xl font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none xl:w-96"
+              aria-label=".form-select-lg example"
+            >
+              <option value="none" selected>None</option>
+              <option value="priceAsc">Price Ascending</option>
+              <option value="priceDesc">Price Descending</option>
+            </select>
+          </div>
+          <!-- end search refiner -->
+
           <!-- product listings content -->
           <div id="product-list" class="container mx-auto flex flex-wrap"></div>
           <!-- end product listings content -->
 
           <!-- product details content -->
-          <div id="product-details" class="text-4xl">TODO: Product Details for ID: <span id="temp-product-id">temp product id</span></div>
+          <div id="product-details" class="text-4xl">
+            TODO: Product Details for ID:
+            <span id="temp-product-id">temp product id</span>
+          </div>
           <!-- end product details content -->
         </div>
         <!-- end main page content -->
@@ -1159,3 +1176,4 @@
     <script src="./assets/js/products.js"></script>
   </body>
 </html>
+
