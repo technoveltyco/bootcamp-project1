@@ -84,6 +84,42 @@ const nav = {
   },
 };
 
+const filters = {
+  none: (product) => product,
+  price: (min, max) => {
+    return (product) => product.price >= min && product.price <= max;
+  },
+  category: (id) => {
+    return (product) => product.category.id === id;
+  },
+};
+
+const comparators = {
+  none: (product) => product,
+  priceAsc: (productA, productB) => productA.price - productB.price,
+  priceDesc: (productA, productB) => productB.price - productA.price,
+};
+
+const products = {
+  actual: [],
+  get(aFilter, aSort) {
+    return this.actual.filter(aFilter).sort(aSort);
+  },
+  async load(endpoint) {
+    const queryString = "?offset=0&limit=500";
+    try {
+      const response = await fetch(endpoint + queryString, options);
+      const products = await response.json();
+      this.actual = products;
+
+      console.log(endpoint + queryString);
+      console.log(products);
+    } catch (err) {
+      return console.error(err);
+    }
+  },
+};
+
 let exchangeRates;
 storeGBPExchangeRates();
 
