@@ -92,6 +92,9 @@ const filters = {
   category: (id) => {
     return (product) => product.category.id === id;
   },
+  title: (searchText) => {
+    return (product) => product.title.toLowerCase().includes(searchText.toLowerCase());
+  },
 };
 
 const comparators = {
@@ -119,6 +122,9 @@ const products = {
     }
   },
 };
+
+products.load(endpoints["platzi"]["products"]);
+
 
 let exchangeRates;
 storeGBPExchangeRates();
@@ -357,7 +363,17 @@ function createCard(item) {
     </div>
   `;
 
-  productListEl.appendChild(newCardDiv);
+  // productListEl.appendChild(newCardDiv);
+  return newCardDiv;
+}
+
+function renderProducts(productResults) {
+  // clear contents of render target before populating
+  productListEl.innerHTML = "";
+
+  productResults.forEach((product) => {
+    productListEl.appendChild(createCard(product));
+  });
 }
 
 // EVENT LISTENERS ------------------------------------------------------------ //
@@ -366,12 +382,27 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (event.target.matches("a")) {
-    const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
-    fetchProductsEndpoint(categoryQuery);
+    const categoryId = Number(event.target.dataset.categoryId);
+    const productResults = products.get(
+      filters.category(categoryId),
+      comparators.none
+    );
+    renderProducts(productResults);
   }
 
   nav.goto("products");
 });
+
+// navPrimaryItemsEl.addEventListener("click", (event) => {
+//   event.preventDefault();
+
+//   if (event.target.matches("a")) {
+//     const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
+//     fetchProductsEndpoint(categoryQuery);
+//   }
+
+//   nav.goto("products");
+// });
 
 navSearchButtonEl.addEventListener("click", (event) => {
   event.preventDefault();
@@ -379,12 +410,27 @@ navSearchButtonEl.addEventListener("click", (event) => {
   const searchText = navSearchInputEl.value.trim();
 
   if (searchText) {
-    const titleQuery = `?title=${searchText}`;
-    fetchProductsEndpoint(titleQuery);
+    const productResults = products.get(
+      filters.title(searchText),
+      comparators.none
+    );
+    renderProducts(productResults);
   }
 
   nav.goto("products");
 });
+// navSearchButtonEl.addEventListener("click", (event) => {
+//   event.preventDefault();
+
+//   const searchText = navSearchInputEl.value.trim();
+
+//   if (searchText) {
+//     const titleQuery = `?title=${searchText}`;
+//     fetchProductsEndpoint(titleQuery);
+//   }
+
+//   nav.goto("products");
+// });
 
 currencyDropdownEl.addEventListener("click", (event) => {
   event.preventDefault();
