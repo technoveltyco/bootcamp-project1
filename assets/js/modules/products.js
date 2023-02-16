@@ -12,6 +12,8 @@ const docMainEl = document.querySelector("main");
 const homepageContentEl = document.querySelector("#homepage-content");
 const productListEl = document.querySelector("#product-list");
 const productDetailsEl = document.querySelector("#product-details");
+const navLogoEl = document.querySelector(".navigation-logo");
+const navSearchFormEl = document.querySelector("#navigation-search");
 const navSearchInputEl = document.querySelector("#nav-search-input");
 const navSearchButtonEl = document.querySelector("#nav-search-button");
 const navPrimaryItemsEl = document.querySelector("#nav-primary-items");
@@ -25,8 +27,14 @@ const back2TopBtn = document.querySelector("#btn-back-to-top");
 const heroBannerEl = document.querySelector("#hero-banner");
 const bestsellersGridEl = document.querySelector("#shop-bestsellers-grid");
 const shopByCategoryGridEl = document.querySelector("#shop-by-category-grid");
-const featuredCollectionBtn = document.querySelector("#featured-collection-button");
+const featuredCollectionBtn = document.querySelector(
+  "#featured-collection-button"
+);
 const heroPromoCtaBtn = document.querySelector("#hero-promo-cta-btn");
+const carouselMultiCtns = document.querySelectorAll(".carousel-multi-items");
+const carouselMultiSlideBtns = document.querySelectorAll(
+  ".carousel-multi-items button.slide"
+);
 
 ///
 // Global states.
@@ -176,18 +184,31 @@ let options = {
  *    The JSON API object item.
  */
 function displayProductDetails(item) {
-  const productDetailsItemEl = getElementByTemplateId("template-product-details-item");
+  const productDetailsItemEl = getElementByTemplateId(
+    "template-product-details-item"
+  );
   if (!productDetailsItemEl) {
     return;
   }
 
   const productDetailsCtn = document.createElement("div");
-  productDetailsCtn.classList.add(`item-${item.id}-details`, `product-${item.id}-details`);
+  productDetailsCtn.classList.add(
+    `item-${item.id}-details`,
+    `product-${item.id}-details`
+  );
 
-  productDetailsItemEl.querySelector("#image-left img").setAttribute("src", item.images[1]);
-  productDetailsItemEl.querySelector("#image-left img").setAttribute("alt", `The left-hand side image of the item ${item.title}`);
-  productDetailsItemEl.querySelector("#image-right img").setAttribute("src", item.images[0]);
-  productDetailsItemEl.querySelector("#image-right img").setAttribute("alt", `The right-hand side image of the item ${item.title}`);
+  productDetailsItemEl
+    .querySelector("#image-left img")
+    .setAttribute("src", item.images[1]);
+  productDetailsItemEl
+    .querySelector("#image-left img")
+    .setAttribute("alt", `The left-hand side image of the item ${item.title}`);
+  productDetailsItemEl
+    .querySelector("#image-right img")
+    .setAttribute("src", item.images[0]);
+  productDetailsItemEl
+    .querySelector("#image-right img")
+    .setAttribute("alt", `The right-hand side image of the item ${item.title}`);
   productDetailsItemEl.querySelector("#images-center").innerHTML = "";
   for (let i = 2; i < item.images.length; i++) {
     const html = `
@@ -199,12 +220,16 @@ function displayProductDetails(item) {
     />
   </div>
     `;
-    productDetailsItemEl.querySelector("#images-center").innerHTML += html;  
+    productDetailsItemEl.querySelector("#images-center").innerHTML += html;
   }
   productDetailsItemEl.querySelector(".title").textContent = item.title;
-  productDetailsItemEl.querySelector(".currency").textContent = currencies[selectedCurrencyCode].currencySign;
-  productDetailsItemEl.querySelector(".price").dataset.originalPrice = item.price;
-  productDetailsItemEl.querySelector(".price").textContent = convertPrice(item.price);
+  productDetailsItemEl.querySelector(".currency").textContent =
+    currencies[selectedCurrencyCode].currencySign;
+  productDetailsItemEl.querySelector(".price").dataset.originalPrice =
+    item.price;
+  productDetailsItemEl.querySelector(".price").textContent = convertPrice(
+    item.price
+  );
 
   productDetailsCtn.appendChild(productDetailsItemEl);
 
@@ -241,8 +266,9 @@ async function switchPageTo(pageName = "index", action = "") {
 
   switch (pageName) {
     case "index":
-      const { bestsellers, categories } = fetchHomepageSections();
-      displayHomepageSections(bestsellers, categories);
+      const { bestsellers, categories, luxurious, sustainable } =
+        fetchHomepageSections();
+      displayHomepageSections(bestsellers, categories, luxurious, sustainable);
       break;
     case "products":
       queryString = action;
@@ -256,8 +282,12 @@ async function switchPageTo(pageName = "index", action = "") {
     case "details":
       // load product details
       const productID = action;
-      response = await fetchApiEndpoint(endpoints["platzi"]["products"], productID);
+      response = await fetchApiEndpoint(
+        endpoints["platzi"]["products"],
+        productID
+      );
       if (!response) {
+        display404Sections();
         return;
       }
 
@@ -266,12 +296,17 @@ async function switchPageTo(pageName = "index", action = "") {
     case "category":
       const categoryId = action;
       queryString = `${categoryId}/products`;
-      response = await fetchApiEndpoint(endpoints["platzi"]["categories"], queryString);
+      response = await fetchApiEndpoint(
+        endpoints["platzi"]["categories"],
+        queryString
+      );
       if (!response) {
+        display404Sections();
         return;
       }
 
       displayProductsSections(response);
+      break;
     default:
       display404Sections();
       break;
@@ -303,6 +338,8 @@ function fetchHomepageSections() {
   const queryStringBestsellers =
     "?price_min=100&price_max=1000&offset=10&limit=4";
   const queryStringCategories = "?limit=5";
+  const queryStringLuxurious = "?title=luxurious";
+  const queryStringSustainable = "?title=fantastic";
 
   return {
     bestsellers: fetchApiEndpoint(
@@ -313,13 +350,26 @@ function fetchHomepageSections() {
       endpoints["platzi"]["categories"],
       queryStringCategories
     ),
+    luxurious: fetchApiEndpoint(
+      endpoints["platzi"]["products"],
+      queryStringLuxurious
+    ),
+    sustainable: fetchApiEndpoint(
+      endpoints["platzi"]["products"],
+      queryStringSustainable
+    ),
   };
 }
 
 /**
  * Display homepage sections.
  */
-function displayHomepageSections(bestsellers, categories) {
+function displayHomepageSections(
+  bestsellers,
+  categories,
+  luxurious,
+  sustainable
+) {
   // list bestsellers
   bestsellers.then((json) => {
     renderCardsQuerySelector(json, "shop-bestsellers-grid");
@@ -332,9 +382,19 @@ function displayHomepageSections(bestsellers, categories) {
     if (settings.show_nav_promo) {
       const cardEl = createCardByTemplateId("template-promo-category-card");
       if (cardEl) {
-        shopByCategoryGridEl.prepend(cardEl);  
-      } 
+        shopByCategoryGridEl.prepend(cardEl);
+      }
     }
+  });
+
+  // list luxurious collection.
+  luxurious.then((json) => {
+    renderCardsQuerySelector(json, "luxurious-slider");
+  });
+
+  // list sustainable collection.
+  sustainable.then((json) => {
+    renderCardsQuerySelector(json, "sustainable-slider");
   });
 
   // hide unwanted content by adding the tailwind 'hidden' class ('display: none')
@@ -452,7 +512,7 @@ function renderCurrencyItem(currencyCode) {
  * Caches the Currency Exchange Rate API response.
  */
 function storeGBPExchangeRates() {
-  // only fetch from api if it doesn't exsist - to save limited api calls while testing
+  // only fetch from api if it doesn't exist - to save limited api calls while testing
   if (!localStorage.getItem("GBPExchangeRates")) {
     const httpRequest = endpoints["exchange_rate"]["currency"];
 
@@ -479,7 +539,7 @@ function storeGBPExchangeRates() {
  * @return {Object}
  *    The parsed JSON object.
  */
-function fetchApiEndpoint(endpoint, queryString="") {
+function fetchApiEndpoint(endpoint, queryString = "") {
   const httpRequest = endpoint + queryString;
 
   return fetch(httpRequest, options)
@@ -577,14 +637,14 @@ function addNavPrimaryPromo(label = "Promo", href = "#!") {
  * @returns {Number}
  *    The exchanged price.
  */
-function convertPrice(price, roundUp=true) {
+function convertPrice(price, roundUp = true) {
   const currencyExchangeRate = Number.parseFloat(
     exchangeRates.conversion_rates[selectedCurrencyCode]
   );
 
   const convertedPrice = (price * currencyExchangeRate).toFixed(2);
-  
-  return (roundUp) ? Math.ceil(convertedPrice) : convertedPrice;
+
+  return roundUp ? Math.ceil(convertedPrice) : convertedPrice;
 }
 
 /**
@@ -592,14 +652,11 @@ function convertPrice(price, roundUp=true) {
  */
 function updatePrices() {
   document.querySelectorAll(".currency").forEach((currencyEl) => {
-    currencyEl.textContent =
-      currencies[selectedCurrencyCode].currencySign;
+    currencyEl.textContent = currencies[selectedCurrencyCode].currencySign;
   });
 
   document.querySelectorAll(".price").forEach((priceEl) => {
-    const productPrice = Number.parseFloat(
-      priceEl.dataset.originalPrice
-    );
+    const productPrice = Number.parseFloat(priceEl.dataset.originalPrice);
 
     priceEl.textContent = convertPrice(productPrice);
   });
@@ -634,7 +691,9 @@ function createCard(item) {
 
   newCardDiv.innerHTML = `
     <a href="#">
-        <img class="rounded-t-lg" src="${item.images[0]}" alt="picture of the item ${item.title}" />
+        <img class="rounded-t-lg" src="${
+          item.images[0]
+        }" alt="picture of the item ${item.title}" />
     </a>
     <div class="p-5">
     <a href="#">
@@ -642,9 +701,7 @@ function createCard(item) {
       item.title
     }</h5>
     </a>
-    <p class="mb-3 font-normal text-gray-700">${
-      item.description
-    }</p>
+    <p class="mb-3 font-normal text-gray-700">${item.description}</p>
     <p class="mb-3 font-bold text-gray-900"><span class="currency">${
       currencies[selectedCurrencyCode].currencySign
     }</span><span class="price" data-original-price="${
@@ -668,29 +725,31 @@ function renderCardsQuerySelector(items, listingContainerId) {
   const containerEl = document.getElementById(listingContainerId);
   containerEl.innerHTML = "";
 
-  items.forEach((item) => {  
-    const cardEl = createCardByTemplateId(`template-${listingContainerId}`, item);
+  items.forEach((item) => {
+    const cardEl = createCardByTemplateId(
+      `template-${listingContainerId}`,
+      item
+    );
     if (cardEl) {
-      containerEl.appendChild(cardEl);       
+      containerEl.appendChild(cardEl);
     }
   });
 }
 
 /**
  * Creates an HTML DOM element from a given template id.
- * 
+ *
  * @param {String} templateId
- *    The template id. 
- * @param {Object|null} data 
+ *    The template id.
+ * @param {Object|null} data
  *    The data to populate.
  * @returns {Element}
- *    A new DOM element with the HTML from the template id 
+ *    A new DOM element with the HTML from the template id
  *    and data from item.
  */
-function createCardByTemplateId(templateId, data=null) {
+function createCardByTemplateId(templateId, data = null) {
   const cardEl = getElementByTemplateId(templateId);
   if (cardEl) {
-
     switch (templateId) {
       case "template-shop-bestsellers-grid":
         if (!data) break;
@@ -698,10 +757,13 @@ function createCardByTemplateId(templateId, data=null) {
         cardEl.querySelector(".item-card").dataset.itemId = data.id;
         cardEl.querySelector(".item-card").dataset.itemAction = "details";
         cardEl.querySelector("img").setAttribute("src", data.images[0]);
-        cardEl.querySelector("img").setAttribute("alt", `The main picture of the item ${data.title}`);
+        cardEl
+          .querySelector("img")
+          .setAttribute("alt", `The main picture of the item ${data.title}`);
         cardEl.querySelector(".title").textContent = data.title;
         cardEl.querySelector(".description").textContent = data.description;
-        cardEl.querySelector(".currency").textContent = currencies[selectedCurrencyCode].currencySign;
+        cardEl.querySelector(".currency").textContent =
+          currencies[selectedCurrencyCode].currencySign;
         cardEl.querySelector(".price").textContent = convertPrice(data.price);
         cardEl.querySelector(".price").dataset.originalPrice = data.price;
         break;
@@ -711,20 +773,38 @@ function createCardByTemplateId(templateId, data=null) {
         cardEl.querySelector(".item-card").dataset.itemId = data.id;
         cardEl.querySelector(".item-card").dataset.itemAction = "category";
         cardEl.querySelector("img").setAttribute("src", data.image);
-        cardEl.querySelector("img").setAttribute("alt", `The picture of the item ${data.name}`);
+        cardEl
+          .querySelector("img")
+          .setAttribute("alt", `The picture of the item ${data.name}`);
         cardEl.querySelector(".title").textContent = data.name;
         break;
+      case "template-luxurious-slider":
+      case "template-sustainable-slider":
+        if (!data) break;
+
+        cardEl.querySelector(".slide").dataset.itemId = data.id;
+        cardEl.querySelector(".title").textContent = data.title;
+        cardEl.querySelector("img").setAttribute("src", data.images[0]);
+        cardEl
+          .querySelector("img")
+          .setAttribute("alt", `The picture of the item ${data.title}`);
+        cardEl.querySelector(".currency").textContent =
+          currencies[selectedCurrencyCode].currencySign;
+        cardEl.querySelector(".price").textContent = convertPrice(data.price);
+        cardEl.querySelector(".price").dataset.originalPrice = data.price;
+        // cardEl.querySelector(".description").textContent = data.description;
+        break;
       default:
-        // nop ...
+      // nop ...
     }
   }
-    
+
   return cardEl;
 }
 
 /**
  * Gets DOM element by template id.
- * 
+ *
  * @param {String} templateId
  *    The template id.
  * @returns {Element}
@@ -733,7 +813,7 @@ function createCardByTemplateId(templateId, data=null) {
 function getElementByTemplateId(templateId) {
   let domEl = null;
 
-  if (!('content' in document.createElement('template'))) {
+  if (!("content" in document.createElement("template"))) {
     throw Error("HTML Error: this browser does not support template tag.");
   }
 
@@ -745,6 +825,252 @@ function getElementByTemplateId(templateId) {
   }
 
   return domEl;
+}
+
+/**
+ * Checks is the bounding rectangle of the given element
+ * is currently positioned in the window or document viewport.
+ *
+ * @param {Element} element
+ *    A DOM element to check is viewport.
+ * @returns {boolean}
+ *    Flag saying whether the element is in the current window viewport.
+ */
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+///
+// Event handlers / actions.
+///
+
+/**
+ * Routes to the homepage.
+ * @param {Event} event
+ *    The event object.
+ */
+function indexRoute(event) {
+  event.preventDefault();
+  switchPageTo("index");
+}
+
+/**
+ * Simple search action.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function searchAction(event) {
+  event.preventDefault();
+
+  const searchText = navSearchInputEl.value.trim();
+  navSearchInputEl.value = "";
+
+  if (searchText) {
+    const titleQuery = `?title=${searchText}`;
+    switchPageTo("products", titleQuery);
+  }
+}
+
+/**
+ * Event handler for currency toggler.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function handleSelectedCurrency(event) {
+  event.preventDefault();
+
+  if (event.target.parentNode.closest("ul")) {
+    let selectedEl = event.target.closest("li > a");
+    if (selectedEl) {
+      selectedCurrencyCode = selectedEl.dataset.currencyCode;
+      localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
+
+      // Fire currency events.
+      renderSelectedCurrency(selectedCurrencyCode);
+      renderCurrencies();
+      updatePrices();
+    }
+  }
+}
+
+/**
+ * Handles the breadcrumb trails routing.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function breadcrumbTrailActionHandler(event) {
+  event.preventDefault();
+
+  if (event.target.matches("a")) {
+    switchPageTo(event.target.dataset.pageName);
+  }
+}
+
+/**
+ * Navigation primary items hadler.
+ *
+ * It handles the routing depending on the attached action to the item.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function navPrimaryItemsHandler(event) {
+  if (event.target.matches("a:not(.promo-link)")) {
+    event.preventDefault();
+
+    const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
+    switchPageTo("products", categoryQuery);
+  } else if (event.target.matches("a.promo-link")) {
+    switchPageTo("index");
+  }
+}
+
+/**
+ * Event handler for item cards.
+ *
+ * It handles the routing of the card container depending on its type.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function bindItemCard(event) {
+  event.preventDefault();
+
+  const itemCard = event.target.closest(".item-card");
+  if (itemCard) {
+    const pageName = itemCard.dataset.itemAction;
+    const action = itemCard.dataset.itemId;
+    switchPageTo(pageName, action);
+  }
+}
+
+/**
+ * Event handler for CTA buttons.
+ *
+ * It handles the routing depending on the action of the button.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function handleCTAButton(event) {
+  event.preventDefault();
+
+  const action = event.target.dataset.ctaAction;
+  if (action) {
+    switchPageTo("category", action);
+  }
+}
+
+/**
+ * Scroll handler that controls the display of the To top button.
+ */
+function scroll2TopBtnDisplayHandler() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    back2TopBtn.style.display = "block";
+  } else {
+    back2TopBtn.style.display = "none";
+  }
+
+  if (window.scrollY > docMainEl.scrollHeight) {
+    back2TopBtn.classList.add("bottom-20");
+  } else {
+    back2TopBtn.classList.remove("bottom-20");
+  }
+}
+
+/**
+ * Handles the scroll to top action in the current window.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function scroll2TopActionHandler(event) {
+  event.preventDefault();
+
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+/**
+ * Handles the carousel back/next animation of the slides.
+ *
+ * @param {Event} event
+ *    The event object.
+ */
+function carouselMultiSlideHandler(event) {
+  event.preventDefault();
+  const slideBtn = event.target.closest("button");
+  const carouselMultiCtn = event.target.closest(".carousel-multi-items");
+  if (slideBtn.classList.contains("backward")) {
+    goPrevSlideAction(carouselMultiCtn);
+  } else if (slideBtn.classList.contains("forward")) {
+    goNextSlideAction(carouselMultiCtn);
+  }
+}
+
+/**
+ * The default offsets of the carousels slider.
+ *
+ * @type {{ luxurious-collection: integer, sustainable-collection: integer }}
+ */
+const defaultTransforms = Array.from(carouselMultiCtns).reduce(
+  (object, ctnEl) => Object.assign(object, { [ctnEl.id]: 0 }),
+  {}
+);
+
+/**
+ * The offset in pixels used to move to prev/next the slides.
+ * @type integer
+ */
+const defaultTransformOffset = 620;
+
+/**
+ *  Action to go to the next slide in the given multi carousel component.
+ *
+ * @param {Element} ctn
+ *    The DOM element of the multi carousel component.
+ */
+function goNextSlideAction(ctn) {
+  // Get the last transform.
+  let defaultTransform = defaultTransforms[ctn.id];
+
+  defaultTransform = defaultTransform - defaultTransformOffset;
+  const slider = ctn.querySelector(".slider");
+  if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7)
+    defaultTransform = 0;
+  slider.style.transform = "translateX(" + defaultTransform + "px)";
+
+  // Update transform with the new value.
+  defaultTransforms[ctn.id] = defaultTransform;
+}
+
+/**
+ *  Action to go to the previous slide in the given multi carousel component.
+ *
+ * @param {Element} ctn
+ *    The DOM element of the multi carousel component.
+ */
+function goPrevSlideAction(ctn) {
+  // Get the last transform.
+  let defaultTransform = defaultTransforms[ctn.id];
+
+  const slider = ctn.querySelector(".slider");
+  if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+  else defaultTransform = defaultTransform + defaultTransformOffset;
+  slider.style.transform = "translateX(" + defaultTransform + "px)";
+
+  // Update transform with the new value.
+  defaultTransforms[ctn.id] = defaultTransform;
 }
 
 // -------------------- PUBLIC API --------------------------
@@ -792,127 +1118,58 @@ function run() {
     // EVENT LISTENERS ------------------------------------------------------------ //
 
     // Navigation logo.
-    document
-      .querySelector(".navigation-logo")
-      .addEventListener("click", (event) => {
-        event.preventDefault();
-        switchPageTo("index");
-      });
+    navLogoEl.addEventListener("click", indexRoute);
 
     // Product categories links.
-    navPrimaryItemsEl.addEventListener("click", (event) => {
-      if (event.target.matches("a:not(.promo-link)")) {
-        event.preventDefault();
+    navPrimaryItemsEl.addEventListener("click", navPrimaryItemsHandler);
 
-        const categoryQuery = `?categoryId=${event.target.dataset.categoryId}`;
-        switchPageTo("products", categoryQuery);
-      } else if (event.target.matches("a.promo-link")) {
-        switchPageTo("index");
-      }
-    });
-
-    // Search box button.
-    navSearchButtonEl.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const searchText = navSearchInputEl.value.trim();
-      navSearchInputEl.value = "";
-
-      if (searchText) {
-        const titleQuery = `?title=${searchText}`;
-        switchPageTo("products", titleQuery);
-      }
-    });
-
-    // Event handler for currency.
-    const handleSelectedCurrency = (event) => {
-      event.preventDefault();
-
-      if (event.target.parentNode.closest("ul")) {
-        let selectedEl = event.target.closest("li > a");
-        if (selectedEl) {
-          selectedCurrencyCode = selectedEl.dataset.currencyCode;
-          localStorage.setItem("selectedCurrencyCode", selectedCurrencyCode);
-
-          // Fire currency events.
-          renderSelectedCurrency(selectedCurrencyCode);
-          renderCurrencies();
-          updatePrices();
-        }
-      }
-    }
+    // Search box.
+    navSearchFormEl.addEventListener("submit", searchAction);
+    navSearchButtonEl.addEventListener("click", searchAction);
 
     // Currency dropdown.
     currencyDropdownEl.addEventListener("click", handleSelectedCurrency);
 
     // Breadcrumbs trails.
-    navBreadcrumbEl.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      if (event.target.matches("a")) {
-        switchPageTo(event.target.dataset.pageName);
-      }
-    });
-
-    // Event handler for item cards.
-    const bindItemCard = (event) => {
-      event.preventDefault();
-
-      const itemCard = event.target.closest(".item-card");
-      if (itemCard) {
-        const pageName = itemCard.dataset.itemAction;
-        const action = itemCard.dataset.itemId;
-        switchPageTo(pageName, action);
-      }
-    };
+    navBreadcrumbEl.addEventListener("click", breadcrumbTrailActionHandler);
 
     // Item cards.
     productListEl.addEventListener("click", bindItemCard);
     bestsellersGridEl.addEventListener("click", bindItemCard);
     shopByCategoryGridEl.addEventListener("click", bindItemCard);
 
-    // Event handler for CTA buttons.
-    const handleCTAButton = (event) => {
-      event.preventDefault();
-
-      const action = event.target.dataset.ctaAction;
-      if (action) {
-        switchPageTo("category", action);
-      }
-    };
-
     // CTA buttons.
     heroPromoCtaBtn.addEventListener("click", handleCTAButton);
     featuredCollectionBtn.addEventListener("click", handleCTAButton);
 
-    // Back to top button.
-
-    // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () {
-      if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
-      ) {
-        back2TopBtn.style.display = "block";
-      } else {
-        back2TopBtn.style.display = "none";
-      }
-
-      if (window.scrollY > docMainEl.scrollHeight) {
-        back2TopBtn.classList.add("bottom-20");
-      } else {
-        back2TopBtn.classList.remove("bottom-20");
-      }
-    };
-
-    // When the user clicks on the button, scroll to the top of the document
-    back2TopBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+    // Multi carousels.
+    carouselMultiSlideBtns.forEach((slideBtn) => {
+      slideBtn.addEventListener("click", carouselMultiSlideHandler);
     });
 
+    // Adding multi carousel Navigation with keyboards ArrowLeft and ArrowRight.
+    document.addEventListener("keydown", function (event) {
+      carouselMultiCtns.forEach((ctnEl) => {
+        if (isInViewport(ctnEl)) {
+          switch (event.key) {
+            case "ArrowLeft":
+              event.preventDefault();
+              goPrevSlideAction(ctnEl);
+              break;
+            case "ArrowRight":
+              event.preventDefault();
+              goNextSlideAction(ctnEl);
+              break;
+          }
+        }
+      });
+    });
+
+    // Back to top button.
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = scroll2TopBtnDisplayHandler;
+    // When the user clicks on the button, scroll to the top of the document
+    back2TopBtn.addEventListener("click", scroll2TopActionHandler);
   } catch (error) {
     console.error(error);
   }
