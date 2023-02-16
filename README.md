@@ -58,8 +58,6 @@ Output:
   - [Authors](#authors)
   - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 *Fakee-Commerce* is the leading website offering the best fake shopping experience online.

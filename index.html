@@ -35,7 +35,7 @@
               sans: ["Inter", "sans-serif"],
             },
             gridTemplateRows: {
-              '[auto,auto,1fr]': 'auto auto 1fr',
+              "[auto,auto,1fr]": "auto auto 1fr",
             },
           },
         },
@@ -62,7 +62,9 @@
         <div class="sitestripe-middle flex w-1/2 justify-center">
           <!-- sitestripe headlines -->
           <div class="sitestripe-headlines uppercase">
-            <i class="fa-solid fa-truck"></i> Free shipping for orders over <span class="currency">£</span> <span class="price" data-original-price="50">50</span>
+            <i class="fa-solid fa-truck"></i> Free shipping for orders over
+            <span class="currency">£</span>
+            <span class="price" data-original-price="50">50</span>
           </div>
           <!-- end sitestripe headlines -->
         </div>
@@ -613,13 +615,44 @@
       <!-- end back to the top button -->
 
       <!-- breadcrumb -->
-      <nav id="nav-breadcrumb" class="breadcrumb bg-grey-light rounded-md w-full py-6" aria-label="Breadcrumb">
-        <ol class="list-reset mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8" role="list">
-          <li><a href="#" class="text-gray-600 hover:text-gray-700" data-page-name="index">Home</a></li>
-          <li><span class="text-gray-500 mx-2"><i class="fa-solid fa-angle-right"></i></span></li>
-          <li><a href="#" class="text-gray-600 hover:text-gray-700" data-page-name="products">Products</a></li>
-          <li><span class="text-gray-500 mx-2"><i class="fa-solid fa-angle-right"></i></span></li>
-          <li class="text-gray-500" data-page-name="details">Product details</li>
+      <nav
+        id="nav-breadcrumb"
+        class="breadcrumb bg-grey-light w-full rounded-md py-6"
+        aria-label="Breadcrumb"
+      >
+        <ol
+          class="list-reset mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+          role="list"
+        >
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-700"
+              data-page-name="index"
+              >Home</a
+            >
+          </li>
+          <li>
+            <span class="mx-2 text-gray-500"
+              ><i class="fa-solid fa-angle-right"></i
+            ></span>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-700"
+              data-page-name="products"
+              >Products</a
+            >
+          </li>
+          <li>
+            <span class="mx-2 text-gray-500"
+              ><i class="fa-solid fa-angle-right"></i
+            ></span>
+          </li>
+          <li class="text-gray-500" data-page-name="details">
+            Product details
+          </li>
         </ol>
       </nav>
       <!-- end breadcrumb -->
@@ -661,7 +694,8 @@
                 gifts and unforgettable experiences as we celebrate love in all
                 its forms.
               </h4>
-              <a id="hero-promo-cta-btn"
+              <a
+                id="hero-promo-cta-btn"
                 class="mb-2 mr-0 inline-block rounded bg-red-600 px-7 py-3 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg md:mb-0 md:mr-2"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
@@ -678,139 +712,378 @@
 
       <!-- page content -->
       <section class="page-content">
-
         <!-- homepage content -->
         <div id="homepage-content">
-
-          <!-- luxury collection multi item carousel -->
-          <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
-            <div class="w-full relative flex items-center justify-center">
-                <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
-                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+          <!-- luxurious collection multi item carousel -->
+          <div
+            class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+          >
+            <h2
+              class="text-2xl font-bold uppercase tracking-tight text-gray-900"
+            >
+              Luxurious Collection
+            </h2>
+            <div
+              id="luxurious-collection"
+              class="carousel-multi-items flex h-full w-full items-center justify-center py-24 px-4 sm:py-8"
+            >
+              <div class="relative flex w-full items-center justify-center">
+                <button
+                  aria-label="slide backward"
+                  class="slide backward absolute left-0 z-30 ml-10 cursor-pointer focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                >
+                  <svg
+                    class="dark:text-gray-900"
+                    width="8"
+                    height="14"
+                    viewBox="0 0 8 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 1L1 7L7 13"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </button>
-                <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                    <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 1</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
+                <div
+                  class="mx-auto h-full w-full overflow-x-hidden overflow-y-hidden"
+                >
+                  <div
+                    id="luxurious-slider"
+                    class="slider flex h-full items-center justify-start gap-14 transition duration-700 ease-out md:gap-6 lg:gap-8"
+                  >
+                    <!--                 
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 1
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
                     </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div> -->
+                  </div>
                 </div>
-                <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
-                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
+              </div>
+              <button
+                aria-label="slide forward"
+                class="slide forward absolute right-0 z-30 mr-10 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              >
+                <svg
+                  class="dark:text-gray-900"
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L1 13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
-          <!-- end luxury collection multi item carousel -->
-      
+          <!-- end luxurious collection multi item carousel -->
+
           <!-- shop bestsellers -->
           <div class="bg-white">
             <div
@@ -835,10 +1108,17 @@
           <!-- shop by category -->
           <div class="bg-gray-100">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-                <h2 class="text-2xl font-bold uppercase text-gray-900">Shop by Category</h2>
-          
-                <div id="shop-by-category-grid" class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+              <div
+                class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32"
+              >
+                <h2 class="text-2xl font-bold uppercase text-gray-900">
+                  Shop by Category
+                </h2>
+
+                <div
+                  id="shop-by-category-grid"
+                  class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0"
+                >
                   <!-- More categories... -->
                 </div>
               </div>
@@ -848,200 +1128,551 @@
 
           <!-- highlighted services -->
           <div class="2xl:container 2xl:mx-auto">
-            <div class="bg-gray-50 dark:bg-gray-800 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4">
-                <!-- Delivery grid Card -->
-                <div class="">
-                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1.svg" alt="delivery">
-                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1dark.svg" alt="delivery">
-                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Delivery</h3>
-                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Free worldwide delivery over orders above <span class="currency">£</span><span class="price" data-original-price="50">50</span></p>
-                </div>
-    
-                <!-- customer Grid Card -->
-    
-                <div class="">
-                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2.svg" alt="Customer Care">
-                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2dark.svg" alt="Customer Care">
-                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Customer Care</h3>
-                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Our customer care is available 24/7 at <span class="font-semibold cursor-pointer">+495-589-509</span> and <span class="font-semibold cursor-pointer">customercare@gmail.com</span></p>
-                </div>
-    
-                <!-- Recycle Grid Card -->
-    
-                <div class="">
-                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3.svg" alt="Recycle">
-                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3dark.svg" alt="Recycle">
-                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Recycle</h3>
-                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">All out products are 100 percent recycable</p>
-                </div>
-    
-                <!-- Secure Payment Card -->
-    
-                <div class="">
-                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4.svg" alt="Secure Payment">
-                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4dark.svg" alt="Secure Payment">
-                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Secure Payment</h3>
-                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Transaction process has end to end encryption</p>
-                </div>
+            <div
+              class="grid grid-cols-1 gap-14 bg-gray-50 py-10 px-4 dark:bg-gray-800 md:grid-cols-2 md:gap-12 md:px-12 lg:grid-cols-4 lg:gap-8 lg:px-20 lg:py-12"
+            >
+              <!-- Delivery grid Card -->
+              <div class="">
+                <img
+                  class="dark:hidden"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1.svg"
+                  alt="delivery"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1dark.svg"
+                  alt="delivery"
+                />
+                <h3
+                  class="mt-8 text-xl font-semibold leading-5 text-gray-800 dark:text-white lg:mt-10"
+                >
+                  Delivery
+                </h3>
+                <p
+                  class="mt-4 w-full text-base font-normal leading-6 text-gray-600 dark:text-gray-300 md:w-9/12 lg:w-full"
+                >
+                  Free worldwide delivery over orders above
+                  <span class="currency">£</span
+                  ><span class="price" data-original-price="50">50</span>
+                </p>
+              </div>
+
+              <!-- customer Grid Card -->
+
+              <div class="">
+                <img
+                  class="dark:hidden"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2.svg"
+                  alt="Customer Care"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2dark.svg"
+                  alt="Customer Care"
+                />
+                <h3
+                  class="mt-8 text-xl font-semibold leading-5 text-gray-800 dark:text-white lg:mt-10"
+                >
+                  Customer Care
+                </h3>
+                <p
+                  class="mt-4 w-full text-base font-normal leading-6 text-gray-600 dark:text-gray-300 md:w-9/12 lg:w-full"
+                >
+                  Our customer care is available 24/7 at
+                  <span class="cursor-pointer font-semibold">+495-589-509</span>
+                  and
+                  <span class="cursor-pointer font-semibold"
+                    >customercare@gmail.com</span
+                  >
+                </p>
+              </div>
+
+              <!-- Recycle Grid Card -->
+
+              <div class="">
+                <img
+                  class="dark:hidden"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3.svg"
+                  alt="Recycle"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3dark.svg"
+                  alt="Recycle"
+                />
+                <h3
+                  class="mt-8 text-xl font-semibold leading-5 text-gray-800 dark:text-white lg:mt-10"
+                >
+                  Recycle
+                </h3>
+                <p
+                  class="mt-4 w-full text-base font-normal leading-6 text-gray-600 dark:text-gray-300 md:w-9/12 lg:w-full"
+                >
+                  All out products are 100 percent recycable
+                </p>
+              </div>
+
+              <!-- Secure Payment Card -->
+
+              <div class="">
+                <img
+                  class="dark:hidden"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4.svg"
+                  alt="Secure Payment"
+                />
+                <img
+                  class="hidden dark:block"
+                  src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4dark.svg"
+                  alt="Secure Payment"
+                />
+                <h3
+                  class="mt-8 text-xl font-semibold leading-5 text-gray-800 dark:text-white lg:mt-10"
+                >
+                  Secure Payment
+                </h3>
+                <p
+                  class="mt-4 w-full text-base font-normal leading-6 text-gray-600 dark:text-gray-300 md:w-9/12 lg:w-full"
+                >
+                  Transaction process has end to end encryption
+                </p>
+              </div>
             </div>
           </div>
           <!-- end highlighted services -->
 
           <!-- featured collection -->
-          <div class="lg:px-20 md:px-6 px-4 md:py-12 py-8">
-            <div class="lg:flex items-center justify-between">
-                <div class="lg:w-1/3">
-                    <h1 class="text-4xl font-semibold leading-9 text-gray-80">Indoor Interiors</h1>
-                    <p class="text-base leading-6 mt-4 text-gray-600">Get inspired by our curated selection of luxiwood interiors. We hope get inspired to have luxiwood interior yourself. You’ll find tips here where you can buy a lot of cool furniture.</p>
-                    <button id="featured-collection-button" data-cta-action="3" role="button" aria-label="view catalogue" class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 focus:outline-none mt-6 md:mt-8 text-base font-semibold leading-none text-gray-800 flex items-center hover:underline">
-                        View Catalogue
-                        <img class="ml-2 mt-1 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1.svg" alt="arrow">
-                        <img class="ml-2 mt-1 hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1dark.svg" alt="arrow">
-                    </button>
+          <div class="px-4 py-8 md:px-6 md:py-12 lg:px-20">
+            <div class="items-center justify-between lg:flex">
+              <div class="lg:w-1/3">
+                <h1 class="text-gray-80 text-4xl font-semibold leading-9">
+                  Indoor Interiors
+                </h1>
+                <p class="mt-4 text-base leading-6 text-gray-600">
+                  Get inspired by our curated selection of luxiwood interiors.
+                  We hope get inspired to have luxiwood interior yourself.
+                  You’ll find tips here where you can buy a lot of cool
+                  furniture.
+                </p>
+                <button
+                  id="featured-collection-button"
+                  data-cta-action="3"
+                  role="button"
+                  aria-label="view catalogue"
+                  class="mt-6 flex items-center text-base font-semibold leading-none text-gray-800 hover:underline focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2 md:mt-8"
+                >
+                  View Catalogue
+                  <img
+                    class="ml-2 mt-1 dark:hidden"
+                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1.svg"
+                    alt="arrow"
+                  />
+                  <img
+                    class="ml-2 mt-1 hidden dark:block"
+                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1dark.svg"
+                    alt="arrow"
+                  />
+                </button>
+              </div>
+              <div class="mt-8 lg:mt-0 lg:w-7/12">
+                <div class="h-full w-full bg-red-200">
+                  <img
+                    src="https://i.ibb.co/cbyDY74/pexels-max-vakhtbovych-6782351-1-1.png"
+                    alt="apartment design"
+                    class="hidden w-full sm:block"
+                  />
+                  <img
+                    src="https://i.ibb.co/ZVPGjGJ/pexels-max-vakhtbovych-6782351-1.png"
+                    alt="apartment design"
+                    class="block w-full sm:hidden"
+                  />
                 </div>
-                <div class="lg:w-7/12 lg:mt-0 mt-8">
-                    <div class="w-full h-full bg-red-200">
-                        <img src="https://i.ibb.co/cbyDY74/pexels-max-vakhtbovych-6782351-1-1.png" alt="apartment design" class="w-full sm:block hidden" />
-                        <img src="https://i.ibb.co/ZVPGjGJ/pexels-max-vakhtbovych-6782351-1.png" alt="apartment design" class="sm:hidden block w-full" />
-                    </div>
-                    <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 lg:gap-8 gap-6 lg:mt-8 md:mt-6 mt-4">
-                        <img src="https://i.ibb.co/4Jrp5TB/pexels-max-vakhtbovych-6782370-1.png" class="w-full" alt="kitchen" />
-                        <img src="https://i.ibb.co/0Jv3FSy/pexels-max-vakhtbovych-6436799-1-1.png" class="w-full" alt="sitting room" />
-                    </div>
+                <div
+                  class="mt-4 grid gap-6 sm:grid-cols-2 md:mt-6 md:grid-cols-2 lg:mt-8 lg:grid-cols-2 lg:gap-8 xl:grid-cols-2"
+                >
+                  <img
+                    src="https://i.ibb.co/4Jrp5TB/pexels-max-vakhtbovych-6782370-1.png"
+                    class="w-full"
+                    alt="kitchen"
+                  />
+                  <img
+                    src="https://i.ibb.co/0Jv3FSy/pexels-max-vakhtbovych-6436799-1-1.png"
+                    class="w-full"
+                    alt="sitting room"
+                  />
                 </div>
+              </div>
             </div>
           </div>
           <!--end featured collection -->
 
           <!-- sustainable collection multi item carousel -->
-          <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
-            <div class="w-full relative flex items-center justify-center">
-                <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
-                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+          <div
+            class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
+          >
+            <h2
+              class="text-2xl font-bold uppercase tracking-tight text-gray-900"
+            >
+              Sustainable Collection
+            </h2>
+            <div
+              id="sustainable-collection"
+              class="carousel-multi-items flex h-full w-full items-center justify-center py-24 px-4 sm:py-8"
+            >
+              <div class="relative flex w-full items-center justify-center">
+                <button
+                  aria-label="slide backward"
+                  class="slide backward absolute left-0 z-30 ml-10 cursor-pointer focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                >
+                  <svg
+                    class="dark:text-gray-900"
+                    width="8"
+                    height="14"
+                    viewBox="0 0 8 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 1L1 7L7 13"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </button>
-                <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
-                    <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 1</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
-                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
-                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
-                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
-                                <div class="flex h-full items-end pb-6">
-                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
-                                </div>
-                            </div>
-                        </div>
+                <div
+                  class="mx-auto h-full w-full overflow-x-hidden overflow-y-hidden"
+                >
+                  <div
+                    id="sustainable-slider"
+                    class="slider flex h-full items-center justify-start gap-14 transition duration-700 ease-out md:gap-6 lg:gap-8"
+                  >
+                    <!-- <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 1
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
                     </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/fDngH9G/carosel-1.png"
+                      alt="black chair and white table"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/DWrGxX6/carosel-2.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/tCfVky2/carosel-3.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+                  >
+                    <img
+                      src="https://i.ibb.co/rFsGfr5/carosel-4.png"
+                      alt="sitting area"
+                      class="w-full object-cover object-center"
+                    />
+                    <div
+                      class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6"
+                    >
+                      <h2
+                        class="text-base leading-4 text-white dark:text-gray-900 lg:text-xl lg:leading-5"
+                      >
+                        Catalog 2
+                      </h2>
+                      <div class="flex h-full items-end pb-6">
+                        <h3
+                          class="text-xl font-semibold leading-5 text-white dark:text-gray-900 lg:text-2xl lg:leading-6"
+                        >
+                          Minimal Interior
+                        </h3>
+                      </div>
+                    </div> -->
+                  </div>
                 </div>
-                <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
-                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
+              </div>
+              <button
+                aria-label="slide forward"
+                class="slide forward absolute right-0 z-30 mr-10 focus:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+              >
+                <svg
+                  class="dark:text-gray-900"
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L7 7L1 13"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
           <!-- end sustainable collection multi item carousel -->
-
         </div>
         <!-- end homepage content -->
 
@@ -1202,7 +1833,7 @@
           <div>
             <form action="">
               <div
-                class="gird-cols-1 flex grid items-center justify-center gap-4 md:grid-cols-3"
+                class="flex grid grid-cols-1 items-center justify-center gap-4 md:grid-cols-3"
               >
                 <div class="md:ml-auto md:mb-6">
                   <p class="">
@@ -1288,7 +1919,7 @@
       <!-- footer bottom -->
       <section
         id="footer-bottom"
-        class="flex flex-col lg:flex-row items-center justify-between border-t-2 border-solid px-12"
+        class="flex flex-col items-center justify-between border-t-2 border-solid bg-gray-50 px-12 lg:flex-row"
       >
         <div class="copyright py-4 text-center">
           © 2023 <a href="./index.html">Fakee-Commerce Retail Ltd</a>.
@@ -1327,24 +1958,32 @@
           <div>
             <h3 class="text-sm text-gray-700">
               <a href="#">
-                <span
-                  aria-hidden="true"
-                  class="absolute inset-0"
-                ></span>
+                <span aria-hidden="true" class="absolute inset-0"></span>
                 <span class="title"></span>
               </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-500"><span class="description"></span></p>
+            <p class="mt-1 text-sm text-gray-500">
+              <span class="description"></span>
+            </p>
           </div>
-          <p class="text-sm font-medium text-gray-900"><span class="currency"></span><span class="price" data-original-price=""></span></p>
+          <p class="text-sm font-medium text-gray-900">
+            <span class="currency"></span
+            ><span class="price" data-original-price=""></span>
+          </p>
         </div>
-      </div> 
+      </div>
     </template>
 
     <template id="template-shop-by-category-grid">
-      <div class="item-card category-card group relative" data-item-id="" data-item-action="details">
-        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-          <img src="" alt="" class="h-full w-full object-cover object-center">
+      <div
+        class="item-card category-card group relative"
+        data-item-id=""
+        data-item-action="details"
+      >
+        <div
+          class="sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1 relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:h-64"
+        >
+          <img src="" alt="" class="h-full w-full object-cover object-center" />
         </div>
         <h3 class="mt-6 text-sm text-gray-500">
           <a href="#">
@@ -1352,23 +1991,41 @@
             <span class="title"></span>
           </a>
         </h3>
-        <p class="text-base font-semibold text-gray-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptatem!</p>
+        <p class="text-base font-semibold text-gray-900">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+          voluptatem!
+        </p>
       </div>
     </template>
 
     <template id="template-promo-category-card">
-      <div class="item-card category-card group relative" data-item-id="5" data-item-action="category">
-        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-          <img src="./assets/img/category-saint-valentines.jpg" alt="Saint Valentines category image" class="h-full w-full object-cover object-center">
+      <div
+        class="item-card category-card group relative"
+        data-item-id="5"
+        data-item-action="category"
+      >
+        <div
+          class="sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1 relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:h-64"
+        >
+          <img
+            src="./assets/img/category-saint-valentines.jpg"
+            alt="Saint Valentines category image"
+            class="h-full w-full object-cover object-center"
+          />
         </div>
         <h3 class="mt-6 text-sm text-gray-500">
           <a href="#valentines-promo" data-cta-action="5">
             <span class="absolute inset-0"></span>
-            <span class="title text-red-600"><i class="fa-solid fa-gift"></i> Saint Valentine</span>
+            <span class="title text-red-600"
+              ><i class="fa-solid fa-gift"></i> Saint Valentine</span
+            >
           </a>
         </h3>
-        <p class="text-base font-semibold text-gray-900">Treat your favourite person to delicious food, fancy drinks, a thoughtful gift, or an unforgettable experience.</p>
-      </div>      
+        <p class="text-base font-semibold text-gray-900">
+          Treat your favourite person to delicious food, fancy drinks, a
+          thoughtful gift, or an unforgettable experience.
+        </p>
+      </div>
     </template>
 
     <template id="template-product-details-item">
@@ -1378,7 +2035,8 @@
           <div
             class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8"
           >
-            <div id="image-left"
+            <div
+              id="image-left"
               class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block"
             >
               <img
@@ -1387,7 +2045,10 @@
                 class="h-full w-full object-cover object-center"
               />
             </div>
-            <div id="images-center" class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+            <div
+              id="images-center"
+              class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"
+            >
               <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
                   src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
@@ -1403,7 +2064,8 @@
                 />
               </div>
             </div>
-            <div id="image-right"
+            <div
+              id="image-right"
               class="aspect-w-4 aspect-h-5 lg:aspect-w-3 lg:aspect-h-4 sm:overflow-hidden sm:rounded-lg"
             >
               <img
@@ -1418,9 +2080,7 @@
           <div
             class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24"
           >
-            <div
-              class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8"
-            >
+            <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1
                 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
               >
@@ -1431,7 +2091,10 @@
             <!-- Options -->
             <div class="mt-4 lg:row-span-3 lg:mt-0">
               <h2 class="sr-only">Product information</h2>
-              <p class="text-3xl tracking-tight text-gray-900"><span class="currency">£</span><span class="price" data-original-price="192">192</span></p>
+              <p class="text-3xl tracking-tight text-gray-900">
+                <span class="currency">£</span
+                ><span class="price" data-original-price="192">192</span>
+              </p>
 
               <!-- Reviews -->
               <div class="mt-6">
@@ -1840,19 +2503,17 @@
                 <div class="space-y-6">
                   <p id="description" class="text-base text-gray-900">
                     The Basic Tee 6-Pack allows you to fully express your
-                    vibrant personality with three grayscale options.
-                    Feeling adventurous? Put on a heather gray tee. Want to
-                    be a trendsetter? Try our exclusive colorway:
-                    &quot;Black&quot;. Need to add an extra pop of color to
-                    your outfit? Our white tee has you covered.
+                    vibrant personality with three grayscale options. Feeling
+                    adventurous? Put on a heather gray tee. Want to be a
+                    trendsetter? Try our exclusive colorway: &quot;Black&quot;.
+                    Need to add an extra pop of color to your outfit? Our white
+                    tee has you covered.
                   </p>
                 </div>
               </div>
 
               <div class="mt-10">
-                <h3 class="text-sm font-medium text-gray-900">
-                  Highlights
-                </h3>
+                <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
 
                 <div class="mt-4">
                   <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
@@ -1875,9 +2536,7 @@
                     </li>
 
                     <li class="text-gray-400">
-                      <span class="text-gray-600"
-                        >Ultra-soft 100% cotton</span
-                      >
+                      <span class="text-gray-600">Ultra-soft 100% cotton</span>
                     </li>
                   </ul>
                 </div>
@@ -1888,15 +2547,71 @@
 
                 <div class="mt-4 space-y-6">
                   <p class="text-sm text-gray-600">
-                    The 6-Pack includes two black, two white, and two
-                    heather gray Basic Tees. Sign up for our subscription
-                    service and be the first to get new, exciting colors,
-                    like our upcoming &quot;Charcoal Gray&quot; limited
-                    release.
+                    The 6-Pack includes two black, two white, and two heather
+                    gray Basic Tees. Sign up for our subscription service and be
+                    the first to get new, exciting colors, like our upcoming
+                    &quot;Charcoal Gray&quot; limited release.
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="template-luxurious-slider">
+      <div
+        class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+        data-item-id=""
+        data-item-action="search"
+        data-item-keyword="luxurious"
+      >
+        <img
+          src="https://i.ibb.co/fDngH9G/carosel-1.png"
+          alt="black chair and white table"
+          class="w-full object-cover object-center"
+        />
+        <div class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6">
+          <h2 class="text-base leading-4 text-white lg:text-xl lg:leading-5">
+            <span class="title">Catalog 1</span>
+          </h2>
+          <div class="flex h-full items-end pb-6">
+            <h3
+              class="text-xl font-semibold leading-5 text-white lg:text-2xl lg:leading-6"
+            >
+              <span class="currency">£</span
+              ><span class="price" data-original-price="50">50</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="template-sustainable-slider">
+      <div
+        class="slide relative flex w-full flex-shrink-0 sm:w-auto"
+        data-item-id=""
+        data-item-action="search"
+        data-item-keyword="fantastic"
+      >
+        <img
+          src="https://i.ibb.co/fDngH9G/carosel-1.png"
+          alt="black chair and white table"
+          class="w-full object-cover object-center"
+        />
+        <div class="absolute h-full w-full bg-gray-800 bg-opacity-30 p-6">
+          <h2 class="text-base leading-4 text-white lg:text-xl lg:leading-5">
+            <span class="title">Catalog 1</span>
+          </h2>
+          <div class="flex h-full items-end pb-6">
+            <h3
+              class="text-xl font-semibold leading-5 text-white lg:text-2xl lg:leading-6"
+            >
+              <span class="currency">£</span
+              ><span class="price" data-original-price="50">50</span>
+              <span class="description"></span>
+            </h3>
           </div>
         </div>
       </div>
