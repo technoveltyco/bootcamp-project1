@@ -10,7 +10,9 @@ const currencyDropdownButtonEl = document.querySelector(
 );
 const currencyMenuItemsEl = document.querySelector("#currency-menu-items");
 const navBreadcrumbEl = document.querySelector("#nav-breadcrumb");
+// filters and sorting
 const sortSelectorEl = document.querySelector("#sortSelector");
+const priceFilterEl = document.querySelector("#priceFilter");
 
 // OBJECTS --------------------------------------------------------- //
 const endpoints = {
@@ -87,8 +89,12 @@ const nav = {
 
 const filters = {
   none: (product) => product,
+  id: (id) => {
+    return (product) => product.id === id;
+  },
   price: (min, max) => {
-    return (product) => product.price >= min && product.price <= max;
+    return (product) =>
+      convertPrice(product.price) >= min && convertPrice(product.price) <= max;
   },
   category: (id) => {
     return (product) => product.category.id === id;
@@ -99,7 +105,7 @@ const filters = {
   },
 };
 
-const comparators = {
+const sorters = {
   none: (product) => product,
   priceAsc: (productA, productB) => productA.price - productB.price,
   priceDesc: (productA, productB) => productB.price - productA.price,
@@ -107,23 +113,34 @@ const comparators = {
 
 const products = {
   actual: [],
-  get(aFilter, aSort) {
-    return this.actual.filter(aFilter).sort(aSort);
+  get(aFilterArr) {
+    let results = this.actual;
+
+    aFilterArr.forEach((aFilter) => {
+      results = results.filter(aFilter);
+    });
+
+    return results;
   },
+  // get(aFilter, aSort) {
+  //   return this.actual.filter(aFilter).sort(aSort);
+  // },
   async load(endpoint) {
     const queryString = "?offset=0&limit=500";
     try {
       const response = await fetch(endpoint + queryString, options);
       const products = await response.json();
-      this.actual = products;
-
-      console.log(endpoint + queryString);
-      console.log(products);
+      this.actual = await products;
     } catch (err) {
       return console.error(err);
     }
   },
 };
+
+// const myFilter = {
+//   title: "",
+//   price: { min: 0, max: 100 },
+// };
 
 products.load(endpoints["platzi"]["products"]);
 
@@ -143,9 +160,77 @@ nav.goto("home");
 
 // FUNCTIONS ------------------------------------------------------- //
 
+// function myFilterProds() {
+//   const fps = products.get2([filters.category(2), filters.price(0, 100)]);
+
+//   renderProducts(fps);
+// }
+
+function getFiltersFromUI() {
+  const searchText = navSearchInputEl.value.trim();
+  const navCategoryId = Number(navPrimaryItemsEl.dataset.selectedCategoryId);
+
+  const priceFilter = priceFilterEl.value;
+
+  const productFilters = [];
+  if (searchText && navCategoryId === 0) {
+    productFilters.push(filters.title(searchText));
+  }
+  if (navCategoryId !== 0) {
+    // alert("navFilter");
+    productFilters.push(filters.category(navCategoryId));
+  }
+  if (priceFilter !== "none") {
+    const filterArgs = JSON.parse(priceFilter);
+    productFilters.push(filters.price(filterArgs.min, filterArgs.max));
+  }
+  // if (searchText) {
+  //   cullFilters.push(filters.title(searchText));
+  // }
+
+  // const cps = products.get(productFilters);
+  // renderProducts(cps);
+
+  return productFilters;
+}
+// function getSorterFromUI() {
+//   const sortSelector = sortSelectorEl.value;
+
+//   const productSorters = [];
+//   if (searchText && navCategoryId === 0) {
+//     productSorters.push(sorters.title(searchText));
+//   }
+//   if (navCategoryId !== 0) {
+//     // alert("navFilter");
+//     productSorters.push(sorters.category(navCategoryId));
+//   }
+//   if (sortSelector !== "none") {
+//     const filterArgs = JSON.parse(sortSelector);
+//     productSorters.push(sorters.price(filterArgs.min, filterArgs.max));
+//   }
+
+//   return sortSelector;
+// }
+
+function refreshProducts() {
+  const productFilters = getFiltersFromUI();
+  const sortSelector = sortSelectorEl.value;
+
+  const filteredProducts = products.get(productFilters);
+
+  if (sortSelector !== "none") {
+    filteredProducts.sort(sorters[sortSelector]);
+  }
+  renderProducts(filteredProducts);
+}
+
 function displayProductDetails(productID) {
   // TODO: implement product details here
   document.querySelector("#temp-product-id").textContent = productID;
+
+  const [productResult] = products.get([filters.id(productID)]);
+  document.querySelector("#temp-product-id").textContent +=
+    JSON.stringify(productResult);
 }
 
 // function switchPageTo(pageName) {
@@ -331,6 +416,7 @@ function createCard(item) {
 
   newCardDiv.classList.add(
     "product-card",
+    "cursor-pointer",
     "w-full",
     "m-1",
     "max-w-sm",
@@ -351,7 +437,7 @@ function createCard(item) {
     <a href="#">
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
       item.title
-    }</h5>
+    } cat: ${item.category.id}</h5>
     </a>
     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${
       item.description
@@ -391,6 +477,7 @@ function renderProducts(productResults) {
 // }
 
 // document.querySelector("#searchRefiner").innerHTML = createSortSelector();
+
 // EVENT LISTENERS ------------------------------------------------------------ //
 
 navPrimaryItemsEl.addEventListener("click", (event) => {
@@ -398,16 +485,29 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
 
   if (event.target.matches("a")) {
     const categoryId = Number(event.target.dataset.categoryId);
-    const productResults = products.get(
-      filters.category(categoryId),
-      comparators.none
-    );
-    renderProducts(productResults);
+
+    navPrimaryItemsReset();
+    navSearchInputEl.value = "";
+
+    navPrimaryItemsEl.dataset.selectedCategoryId = categoryId;
+
+    event.target.parentNode.classList.add("font-bold");
+
+    refreshProducts();
+    // const productFilters = getFiltersFromUI();
+    // const productResults = products.get(productFilters);
+    // renderProducts(productResults);
   }
 
   nav.goto("products");
 });
 
+function navPrimaryItemsReset() {
+  navPrimaryItemsEl.childNodes.forEach((listItem) =>
+    listItem.classList.remove("font-bold")
+  );
+  navPrimaryItemsEl.dataset.selectedCategoryId = 0;
+}
 // navPrimaryItemsEl.addEventListener("click", (event) => {
 //   event.preventDefault();
 
@@ -418,19 +518,30 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
 
 //   nav.goto("products");
 // });
+navSearchInputEl.addEventListener("keypress", (event) => {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    event.preventDefault();
+    // Trigger the button element with a click
+    navSearchButtonEl.click();
+  }
+});
 
 navSearchButtonEl.addEventListener("click", (event) => {
   event.preventDefault();
 
   const searchText = navSearchInputEl.value.trim();
 
-  if (searchText) {
-    const productResults = products.get(
-      filters.title(searchText),
-      comparators.none
-    );
-    renderProducts(productResults);
-  }
+  // if (searchText) {
+  //   const productResults = products.get(
+  //     filters.title(searchText),
+  //     comparators.none
+  //   );
+  //   renderProducts(productResults);
+  // }
+  navPrimaryItemsReset();
+
+  refreshProducts();
 
   nav.goto("products");
 });
@@ -468,6 +579,21 @@ currencyDropdownEl.addEventListener("click", (event) => {
         const productPrice = Number.parseFloat(priceEl.dataset.originalPrice);
         priceEl.textContent = convertPrice(productPrice);
       });
+
+      // document.querySelectorAll(".option-price").forEach((opt) => {
+      //   const productPrice = Number.parseFloat(opt.dataset.originalPrice);
+      //   opt.textContent = convertPrice(productPrice);
+      // });
+      // priceFilterEl.childNodes.forEach(opt => alert(opt.value))
+      // console.log(priceFilterEl.children);
+      // [...priceFilterEl.children].forEach((opt) => {
+
+      //   if (opt.value !== "none") {
+      //     const optValue = JSON.parse(opt.value);
+      //     opt.textContent = `${convertPrice(optValue.min)} to ${convertPrice(optValue.max)}`;
+      //   }
+      // });
+      refreshProducts();
     }
   }
 });
@@ -485,7 +611,8 @@ productListEl.addEventListener("click", (event) => {
 
   const productCard = event.target.closest(".product-card");
   if (productCard) {
-    displayProductDetails(productCard.dataset.productID);
+    const productID = Number(productCard.dataset.productID);
+    displayProductDetails(productID);
     nav.goto("details");
   }
 });
@@ -493,11 +620,26 @@ productListEl.addEventListener("click", (event) => {
 sortSelectorEl.addEventListener("change", (event) => {
   event.preventDefault();
 
-  const comparatorName = event.target.value;
-  const productResults = products.get(
-    filters.none,
-    comparators[comparatorName]
-  );
-  renderProducts(productResults);
+  // const comparatorName = event.target.value;
+  // const productResults = products.get(
+  //   filters.none,
+  //   comparators[comparatorName]
+  // );
+  // renderProducts(productResults);
+  refreshProducts();
+});
+
+priceFilterEl.addEventListener("change", (event) => {
+  event.preventDefault();
+
+  // const filterArgs = event.target.value;
+  // const filterArgs = JSON.parse(event.target.value);
+  // console.log(filterArgs);
+  // const productResults = products.get(
+  //   filters.price(filterArgs.min, filterArgs.max),
+  //   comparators.none
+  // );
+  // renderProducts(productResults);
+  refreshProducts();
 });
 

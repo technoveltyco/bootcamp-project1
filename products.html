@@ -278,7 +278,7 @@
               id="navbarUserToolsNavigation"
             >
               <!-- search toggle / sm screens -->
-              <a id="nav-search-button" class="block">
+              <a id="nav-search-button" class="block cursor-pointer">
                 <svg
                   class="h-5 w-5"
                   fill="none"
@@ -469,6 +469,7 @@
               <ul
                 class="navigation-items navbar-nav mr-auto flex flex-col items-center justify-center lg:flex-row lg:justify-start"
                 id="nav-primary-items"
+                data-selected-category-id="0"
               >
                 <li class="product-category nav-item">
                   <a
@@ -652,12 +653,12 @@
         <!-- breadcrumb -->
         <nav id="nav-breadcrumb" class="breadcrumd w-full rounded-md py-4">
           <ol class="list-reset flex">
-            <li class="pr-6 text-gray-500" data-page-name="home">Home</li>
-            <li class="pr-6 text-gray-500" data-page-name="products">
+            <li class="pr-6 text-gray-500 cursor-pointer" data-page-name="home">Home</li>
+            <li class="pr-6 text-gray-500 cursor-pointer" data-page-name="products">
               Products
             </li>
-            <li class="pr-6 text-gray-500" data-page-name="details">
-              Product Details
+            <li class="pr-6 text-gray-500 cursor-pointer" data-page-name="details">
+            Product Details
             </li>
           </ol>
         </nav>
@@ -844,13 +845,24 @@
           <!-- search refiner -->
           <div id="searchRefiner" class="flex justify-end">
             <select
+              id="priceFilter"
+              class="form-select form-select-sm m-0 mb-3 mr-3 block w-32 appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-sm font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+              aria-label=".form-select-sm example"
+            >
+              <option value="none" selected>Price</option>
+              <option class="option-price" value='{"min":0,"max":100}'>
+                0 to 100</span>
+              </option>
+              <option value='{"min":100,"max":500}'>100 to 500</option>
+            </select>
+            <select
               id="sortSelector"
-              class="form-select form-select-lg m-0 mb-3 mb-3 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-xl font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none xl:w-96"
-              aria-label=".form-select-lg example"
+              class="form-select form-select-sm m-0 mb-3 block w-32 appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-sm font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+              aria-label=".form-select-sm example"
             >
               <option value="none" selected>None</option>
-              <option value="priceAsc">Price Ascending</option>
-              <option value="priceDesc">Price Descending</option>
+              <option value="priceAsc">Price Asc</option>
+              <option value="priceDesc">Price Desc</option>
             </select>
           </div>
           <!-- end search refiner -->
