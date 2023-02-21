@@ -34,6 +34,9 @@
             fontFamily: {
               sans: ["Inter", "sans-serif"],
             },
+            gridTemplateRows: {
+              '[auto,auto,1fr]': 'auto auto 1fr',
+            },
           },
         },
       };
@@ -59,7 +62,7 @@
         <div class="sitestripe-middle flex w-1/2 justify-center">
           <!-- sitestripe headlines -->
           <div class="sitestripe-headlines uppercase">
-            <i class="fa-solid fa-truck"></i> Free shipping for orders over £50
+            <i class="fa-solid fa-truck"></i> Free shipping for orders over <span class="currency">£</span> <span class="price" data-original-price="50">50</span>
           </div>
           <!-- end sitestripe headlines -->
         </div>
@@ -610,13 +613,13 @@
       <!-- end back to the top button -->
 
       <!-- breadcrumb -->
-      <nav id="nav-breadcrumb" class="breadcrumb w-full rounded-md py-4">
-        <ol class="list-reset flex">
-          <li class="pr-6 text-gray-500" data-page-name="index">Home</li>
-          <li class="pr-6 text-gray-500" data-page-name="products">Products</li>
-          <li class="pr-6 text-gray-500" data-page-name="details">
-            Product Details
-          </li>
+      <nav id="nav-breadcrumb" class="breadcrumb bg-grey-light rounded-md w-full py-6" aria-label="Breadcrumb">
+        <ol class="list-reset mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8" role="list">
+          <li><a href="#" class="text-gray-600 hover:text-gray-700" data-page-name="index">Home</a></li>
+          <li><span class="text-gray-500 mx-2"><i class="fa-solid fa-angle-right"></i></span></li>
+          <li><a href="#" class="text-gray-600 hover:text-gray-700" data-page-name="products">Products</a></li>
+          <li><span class="text-gray-500 mx-2"><i class="fa-solid fa-angle-right"></i></span></li>
+          <li class="text-gray-500" data-page-name="details">Product details</li>
         </ol>
       </nav>
       <!-- end breadcrumb -->
@@ -658,10 +661,11 @@
                 gifts and unforgettable experiences as we celebrate love in all
                 its forms.
               </h4>
-              <a
+              <a id="hero-promo-cta-btn"
                 class="mb-2 mr-0 inline-block rounded bg-red-600 px-7 py-3 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg md:mb-0 md:mr-2"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
+                data-cta-action="5"
                 href="#!"
                 role="button"
                 >Shop now</a
@@ -673,9 +677,140 @@
       <!-- end hero banner / jumbotron -->
 
       <!-- page content -->
-      <section class="page-content px-12">
+      <section class="page-content">
+
         <!-- homepage content -->
         <div id="homepage-content">
+
+          <!-- luxury collection multi item carousel -->
+          <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
+            <div class="w-full relative flex items-center justify-center">
+                <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                    <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 1</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+          </div>
+          <!-- end luxury collection multi item carousel -->
+      
           <!-- shop bestsellers -->
           <div class="bg-white">
             <div
@@ -696,6 +831,217 @@
             </div>
           </div>
           <!-- end shop bestsellers -->
+
+          <!-- shop by category -->
+          <div class="bg-gray-100">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+                <h2 class="text-2xl font-bold uppercase text-gray-900">Shop by Category</h2>
+          
+                <div id="shop-by-category-grid" class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+                  <!-- More categories... -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end shop by category -->
+
+          <!-- highlighted services -->
+          <div class="2xl:container 2xl:mx-auto">
+            <div class="bg-gray-50 dark:bg-gray-800 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-8 md:gap-12 gap-14 lg:px-20 lg:py-12 py-10 md:px-12 px-4">
+                <!-- Delivery grid Card -->
+                <div class="">
+                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1.svg" alt="delivery">
+                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg1dark.svg" alt="delivery">
+                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Delivery</h3>
+                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Free worldwide delivery over orders above <span class="currency">£</span><span class="price" data-original-price="50">50</span></p>
+                </div>
+    
+                <!-- customer Grid Card -->
+    
+                <div class="">
+                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2.svg" alt="Customer Care">
+                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg2dark.svg" alt="Customer Care">
+                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Customer Care</h3>
+                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Our customer care is available 24/7 at <span class="font-semibold cursor-pointer">+495-589-509</span> and <span class="font-semibold cursor-pointer">customercare@gmail.com</span></p>
+                </div>
+    
+                <!-- Recycle Grid Card -->
+    
+                <div class="">
+                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3.svg" alt="Recycle">
+                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg3dark.svg" alt="Recycle">
+                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Recycle</h3>
+                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">All out products are 100 percent recycable</p>
+                </div>
+    
+                <!-- Secure Payment Card -->
+    
+                <div class="">
+                    <img class="dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4.svg" alt="Secure Payment">
+                    <img class="dark:block hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/highlight-1-svg4dark.svg" alt="Secure Payment">
+                    <h3 class="text-xl leading-5 dark:text-white font-semibold text-gray-800 lg:mt-10 mt-8">Secure Payment</h3>
+                    <p class="text-base leading-6 font-normal dark:text-gray-300 text-gray-600 mt-4 lg:w-full md:w-9/12 w-full">Transaction process has end to end encryption</p>
+                </div>
+            </div>
+          </div>
+          <!-- end highlighted services -->
+
+          <!-- featured collection -->
+          <div class="lg:px-20 md:px-6 px-4 md:py-12 py-8">
+            <div class="lg:flex items-center justify-between">
+                <div class="lg:w-1/3">
+                    <h1 class="text-4xl font-semibold leading-9 text-gray-80">Indoor Interiors</h1>
+                    <p class="text-base leading-6 mt-4 text-gray-600">Get inspired by our curated selection of luxiwood interiors. We hope get inspired to have luxiwood interior yourself. You’ll find tips here where you can buy a lot of cool furniture.</p>
+                    <button id="featured-collection-button" data-cta-action="3" role="button" aria-label="view catalogue" class="focus:ring-2 focus:ring-offset-2 focus:ring-gray-700 focus:outline-none mt-6 md:mt-8 text-base font-semibold leading-none text-gray-800 flex items-center hover:underline">
+                        View Catalogue
+                        <img class="ml-2 mt-1 dark:hidden" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1.svg" alt="arrow">
+                        <img class="ml-2 mt-1 hidden dark:block" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/feature-VI-svg1dark.svg" alt="arrow">
+                    </button>
+                </div>
+                <div class="lg:w-7/12 lg:mt-0 mt-8">
+                    <div class="w-full h-full bg-red-200">
+                        <img src="https://i.ibb.co/cbyDY74/pexels-max-vakhtbovych-6782351-1-1.png" alt="apartment design" class="w-full sm:block hidden" />
+                        <img src="https://i.ibb.co/ZVPGjGJ/pexels-max-vakhtbovych-6782351-1.png" alt="apartment design" class="sm:hidden block w-full" />
+                    </div>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 lg:gap-8 gap-6 lg:mt-8 md:mt-6 mt-4">
+                        <img src="https://i.ibb.co/4Jrp5TB/pexels-max-vakhtbovych-6782370-1.png" class="w-full" alt="kitchen" />
+                        <img src="https://i.ibb.co/0Jv3FSy/pexels-max-vakhtbovych-6436799-1-1.png" class="w-full" alt="sitting room" />
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!--end featured collection -->
+
+          <!-- sustainable collection multi item carousel -->
+          <div class="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
+            <div class="w-full relative flex items-center justify-center">
+                <button aria-label="slide backward" class="absolute z-30 left-0 ml-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                    <div id="slider" class="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 1</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/fDngH9G/carosel-1.png" alt="black chair and white table" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/DWrGxX6/carosel-2.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/tCfVky2/carosel-3.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-shrink-0 relative w-full sm:w-auto">
+                            <img src="https://i.ibb.co/rFsGfr5/carosel-4.png" alt="sitting area" class="object-cover object-center w-full" />
+                            <div class="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                <h2 class="lg:text-xl leading-4 text-base lg:leading-5 text-white dark:text-gray-900">Catalog 2</h2>
+                                <div class="flex h-full items-end pb-6">
+                                    <h3 class="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white dark:text-gray-900">Minimal Interior</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button aria-label="slide forward" class="absolute z-30 right-0 mr-10 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                    <svg class="dark:text-gray-900" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+          </div>
+          <!-- end sustainable collection multi item carousel -->
+
         </div>
         <!-- end homepage content -->
 
@@ -704,597 +1050,7 @@
         <!-- end product listings content -->
 
         <!-- product details content -->
-        <div id="product-details">
-          TODO: Product Details for ID:
-          <span id="temp-product-id" class="text-4xl">temp product id</span>
-
-          <div class="bg-white">
-            <div class="pt-6">
-              <nav aria-label="Breadcrumb">
-                <ol
-                  role="list"
-                  class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-                >
-                  <li>
-                    <div class="flex items-center">
-                      <a href="#" class="mr-2 text-sm font-medium text-gray-900"
-                        >Men</a
-                      >
-                      <svg
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        class="h-5 w-4 text-gray-300"
-                      >
-                        <path
-                          d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z"
-                        />
-                      </svg>
-                    </div>
-                  </li>
-
-                  <li>
-                    <div class="flex items-center">
-                      <a href="#" class="mr-2 text-sm font-medium text-gray-900"
-                        >Clothing</a
-                      >
-                      <svg
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        class="h-5 w-4 text-gray-300"
-                      >
-                        <path
-                          d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z"
-                        />
-                      </svg>
-                    </div>
-                  </li>
-
-                  <li class="text-sm">
-                    <a
-                      href="#"
-                      aria-current="page"
-                      class="font-medium text-gray-500 hover:text-gray-600"
-                      >Basic Tee 6-Pack</a
-                    >
-                  </li>
-                </ol>
-              </nav>
-
-              <!-- Image gallery -->
-              <div
-                class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8"
-              >
-                <div
-                  class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block"
-                >
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg"
-                    alt="Two each of gray, white, and black shirts laying flat."
-                    class="h-full w-full object-cover object-center"
-                  />
-                </div>
-                <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                  <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                    <img
-                      src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
-                      alt="Model wearing plain black basic tee."
-                      class="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                  <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                    <img
-                      src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
-                      alt="Model wearing plain gray basic tee."
-                      class="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                </div>
-                <div
-                  class="aspect-w-4 aspect-h-5 lg:aspect-w-3 lg:aspect-h-4 sm:overflow-hidden sm:rounded-lg"
-                >
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-                    alt="Model wearing plain white basic tee."
-                    class="h-full w-full object-cover object-center"
-                  />
-                </div>
-              </div>
-
-              <!-- Product info -->
-              <div
-                class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24"
-              >
-                <div
-                  class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8"
-                >
-                  <h1
-                    class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
-                  >
-                    Basic Tee 6-Pack
-                  </h1>
-                </div>
-
-                <!-- Options -->
-                <div class="mt-4 lg:row-span-3 lg:mt-0">
-                  <h2 class="sr-only">Product information</h2>
-                  <p class="text-3xl tracking-tight text-gray-900">$192</p>
-
-                  <!-- Reviews -->
-                  <div class="mt-6">
-                    <h3 class="sr-only">Reviews</h3>
-                    <div class="flex items-center">
-                      <div class="flex items-center">
-                        <!--
-                          Heroicon name: mini/star
-          
-                          Active: "text-gray-900", Default: "text-gray-200"
-                        -->
-                        <svg
-                          class="h-5 w-5 flex-shrink-0 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-
-                        <!-- Heroicon name: mini/star -->
-                        <svg
-                          class="h-5 w-5 flex-shrink-0 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-
-                        <!-- Heroicon name: mini/star -->
-                        <svg
-                          class="h-5 w-5 flex-shrink-0 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-
-                        <!-- Heroicon name: mini/star -->
-                        <svg
-                          class="h-5 w-5 flex-shrink-0 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-
-                        <!-- Heroicon name: mini/star -->
-                        <svg
-                          class="h-5 w-5 flex-shrink-0 text-gray-200"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                      </div>
-                      <p class="sr-only">4 out of 5 stars</p>
-                      <a
-                        href="#"
-                        class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                        >117 reviews</a
-                      >
-                    </div>
-                  </div>
-
-                  <form class="mt-10">
-                    <!-- Colors -->
-                    <div>
-                      <h3 class="text-sm font-medium text-gray-900">Color</h3>
-
-                      <fieldset class="mt-4">
-                        <legend class="sr-only">Choose a color</legend>
-                        <div class="flex items-center space-x-3">
-                          <!--
-                            Active and Checked: "ring ring-offset-1"
-                            Not Active and Checked: "ring-2"
-                          -->
-                          <label
-                            class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none"
-                          >
-                            <input
-                              type="radio"
-                              name="color-choice"
-                              value="White"
-                              class="sr-only"
-                              aria-labelledby="color-choice-0-label"
-                            />
-                            <span id="color-choice-0-label" class="sr-only">
-                              White
-                            </span>
-                            <span
-                              aria-hidden="true"
-                              class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-white"
-                            ></span>
-                          </label>
-
-                          <!--
-                            Active and Checked: "ring ring-offset-1"
-                            Not Active and Checked: "ring-2"
-                          -->
-                          <label
-                            class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none"
-                          >
-                            <input
-                              type="radio"
-                              name="color-choice"
-                              value="Gray"
-                              class="sr-only"
-                              aria-labelledby="color-choice-1-label"
-                            />
-                            <span id="color-choice-1-label" class="sr-only">
-                              Gray
-                            </span>
-                            <span
-                              aria-hidden="true"
-                              class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-200"
-                            ></span>
-                          </label>
-
-                          <!--
-                            Active and Checked: "ring ring-offset-1"
-                            Not Active and Checked: "ring-2"
-                          -->
-                          <label
-                            class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-900 focus:outline-none"
-                          >
-                            <input
-                              type="radio"
-                              name="color-choice"
-                              value="Black"
-                              class="sr-only"
-                              aria-labelledby="color-choice-2-label"
-                            />
-                            <span id="color-choice-2-label" class="sr-only">
-                              Black
-                            </span>
-                            <span
-                              aria-hidden="true"
-                              class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-900"
-                            ></span>
-                          </label>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <!-- Sizes -->
-                    <div class="mt-10">
-                      <div class="flex items-center justify-between">
-                        <h3 class="text-sm font-medium text-gray-900">Size</h3>
-                        <a
-                          href="#"
-                          class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                          >Size guide</a
-                        >
-                      </div>
-
-                      <fieldset class="mt-4">
-                        <legend class="sr-only">Choose a size</legend>
-                        <div
-                          class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
-                        >
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 py-3 px-4 text-sm font-medium uppercase text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="XXS"
-                              disabled
-                              class="sr-only"
-                              aria-labelledby="size-choice-0-label"
-                            />
-                            <span id="size-choice-0-label">XXS</span>
-
-                            <span
-                              aria-hidden="true"
-                              class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
-                            >
-                              <svg
-                                class="absolute inset-0 h-full w-full stroke-2 text-gray-200"
-                                viewBox="0 0 100 100"
-                                preserveAspectRatio="none"
-                                stroke="currentColor"
-                              >
-                                <line
-                                  x1="0"
-                                  y1="100"
-                                  x2="100"
-                                  y2="0"
-                                  vector-effect="non-scaling-stroke"
-                                />
-                              </svg>
-                            </span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="XS"
-                              class="sr-only"
-                              aria-labelledby="size-choice-1-label"
-                            />
-                            <span id="size-choice-1-label">XS</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="S"
-                              class="sr-only"
-                              aria-labelledby="size-choice-2-label"
-                            />
-                            <span id="size-choice-2-label">S</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="M"
-                              class="sr-only"
-                              aria-labelledby="size-choice-3-label"
-                            />
-                            <span id="size-choice-3-label">M</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="L"
-                              class="sr-only"
-                              aria-labelledby="size-choice-4-label"
-                            />
-                            <span id="size-choice-4-label">L</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="XL"
-                              class="sr-only"
-                              aria-labelledby="size-choice-5-label"
-                            />
-                            <span id="size-choice-5-label">XL</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="2XL"
-                              class="sr-only"
-                              aria-labelledby="size-choice-6-label"
-                            />
-                            <span id="size-choice-6-label">2XL</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-
-                          <!-- Active: "ring-2 ring-indigo-500" -->
-                          <label
-                            class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
-                          >
-                            <input
-                              type="radio"
-                              name="size-choice"
-                              value="3XL"
-                              class="sr-only"
-                              aria-labelledby="size-choice-7-label"
-                            />
-                            <span id="size-choice-7-label">3XL</span>
-
-                            <!--
-                              Active: "border", Not Active: "border-2"
-                              Checked: "border-indigo-500", Not Checked: "border-transparent"
-                            -->
-                            <span
-                              class="pointer-events-none absolute -inset-px rounded-md"
-                              aria-hidden="true"
-                            ></span>
-                          </label>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <button
-                      type="submit"
-                      class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                      Add to bag
-                    </button>
-                  </form>
-                </div>
-
-                <div
-                  class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8"
-                >
-                  <!-- Description and details -->
-                  <div>
-                    <h3 class="sr-only">Description</h3>
-
-                    <div class="space-y-6">
-                      <p class="text-base text-gray-900">
-                        The Basic Tee 6-Pack allows you to fully express your
-                        vibrant personality with three grayscale options.
-                        Feeling adventurous? Put on a heather gray tee. Want to
-                        be a trendsetter? Try our exclusive colorway:
-                        &quot;Black&quot;. Need to add an extra pop of color to
-                        your outfit? Our white tee has you covered.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="mt-10">
-                    <h3 class="text-sm font-medium text-gray-900">
-                      Highlights
-                    </h3>
-
-                    <div class="mt-4">
-                      <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
-                        <li class="text-gray-400">
-                          <span class="text-gray-600"
-                            >Hand cut and sewn locally</span
-                          >
-                        </li>
-
-                        <li class="text-gray-400">
-                          <span class="text-gray-600"
-                            >Dyed with our proprietary colors</span
-                          >
-                        </li>
-
-                        <li class="text-gray-400">
-                          <span class="text-gray-600"
-                            >Pre-washed &amp; pre-shrunk</span
-                          >
-                        </li>
-
-                        <li class="text-gray-400">
-                          <span class="text-gray-600"
-                            >Ultra-soft 100% cotton</span
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="mt-10">
-                    <h2 class="text-sm font-medium text-gray-900">Details</h2>
-
-                    <div class="mt-4 space-y-6">
-                      <p class="text-sm text-gray-600">
-                        The 6-Pack includes two black, two white, and two
-                        heather gray Basic Tees. Sign up for our subscription
-                        service and be the first to get new, exciting colors,
-                        like our upcoming &quot;Charcoal Gray&quot; limited
-                        release.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="product-details"></div>
         <!-- end product details content -->
       </section>
       <!-- end page content -->
@@ -1532,10 +1288,10 @@
       <!-- footer bottom -->
       <section
         id="footer-bottom"
-        class="flex flex-row items-center justify-between border-t-2 border-solid px-12"
+        class="flex flex-col lg:flex-row items-center justify-between border-t-2 border-solid px-12"
       >
         <div class="copyright py-4 text-center">
-          © 2023 <a href="./index.html">Fakee-Shop Retail Ltd</a>.
+          © 2023 <a href="./index.html">Fakee-Commerce Retail Ltd</a>.
         </div>
         <nav class="flex items-center">
           <ul class="flex flex-row gap-4 py-4 underline">
@@ -1554,6 +1310,598 @@
       <!-- end footer bottom -->
     </footer>
     <!-- end website footer -->
+
+    <!-- content templates -->
+    <template id="template-shop-bestsellers-grid">
+      <div class="item-card product-card group relative">
+        <div
+          class="min-h-80 aspect-w-1 aspect-h-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
+        >
+          <img
+            src=""
+            alt=""
+            class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+          />
+        </div>
+        <div class="mt-4 flex justify-between">
+          <div>
+            <h3 class="text-sm text-gray-700">
+              <a href="#">
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0"
+                ></span>
+                <span class="title"></span>
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-500"><span class="description"></span></p>
+          </div>
+          <p class="text-sm font-medium text-gray-900"><span class="currency"></span><span class="price" data-original-price=""></span></p>
+        </div>
+      </div> 
+    </template>
+
+    <template id="template-shop-by-category-grid">
+      <div class="item-card category-card group relative" data-item-id="" data-item-action="details">
+        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+          <img src="" alt="" class="h-full w-full object-cover object-center">
+        </div>
+        <h3 class="mt-6 text-sm text-gray-500">
+          <a href="#">
+            <span class="absolute inset-0"></span>
+            <span class="title"></span>
+          </a>
+        </h3>
+        <p class="text-base font-semibold text-gray-900">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptatem!</p>
+      </div>
+    </template>
+
+    <template id="template-promo-category-card">
+      <div class="item-card category-card group relative" data-item-id="5" data-item-action="category">
+        <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+          <img src="./assets/img/category-saint-valentines.jpg" alt="Saint Valentines category image" class="h-full w-full object-cover object-center">
+        </div>
+        <h3 class="mt-6 text-sm text-gray-500">
+          <a href="#valentines-promo" data-cta-action="5">
+            <span class="absolute inset-0"></span>
+            <span class="title text-red-600"><i class="fa-solid fa-gift"></i> Saint Valentine</span>
+          </a>
+        </h3>
+        <p class="text-base font-semibold text-gray-900">Treat your favourite person to delicious food, fancy drinks, a thoughtful gift, or an unforgettable experience.</p>
+      </div>      
+    </template>
+
+    <template id="template-product-details-item">
+      <div class="bg-white">
+        <div class="pt-2">
+          <!-- Image gallery -->
+          <div
+            class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8"
+          >
+            <div id="image-left"
+              class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block"
+            >
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg"
+                alt="Two each of gray, white, and black shirts laying flat."
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div id="images-center" class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+              <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
+                  alt="Model wearing plain black basic tee."
+                  class="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+                <img
+                  src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
+                  alt="Model wearing plain gray basic tee."
+                  class="h-full w-full object-cover object-center"
+                />
+              </div>
+            </div>
+            <div id="image-right"
+              class="aspect-w-4 aspect-h-5 lg:aspect-w-3 lg:aspect-h-4 sm:overflow-hidden sm:rounded-lg"
+            >
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
+                alt="Model wearing plain white basic tee."
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+          </div>
+
+          <!-- Product info -->
+          <div
+            class="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24"
+          >
+            <div
+              class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8"
+            >
+              <h1
+                class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+              >
+                <span class="title">Basic Tee 6-Pack</span>
+              </h1>
+            </div>
+
+            <!-- Options -->
+            <div class="mt-4 lg:row-span-3 lg:mt-0">
+              <h2 class="sr-only">Product information</h2>
+              <p class="text-3xl tracking-tight text-gray-900"><span class="currency">£</span><span class="price" data-original-price="192">192</span></p>
+
+              <!-- Reviews -->
+              <div class="mt-6">
+                <h3 class="sr-only">Reviews</h3>
+                <div class="flex items-center">
+                  <div class="flex items-center">
+                    <!--
+                      Heroicon name: mini/star
+      
+                      Active: "text-gray-900", Default: "text-gray-200"
+                    -->
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-gray-900"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <!-- Heroicon name: mini/star -->
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-gray-900"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <!-- Heroicon name: mini/star -->
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-gray-900"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <!-- Heroicon name: mini/star -->
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-gray-900"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+
+                    <!-- Heroicon name: mini/star -->
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-gray-200"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <p class="sr-only">4 out of 5 stars</p>
+                  <a
+                    href="#"
+                    class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    >117 reviews</a
+                  >
+                </div>
+              </div>
+
+              <form class="mt-10">
+                <!-- Colors -->
+                <div>
+                  <h3 class="text-sm font-medium text-gray-900">Color</h3>
+
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Choose a color</legend>
+                    <div class="flex items-center space-x-3">
+                      <!--
+                        Active and Checked: "ring ring-offset-1"
+                        Not Active and Checked: "ring-2"
+                      -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none"
+                      >
+                        <input
+                          type="radio"
+                          name="color-choice"
+                          value="White"
+                          class="sr-only"
+                          aria-labelledby="color-choice-0-label"
+                        />
+                        <span id="color-choice-0-label" class="sr-only">
+                          White
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-white"
+                        ></span>
+                      </label>
+
+                      <!--
+                        Active and Checked: "ring ring-offset-1"
+                        Not Active and Checked: "ring-2"
+                      -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none"
+                      >
+                        <input
+                          type="radio"
+                          name="color-choice"
+                          value="Gray"
+                          class="sr-only"
+                          aria-labelledby="color-choice-1-label"
+                        />
+                        <span id="color-choice-1-label" class="sr-only">
+                          Gray
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-200"
+                        ></span>
+                      </label>
+
+                      <!--
+                        Active and Checked: "ring ring-offset-1"
+                        Not Active and Checked: "ring-2"
+                      -->
+                      <label
+                        class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-900 focus:outline-none"
+                      >
+                        <input
+                          type="radio"
+                          name="color-choice"
+                          value="Black"
+                          class="sr-only"
+                          aria-labelledby="color-choice-2-label"
+                        />
+                        <span id="color-choice-2-label" class="sr-only">
+                          Black
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-900"
+                        ></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <!-- Sizes -->
+                <div class="mt-10">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-medium text-gray-900">Size</h3>
+                    <a
+                      href="#"
+                      class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                      >Size guide</a
+                    >
+                  </div>
+
+                  <fieldset class="mt-4">
+                    <legend class="sr-only">Choose a size</legend>
+                    <div
+                      class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
+                    >
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 py-3 px-4 text-sm font-medium uppercase text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="XXS"
+                          disabled
+                          class="sr-only"
+                          aria-labelledby="size-choice-0-label"
+                        />
+                        <span id="size-choice-0-label">XXS</span>
+
+                        <span
+                          aria-hidden="true"
+                          class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            class="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            stroke="currentColor"
+                          >
+                            <line
+                              x1="0"
+                              y1="100"
+                              x2="100"
+                              y2="0"
+                              vector-effect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="XS"
+                          class="sr-only"
+                          aria-labelledby="size-choice-1-label"
+                        />
+                        <span id="size-choice-1-label">XS</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="S"
+                          class="sr-only"
+                          aria-labelledby="size-choice-2-label"
+                        />
+                        <span id="size-choice-2-label">S</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="M"
+                          class="sr-only"
+                          aria-labelledby="size-choice-3-label"
+                        />
+                        <span id="size-choice-3-label">M</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="L"
+                          class="sr-only"
+                          aria-labelledby="size-choice-4-label"
+                        />
+                        <span id="size-choice-4-label">L</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="XL"
+                          class="sr-only"
+                          aria-labelledby="size-choice-5-label"
+                        />
+                        <span id="size-choice-5-label">XL</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="2XL"
+                          class="sr-only"
+                          aria-labelledby="size-choice-6-label"
+                        />
+                        <span id="size-choice-6-label">2XL</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+
+                      <!-- Active: "ring-2 ring-indigo-500" -->
+                      <label
+                        class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white py-3 px-4 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                      >
+                        <input
+                          type="radio"
+                          name="size-choice"
+                          value="3XL"
+                          class="sr-only"
+                          aria-labelledby="size-choice-7-label"
+                        />
+                        <span id="size-choice-7-label">3XL</span>
+
+                        <!--
+                          Active: "border", Not Active: "border-2"
+                          Checked: "border-indigo-500", Not Checked: "border-transparent"
+                        -->
+                        <span
+                          class="pointer-events-none absolute -inset-px rounded-md"
+                          aria-hidden="true"
+                        ></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <button
+                  type="submit"
+                  class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Add to bag
+                </button>
+              </form>
+            </div>
+
+            <div
+              class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8"
+            >
+              <!-- Description and details -->
+              <div>
+                <h3 class="sr-only">Description</h3>
+
+                <div class="space-y-6">
+                  <p id="description" class="text-base text-gray-900">
+                    The Basic Tee 6-Pack allows you to fully express your
+                    vibrant personality with three grayscale options.
+                    Feeling adventurous? Put on a heather gray tee. Want to
+                    be a trendsetter? Try our exclusive colorway:
+                    &quot;Black&quot;. Need to add an extra pop of color to
+                    your outfit? Our white tee has you covered.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <h3 class="text-sm font-medium text-gray-900">
+                  Highlights
+                </h3>
+
+                <div class="mt-4">
+                  <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
+                    <li class="text-gray-400">
+                      <span class="text-gray-600"
+                        >Hand cut and sewn locally</span
+                      >
+                    </li>
+
+                    <li class="text-gray-400">
+                      <span class="text-gray-600"
+                        >Dyed with our proprietary colors</span
+                      >
+                    </li>
+
+                    <li class="text-gray-400">
+                      <span class="text-gray-600"
+                        >Pre-washed &amp; pre-shrunk</span
+                      >
+                    </li>
+
+                    <li class="text-gray-400">
+                      <span class="text-gray-600"
+                        >Ultra-soft 100% cotton</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <h2 class="text-sm font-medium text-gray-900">Details</h2>
+
+                <div class="mt-4 space-y-6">
+                  <p class="text-sm text-gray-600">
+                    The 6-Pack includes two black, two white, and two
+                    heather gray Basic Tees. Sign up for our subscription
+                    service and be the first to get new, exciting colors,
+                    like our upcoming &quot;Charcoal Gray&quot; limited
+                    release.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <!-- end content templates -->
 
     <!-- Tailwind Elements -->
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>

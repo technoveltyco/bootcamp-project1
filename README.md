@@ -233,11 +233,13 @@ Use this section to outline areas that you want to continue focusing on in futur
   - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation) - The main reference for Tailwind CSS Framework.
   - [Tailwind UI Docs](https://tailwindui.com/documentation) - A good resource to speed the development using pre-designed Talwind components and template, but unfortunately it is not free :( . 
   - [Tailwind Elements](https://tailwind-elements.com/) - Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.
+  - [TUIk - Tailwind UI Kit - Components](https://tailwinduikit.com/components)
   - [Tailwind recommended class order](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted)
   - [MD Bootstrap - Top quality
 open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI open source components and with tons of good examples.
 - HTML
-  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) - we never implemented it, but it is a good solution when you want to reuse HTML and you do not have a rendering template library.
+  - [The Content Template element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) - it is a good solution when you want to reuse HTML and you do not have a rendering template library.
+  - [HTML Template Tag Explained](https://dev.to/arafat4693/html-template-tag-explained-3859)
 
 - CSS
   - [How to create a beating heart with pure CSS for your valentine](https://www.freecodecamp.org/news/how-to-create-a-beating-heart-with-pure-css-for-your-valentine-2aeb05e2d36e/)
@@ -272,7 +274,6 @@ open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI 
   - [Mermaid - Diagramming and charting tool](https://mermaid.js.org/)
   - [Include diagrams in your Markdown files with Mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
   - [Mermaid - Live Editor](https://mermaid.live/)
-
 - IDE/Dev tools
   - [Prettier - Code formatter](https://prettier.io/)
   - [Prettier VSCode plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -293,15 +294,3 @@ open-source UI Kits](https://mdbootstrap.com/) - A good quality of Bootstrap UI 
 ## Acknowledgments
 
 The teacher and TAs that help us with resources and support to my questions during the development of this project.
-
-Special acknowledgements for the website of the following companies, which keep innovating and inspiring many web designers and maketing teams: 
-
-- [Amazon SiteStripe](https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe) - Inpiration for defining the definition of the top toolbar on Fakee-Shop's header.
-
-![Amazon Sitestripe example](./docs/assets/img/SiteStripe1FebSettings._V299678229_.png)
-
-- [Selfridges](https://www.selfridges.com/GB/en/) - Valentine's hero banner inspiration.
-
-![The Valentine's hero banner of Selfridges in 2023](./docs/assets/img/Selfridges-Screenshot%202023-02-11%20185402.png)
-
-- [Marks & Spencer](https://www.marksandspencer.com/) - HTML layout and classnames.
