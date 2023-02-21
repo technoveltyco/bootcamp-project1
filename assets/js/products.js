@@ -193,8 +193,6 @@ function refreshProducts() {
 
   const next = productGenerator.next();
 
-  console.log(filteredProducts);
-
   // clear contents of render target before populating
   productListEl.innerHTML = "";
 
@@ -207,13 +205,11 @@ function* generator(products, limit) {
   const pageNums = Array(Math.ceil(products.length / limit))
     .fill(limit)
     .map((x, y) => x * y);
-  console.log(pageNums);
 
   enableButtonEl(loadMoreEl);
 
   for (const pageNum of pageNums) {
     if (pageNums[pageNums.length - 1] === pageNum) {
-      console.log("here: " + pageNums.slice(-1));
       disableButtonEl(loadMoreEl);
     }
     yield products.slice(pageNum, pageNum + limit);
@@ -350,8 +346,6 @@ function storeGBPExchangeRates() {
     fetch(endpoints["exchange_rate"]["currency"], options)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
-
         exchangeRates = JSON.stringify(response);
         localStorage.setItem("GBPExchangeRates", exchangeRates);
       })
@@ -365,8 +359,6 @@ function fetchProductsEndpoint(queryString) {
   fetch(endpoints["platzi"]["products"] + queryString, options)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-
       // clear contents before populating
       productListEl.innerHTML = "";
 
@@ -435,17 +427,17 @@ function createCard(item) {
         <img class="rounded-t-lg" src="${item.images[0]}" alt="" />
     </a>
     <div class="p-5">
-    <a href="#">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
-      item.title
-    } cat: ${item.category.id}</h5>
-    </a>
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${
-      item.description
-    }</p>
-    <p class="mb-3 font-bold text-gray-900"><span class="currency">${
-      currencies[selectedCurrencyCode].currencySign
-    }</span><span class="price" data-original-price="${
+      <a href="#">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${
+        item.title
+      }</h5>
+      </a>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${
+        item.description
+      }</p>
+      <p class="mb-3 font-bold text-gray-900"><span class="currency">${
+        currencies[selectedCurrencyCode].currencySign
+      }</span><span class="price" data-original-price="${
     item.price
   }">${convertPrice(item.price)}</span></p>
     </div>
@@ -480,11 +472,11 @@ navPrimaryItemsEl.addEventListener("click", (event) => {
     const categoryId = Number(event.target.dataset.categoryId);
 
     navSearchInputEl.value = "";
-    
+
     navPrimaryItemsEl.dataset.selectedCategoryId = categoryId;
-  
+
     event.target.parentNode.classList.add("font-bold");
-    
+
     navPrimaryItemsReset();
     resetSearchRefiners();
     refreshProducts();
